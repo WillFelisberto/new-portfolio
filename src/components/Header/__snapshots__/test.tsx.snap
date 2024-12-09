@@ -1,66 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Header /> renders navigation items 1`] = `
-<header
-  class="absolute top-0 z-10 flex h-24 w-full items-center justify-center"
-  style="top: -100px;"
->
-  <div
-    class="container flex items-center justify-between"
-  >
-    <a
-      href="/"
-    >
-      <img
-        alt="Logo"
-        data-nimg="1"
-        decoding="async"
-        height="49"
-        loading="lazy"
-        src="/images/logo.svg"
-        style="color: transparent;"
-        width="58"
-      />
-    </a>
-    <nav
-      class="flex items-center gap-4 sm:gap-10"
-    >
-      <button>
-        <img
-          alt="United States Flag"
-          data-nimg="1"
-          decoding="async"
-          height="29"
-          loading="lazy"
-          src="/_next/image?url=%2Fimages%2FFlag_of_the_United_States.png&w=64&q=75"
-          srcset="/_next/image?url=%2Fimages%2FFlag_of_the_United_States.png&w=32&q=75 1x, /_next/image?url=%2Fimages%2FFlag_of_the_United_States.png&w=64&q=75 2x"
-          style="color: transparent;"
-          width="30"
-        />
-      </button>
-      <a
-        class="flex items-center gap-2 font-mono font-medium text-gray-400"
-        href="/"
-      >
-        <span
-          class="text-sky-400"
-        >
-          #
-        </span>
-        Home
-      </a>
-      <a
-        class="flex items-center gap-2 font-mono font-medium text-gray-400"
-        href="/projects"
-      >
-        <span
-          class="text-sky-400"
-        >
-          #
-        </span>
-        Projects
-      </a>
-    </nav>
-  </div>
-</header>
+exports[`Header component renders the logo 1`] = `
+<div
+  data-testid="google-analytics"
+/>
 `;
