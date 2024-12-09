@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<EducationCard /> renders the education details correctly 1`] = `
+<div>
+  <h1>
+    Information Technology
+  </h1>
+  <h2 />
+  <p>
+    Jan 2020 • Dec 2023 • (3 years)
+  </p>
+  <a
+    href="#"
+  >
+    Go to Bachelor of Science
+  </a>
+</div>
+`;

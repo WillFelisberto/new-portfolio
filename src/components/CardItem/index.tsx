@@ -2,7 +2,7 @@ import { fadeUpAnimation } from '@/lib/animations';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
-type CardItemProps = {
+export type CardItemProps = {
   logoUrl: string;
   logoAlt: string;
   title: string;

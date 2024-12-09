@@ -35,6 +35,7 @@
     "@payloadcms/richtext-lexical": "^3.4.0",
     "axios": "^1.7.9",
     "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
     "graphql": "^16.9.0",
     "motion": "12.0.0-alpha.2",
     "next": "15.0.4",
