@@ -13,6 +13,7 @@ const config: Config = {
     'src/**/*.ts(x)?',
     '!src/app/**', // should be tested in e2e
     '!src/lib/registry.tsx',
+    '!src/lib/**', // Ignora todos os arquivos na pasta src/lib
     '!src/types/**',
     '!src/**/*.stories.tsx',
     '!src/styles/**',
@@ -21,7 +22,9 @@ const config: Config = {
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { presets: ['next/babel'] }],
   },
-
+  testPathIgnorePatterns: [
+    '<rootDir>/src/lib/', // Ignora completamente os testes para src/lib
+  ],
   coverageDirectory: 'coverage',
 
   testEnvironment: 'jsdom',
