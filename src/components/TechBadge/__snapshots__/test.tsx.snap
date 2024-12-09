@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TechBadge /> should render badge with provided name text 1`] = `
+<span
+  class="rounded-lg bg-sky-900/80 px-3 py-1 text-sm text-sky-400"
+>
+  React
+</span>
+`;
