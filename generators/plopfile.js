@@ -13,17 +13,36 @@ module.exports = (plop) => {
       {
         type: 'add',
         path: '../src/components/{{pascalCase name}}/index.tsx',
-        templateFile: 'templates/Component.tsx.hbs',
+        templateFile: 'templates/components/Component.tsx.hbs',
       },
       {
         type: 'add',
         path: '../src/components/{{pascalCase name}}/{{pascalCase name}}.stories.tsx',
-        templateFile: 'templates/stories.tsx.hbs',
+        templateFile: 'templates/components/stories.tsx.hbs',
       },
       {
         type: 'add',
         path: '../src/components/{{pascalCase name}}/test.tsx',
-        templateFile: 'templates/test.tsx.hbs',
+        templateFile: 'templates/components/test.tsx.hbs',
+      },
+    ],
+  });
+
+  // Gerador para coleções
+  plop.setGenerator('collection', {
+    description: 'Create a collection',
+    prompts: [
+      {
+        type: 'input',
+        name: 'name',
+        message: 'What is your collection name?',
+      },
+    ],
+    actions: [
+      {
+        type: 'add',
+        path: '../src/app/(payload)/collections/{{camelCase name}}/index.ts',
+        templateFile: 'templates/collections/Collection.tsx.hbs',
       },
     ],
   });
