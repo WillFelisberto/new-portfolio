@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BackToTop component should render the BackToTop component 1`] = `
+<div
+  class="fixed bottom-4 right-4 z-20"
+  style="opacity: 0; right: -10px;"
+>
+  <button
+    aria-label="Back to top"
+    class="flex items-center justify-center gap-2 rounded-lg bg-sky-600 px-4 py-3 text-gray-50 transition-all hover:bg-sky-500 disabled:opacity-50 shadow-lg shadow-sky-400/20"
+  >
+    <svg
+      fill="none"
+      height="20"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12 5l0 14"
+      />
+      <path
+        d="M16 9l-4 -4"
+      />
+      <path
+        d="M8 9l4 -4"
+      />
+    </svg>
+  </button>
+</div>
+`;

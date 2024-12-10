@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Divider /> should render with default styling classes when no className prop is provided 1`] = `
+<div
+  class="my-8 w-full border-b border-b-gray-800"
+/>
+`;

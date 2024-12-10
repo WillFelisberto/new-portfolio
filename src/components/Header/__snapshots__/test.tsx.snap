@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component renders the logo 1`] = `
+<div
+  data-testid="google-analytics"
+/>
+`;
