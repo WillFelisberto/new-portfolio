@@ -5,13 +5,17 @@ import { buildConfig } from 'payload';
 import { Projects } from '@/app/(payload)/collections/projects';
 import { Media } from '@/app/(payload)/collections/media';
 import { Technologies } from '@/app/(payload)/collections/technologies';
+import path from 'path';
+import { Education } from '@/app/(payload)/collections/education';
+import { WorkExperience } from '@/app/(payload)/collections/workExperience';
+const __dirname = path.resolve();
 
 export default buildConfig({
   // If you'd like to use Rich Text, pass your editor here
   editor: lexicalEditor(),
 
   // Define and configure your collections in this array
-  collections: [Projects, Media, Technologies],
+  collections: [Projects, Media, Technologies, Education, WorkExperience],
 
   // Your Payload secret - should be a complex and secure string, unguessable
   secret: process.env.PAYLOAD_SECRET || '',
@@ -20,6 +24,9 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.DATABASE_URI || '',
   }),
+  typescript: {
+    outputFile: path.resolve(__dirname, 'src/app/(payload)/payload-types.ts'),
+  },
 
   // If you want to resize images, crop, set focal point, etc.
   // make sure to install it and pass it to the config.

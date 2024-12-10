@@ -2,6 +2,9 @@ import type { CollectionConfig } from 'payload'
 
 export const {{pascalCase name}}: CollectionConfig = {
   slug: '{{lowerCase name}}',
+  admin: {
+    useAsTitle: 'title',
+  },
   fields: [
     {
       name: 'title',

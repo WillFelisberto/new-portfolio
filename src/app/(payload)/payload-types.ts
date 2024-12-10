@@ -14,6 +14,8 @@ export interface Config {
     projects: Project;
     media: Media;
     technologies: Technology;
+    education: Education;
+    workexperience: Workexperience;
     users: User;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -24,6 +26,8 @@ export interface Config {
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     technologies: TechnologiesSelect<false> | TechnologiesSelect<true>;
+    education: EducationSelect<false> | EducationSelect<true>;
+    workexperience: WorkexperienceSelect<false> | WorkexperienceSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -172,6 +176,67 @@ export interface Technology {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "education".
+ */
+export interface Education {
+  id: string;
+  title?: string | null;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  educationLogo?: (string | null) | Media;
+  url?: string | null;
+  startDate?: string | null;
+  endDate?: string | null;
+  courseName?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "workexperience".
+ */
+export interface Workexperience {
+  id: string;
+  companyName?: string | null;
+  companyLogo?: (string | null) | Media;
+  companyUrl?: string | null;
+  role?: string | null;
+  startDate?: string | null;
+  endDate?: string | null;
+  technologies?: (string | Technology)[] | null;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
@@ -205,6 +270,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'technologies';
         value: string | Technology;
+      } | null)
+    | ({
+        relationTo: 'education';
+        value: string | Education;
+      } | null)
+    | ({
+        relationTo: 'workexperience';
+        value: string | Workexperience;
       } | null)
     | ({
         relationTo: 'users';
@@ -335,6 +408,37 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface TechnologiesSelect<T extends boolean = true> {
   name?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "education_select".
+ */
+export interface EducationSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  educationLogo?: T;
+  url?: T;
+  startDate?: T;
+  endDate?: T;
+  courseName?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "workexperience_select".
+ */
+export interface WorkexperienceSelect<T extends boolean = true> {
+  companyName?: T;
+  companyLogo?: T;
+  companyUrl?: T;
+  role?: T;
+  startDate?: T;
+  endDate?: T;
+  technologies?: T;
+  description?: T;
   updatedAt?: T;
   createdAt?: T;
 }
