@@ -1,6 +1,7 @@
 import { formatDateRange } from '@/lib/utils';
 import CardItem from '../CardItem';
 import TechBadge from '../TechBadge';
+import { RichTextProps } from '../RichText';
 
 export type WorkExperience = {
   companyLogo: {
@@ -12,7 +13,7 @@ export type WorkExperience = {
   startDate: string;
   endDate: string | null;
   technologies: { name: string }[];
-  description: string;
+  description: Pick<RichTextProps, 'lexicalData'>;
 };
 
 type ExperienceItemProps = {

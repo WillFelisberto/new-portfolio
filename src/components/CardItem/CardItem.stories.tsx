@@ -20,7 +20,28 @@ export const EducationExample: Story = {
     title: 'Computer Science',
     subtitle: 'Bachelor of Science',
     dateRange: 'Jan 2015 • Dec 2019 • (4 years)',
-    description: 'description',
+    description: {
+      lexicalData: {
+        root: {
+          direction: 'ltr',
+          format: '',
+          indent: 0,
+          type: 'root',
+          version: 1,
+          children: [
+            {
+              detail: 0,
+              format: 0,
+              mode: 'normal',
+              style: '',
+              text: 'Description',
+              type: 'text',
+              version: 1,
+            },
+          ],
+        },
+      },
+    },
     linkUrl: 'https://university.edu',
     linkText: 'University Name',
   },
@@ -33,7 +54,28 @@ export const ExperienceExample: Story = {
     title: 'Company Name',
     subtitle: 'Software Engineer',
     dateRange: 'Feb 2020 • Present • (3 years)',
-    description: 'description',
+    description: {
+      lexicalData: {
+        root: {
+          direction: 'ltr',
+          format: '',
+          indent: 0,
+          type: 'root',
+          version: 1,
+          children: [
+            {
+              detail: 0,
+              format: 0,
+              mode: 'normal',
+              style: '',
+              text: 'Description',
+              type: 'text',
+              version: 1,
+            },
+          ],
+        },
+      },
+    },
     linkUrl: 'https://company.com',
     linkText: '@ Company Name',
     additionalContent: (
