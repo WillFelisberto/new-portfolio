@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Field } from 'payload';
 import formatSlug from '../utilities/formatSlug';
 import deepMerge from '../utilities/deepMerge';
