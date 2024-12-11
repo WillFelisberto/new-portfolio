@@ -19,6 +19,10 @@ const config: Config = {
     '!src/styles/**',
   ],
   modulePaths: ['<rootDir>/src/', '<rootDir>/.jest'],
+  transformIgnorePatterns: [
+    '/node_modules/(?!(.*@payloadcms/richtext-lexical.*)/)',
+  ],
+  extensionsToTreatAsEsm: ['.ts', '.tsx', '.jsx'],
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { presets: ['next/babel'] }],
   },
@@ -29,6 +33,7 @@ const config: Config = {
 
   testEnvironment: 'jsdom',
   moduleNameMapper: {
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
     // Mapeamento para path aliases
     '^@/(.*)$': '<rootDir>/src/$1',
   },

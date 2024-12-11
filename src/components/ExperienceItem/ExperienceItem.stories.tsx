@@ -27,7 +27,28 @@ const mockExperience: WorkExperience = {
     { name: 'Node.js' },
     { name: 'TypeScript' },
   ],
-  description: 'Developed and maintained scalable web applications.',
+  description: {
+    lexicalData: {
+      root: {
+        direction: 'ltr',
+        format: '',
+        indent: 0,
+        type: 'root',
+        version: 1,
+        children: [
+          {
+            detail: 0,
+            format: 0,
+            mode: 'normal',
+            style: '',
+            text: 'Developed and maintained scalable web applications.',
+            type: 'text',
+            version: 1,
+          },
+        ],
+      },
+    },
+  },
 };
 
 export const Default: Story = {

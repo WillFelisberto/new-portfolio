@@ -1,6 +1,7 @@
 import { fadeUpAnimation } from '@/lib/animations';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import RichTextComponent, { RichTextProps } from '../RichText';
 
 export type CardItemProps = {
   logoUrl: string;
@@ -8,7 +9,7 @@ export type CardItemProps = {
   title: string;
   subtitle?: string;
   dateRange: string;
-  description?: string; // RichText content
+  description?: Pick<RichTextProps, 'lexicalData'>; // RichText content
   linkUrl?: string;
   linkText?: string;
   additionalContent?: React.ReactNode;
@@ -60,7 +61,9 @@ const CardItem = ({
           <h4 className="text-gray-300">{title}</h4>
           {subtitle && <p className="text-gray-400">{subtitle}</p>}
           <span className="text-gray-500">{dateRange}</span>
-          {description && <div className="text-gray-400">{description}</div>}
+          {description && (
+            <RichTextComponent lexicalData={description.lexicalData} />
+          )}
         </div>
 
         {additionalContent && <div className="mt-4">{additionalContent}</div>}

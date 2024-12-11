@@ -58,9 +58,7 @@ exports[`<CardItem /> should render card with all required props correctly 1`] =
       </span>
       <div
         class="text-gray-400"
-      >
-        description
-      </div>
+      />
     </div>
     <div
       class="mt-4"

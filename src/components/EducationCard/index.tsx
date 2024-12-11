@@ -1,9 +1,10 @@
 import { formatDateRange } from '@/lib/utils';
 import CardItem from '../CardItem';
+import { RichTextProps } from '../RichText';
 
 export type Education = {
   title: string;
-  description: string;
+  description: Pick<RichTextProps, 'lexicalData'>;
   educationLogo: {
     url: string;
   };
