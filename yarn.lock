@@ -2458,7 +2458,7 @@
     sonner "^1.7.0"
     uuid "10.0.0"
 
-"@payloadcms/richtext-lexical@^3.4.0":
+"@payloadcms/richtext-lexical@3.4.0":
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/@payloadcms/richtext-lexical/-/richtext-lexical-3.4.0.tgz#f9b806b496f6022fe7e98ec8a404cd0f47b50002"
   integrity sha512-IlhybQcdyriNU4ah3OIcGzREPL7CmHy4FVhfx1UjIN7LdQOCrehxjFc+T32AuTld+48ted1jmxs+A/zCdlTcbQ==
@@ -4893,7 +4893,14 @@ croner@9.0.0:
   resolved "https://registry.yarnpkg.com/croner/-/croner-9.0.0.tgz#1db62160142cf32eb22622e9ae27ba29156883f7"
   integrity sha512-onMB0OkDjkXunhdW9htFjEhqrD54+M94i6ackoUkjHKbRnXdyEyKRelp4nJ1kAz32+s27jP1FsebpJCVl0BsvA==
 
-cross-spawn@^7.0.0, cross-spawn@^7.0.3, cross-spawn@^7.0.5:
+cross-env@^7.0.3:
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/cross-env/-/cross-env-7.0.3.tgz#865264b29677dc015ba8418918965dd232fc54cf"
+  integrity sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==
+  dependencies:
+    cross-spawn "^7.0.1"
+
+cross-spawn@^7.0.0, cross-spawn@^7.0.1, cross-spawn@^7.0.3, cross-spawn@^7.0.5:
   version "7.0.6"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-7.0.6.tgz#8a58fe78f00dcd70c370451759dfbfaf03e8ee9f"
   integrity sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==
