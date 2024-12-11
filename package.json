@@ -31,6 +31,7 @@
     }
   },
   "dependencies": {
+    "@apollo/client": "^3.12.2",
     "@hookform/resolvers": "^3.9.1",
     "@payloadcms/db-mongodb": "^3.4.0",
     "@payloadcms/next": "^3.4.0",
@@ -39,8 +40,9 @@
     "clsx": "^2.1.1",
     "cross-env": "^7.0.3",
     "date-fns": "^4.1.0",
+    "framer-motion": "^11.13.5",
     "graphql": "^16.9.0",
-    "motion": "12.0.0-alpha.2",
+    "motion": "^11.13.5",
     "next": "15.0.4",
     "payload": "^3.4.0",
     "plop": "^4.0.1",

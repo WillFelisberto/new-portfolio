@@ -16,6 +16,21 @@ import type {
   SerializedHeadingNode,
 } from '@payloadcms/richtext-lexical';
 
+export type DescriptionType = TypedEditorState<
+  | SerializedAutoLinkNode
+  | SerializedBlockNode
+  | SerializedHorizontalRuleNode
+  | SerializedLinkNode
+  | SerializedListItemNode
+  | SerializedListNode
+  | SerializedParagraphNode
+  | SerializedQuoteNode
+  | SerializedRelationshipNode
+  | SerializedTextNode
+  | SerializedUploadNode
+  | SerializedHeadingNode
+>;
+
 export type RichTextProps = {
   lexicalData: TypedEditorState<
     | SerializedAutoLinkNode

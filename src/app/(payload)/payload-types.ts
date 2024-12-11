@@ -16,6 +16,7 @@ export interface Config {
     technologies: Technology;
     education: Education;
     workexperience: Workexperience;
+    about: About;
     users: User;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -28,10 +29,17 @@ export interface Config {
     technologies: TechnologiesSelect<false> | TechnologiesSelect<true>;
     education: EducationSelect<false> | EducationSelect<true>;
     workexperience: WorkexperienceSelect<false> | WorkexperienceSelect<true>;
+    about: AboutSelect<false> | AboutSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
-    'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
-    'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
-    'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
+    'payload-locked-documents':
+      | PayloadLockedDocumentsSelect<false>
+      | PayloadLockedDocumentsSelect<true>;
+    'payload-preferences':
+      | PayloadPreferencesSelect<false>
+      | PayloadPreferencesSelect<true>;
+    'payload-migrations':
+      | PayloadMigrationsSelect<false>
+      | PayloadMigrationsSelect<true>;
   };
   db: {
     defaultIDType: string;
@@ -106,7 +114,14 @@ export interface Project {
               [k: string]: unknown;
             }[];
             direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            format:
+              | 'left'
+              | 'start'
+              | 'center'
+              | 'right'
+              | 'end'
+              | 'justify'
+              | '';
             indent: number;
             version: number;
           };
@@ -171,6 +186,7 @@ export interface Media {
 export interface Technology {
   id: string;
   name?: string | null;
+  icon?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -237,6 +253,41 @@ export interface Workexperience {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about".
+ */
+export interface About {
+  id: string;
+  name?: string | null;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  image?: (string | null) | Media;
+  technologies?: (string | Technology)[] | null;
+  social?:
+    | {
+        name?: string | null;
+        url?: string | null;
+        icon?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
@@ -278,6 +329,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'workexperience';
         value: string | Workexperience;
+      } | null)
+    | ({
+        relationTo: 'about';
+        value: string | About;
       } | null)
     | ({
         relationTo: 'users';
@@ -408,6 +463,7 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface TechnologiesSelect<T extends boolean = true> {
   name?: T;
+  icon?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -439,6 +495,26 @@ export interface WorkexperienceSelect<T extends boolean = true> {
   endDate?: T;
   technologies?: T;
   description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about_select".
+ */
+export interface AboutSelect<T extends boolean = true> {
+  name?: T;
+  description?: T;
+  image?: T;
+  technologies?: T;
+  social?:
+    | T
+    | {
+        name?: T;
+        url?: T;
+        icon?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }
@@ -496,7 +572,6 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface Auth {
   [k: string]: unknown;
 }
-
 
 declare module 'payload' {
   export interface GeneratedTypes extends Config {}
