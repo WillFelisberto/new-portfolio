@@ -1,5 +1,6 @@
 'use client';
-import EducationCard, { Education } from '@/components/EducationCard';
+import { Education } from '@/app/(payload)/payload-types';
+import EducationCard from '@/components/EducationCard';
 import SectionTitle from '@/components/SectionTitle';
 import { motion } from 'framer-motion';
 
@@ -14,7 +15,6 @@ export const EducationSection = ({
   title,
   subtitle,
 }: EducationSectionProps) => {
-  console.log('🚀 ~ educations:', educations);
   return (
     <section className="container py-16">
       <SectionTitle subtitle={subtitle} title={title} />

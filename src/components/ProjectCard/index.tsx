@@ -5,35 +5,10 @@ import { motion } from 'framer-motion';
 import TechBadge from '../TechBadge';
 import Link from '@/components/Link';
 import { fadeUpAnimation, techBadgeAnimation } from '@/lib/animations';
-import { DescriptionType } from '../RichText';
-import { KnownTechProps } from '../KnownTech';
+import { Media, Project, Technology } from '@/app/(payload)/payload-types';
 
 type ProjectCardProps = {
   project: Project;
-};
-
-export type Project = {
-  title: string;
-  slug: string;
-  description: DescriptionType;
-  shortDescription: string;
-  technologies: KnownTechProps['tech'][];
-  pageThumbnail?: {
-    url: string;
-  };
-  thumbnail?: {
-    url: string;
-  };
-  liveProjectUrl?: string;
-  githubUrl?: string;
-  sections?: {
-    title: string;
-    description: DescriptionType;
-    image: {
-      url: string;
-      alt: string;
-    };
-  }[];
 };
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
@@ -54,7 +29,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
       >
         <Link href={`/projects/${project.slug}`}>
           <Image
-            src={project.thumbnail ? project.thumbnail.url : ''}
+            src={project.thumbnail ? (project.thumbnail as Media).url! : ''}
             width={420}
             height={304}
             alt={`Thumbnail do projeto ${project.title}`}
@@ -90,9 +65,9 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         </Link>
 
         <div className="mb-8 flex flex-wrap gap-x-2 gap-y-3 lg:max-w-[350px]">
-          {project.technologies.map((tech, i) => (
+          {(project.technologies as Technology[]).map((tech, i) => (
             <TechBadge
-              name={tech.name}
+              name={tech.name!}
               key={`${project.title}-tech-${tech.name}`}
               {...techBadgeAnimation}
               transition={{ duration: 0.2, delay: 0.5 + i * 0.1 }}

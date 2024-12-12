@@ -1,15 +1,12 @@
 'use client';
 import { motion } from 'framer-motion';
 
-import KnownTech, { KnownTechProps } from '@/components/KnownTech';
+import KnownTech from '@/components/KnownTech';
 import SectionTitle from '@/components/SectionTitle';
 import React from 'react';
+import { Technology } from '@/app/(payload)/payload-types';
 
-const KnownTechs = ({
-  technologies,
-}: {
-  technologies: KnownTechProps['tech'][];
-}) => {
+const KnownTechs = ({ technologies }: { technologies: Technology[] }) => {
   return (
     <section className="container py-16">
       <SectionTitle subtitle={'skills'} title={'Knowledge'} />
@@ -18,8 +15,8 @@ const KnownTechs = ({
           <motion.div key={`knownTech-${tech.name}`}>
             <KnownTech
               tech={{
-                icon: tech.icon,
-                name: tech.name,
+                icon: tech.icon!,
+                name: tech.name!,
               }}
             />
           </motion.div>

@@ -1,13 +1,11 @@
 import { ProjectDetails } from '@/components/pages/project/ProjectDetailsSection';
 import createApolloClient from '../../_api/apollo-client';
-import { PROJECT, PROJECTS } from '../../_graphql/projects';
+import { PROJECT } from '../../_graphql/projects';
 import { ProjectSections } from '@/components/pages/project/ProjectSetions';
 import { Metadata } from 'next';
 
 type ProjectProps = {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>;
 };
 // Função para gerar metadados dinâmicos
 export async function generateMetadata({
@@ -71,17 +69,17 @@ export default async function Project({ params }: ProjectProps) {
     </>
   );
 }
-export async function generateStaticParams() {
-  const client = createApolloClient();
+// export async function generateStaticParams() {
+//   const client = createApolloClient();
 
-  // Query GraphQL para buscar todos os slugs dos projetos
-  const { data } = await client.query({
-    query: PROJECTS,
-  });
+//   // Query GraphQL para buscar todos os slugs dos projetos
+//   const { data } = await client.query({
+//     query: PROJECTS,
+//   });
 
-  // Mapeia os slugs para os parâmetros dinâmicos
-  const projects = data.Projects?.docs || [];
-  return projects.map((project: { slug: string }) => ({
-    slug: project.slug,
-  }));
-}
+//   // Mapeia os slugs para os parâmetros dinâmicos
+//   const projects = data.Projects?.docs || [];
+//   return projects.map((project: { slug: string }) => ({
+//     slug: project.slug,
+//   }));
+// }

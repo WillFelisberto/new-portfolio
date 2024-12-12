@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import { fadeUpAnimation } from '@/lib/animations';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import RichTextComponent, { DescriptionType } from '../RichText';
+import RichTextComponent from '../RichText';
 
 export type CardItemProps = {
   logoUrl: string;
@@ -10,7 +11,7 @@ export type CardItemProps = {
   title: string;
   dateRange: string;
   subtitle?: string;
-  description?: DescriptionType; // RichText content
+  description?: any; // RichText content
   linkUrl?: string;
   education?: boolean;
   additionalContent?: React.ReactNode;

@@ -1,6 +1,7 @@
+import { Project } from '@/app/(payload)/payload-types';
 import Divider from '@/components/Divider';
 import Link from '@/components/Link';
-import ProjectCard, { Project } from '@/components/ProjectCard';
+import ProjectCard from '@/components/ProjectCard';
 import SectionTitle from '@/components/SectionTitle';
 import { HiArrowRight } from 'react-icons/hi';
 
@@ -9,7 +10,6 @@ type HighLightedprojectsProps = {
 };
 
 export const HighlightedProjects = ({ projects }: HighLightedprojectsProps) => {
-  console.log('🚀 ~ HighlightedProjects ~ projects:', projects);
   return (
     <section className="container py-16">
       <SectionTitle subtitle={'highlights'} title={'Featured Projects'} />

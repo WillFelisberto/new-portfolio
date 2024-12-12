@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
+import { About, Technology } from '@/app/(payload)/payload-types';
 import Button from '@/components/Button';
 import CMSIcon from '@/components/CmsIcon';
-import RichTextComponent, { DescriptionType } from '@/components/RichText';
+import RichTextComponent, { RichTextProps } from '@/components/RichText';
 import TechBadge from '@/components/TechBadge';
 import { motion } from 'framer-motion';
 
@@ -11,15 +13,11 @@ import { HiArrowNarrowRight } from 'react-icons/hi';
 
 export type HeroSectionProps = {
   name: string;
-  description: DescriptionType;
-  technologies: { name: string }[];
+  description: RichTextProps['lexicalData'];
+  technologies: Technology[];
   imageUrl: string;
   imageAlt: string;
-  social: {
-    name: string;
-    url: string;
-    icon: string;
-  }[];
+  social: About['social'];
 };
 
 const HeroSection = ({
@@ -51,13 +49,13 @@ const HeroSection = ({
           <h2 className="mt-2 text-4xl font-medium">{name}</h2>
 
           <div className="my-6 text-sm text-gray-400 sm:text-base">
-            <RichTextComponent lexicalData={description} />
+            <RichTextComponent lexicalData={description!} />
           </div>
 
           <div className="flex flex-wrap gap-x-2 gap-y-3 lg:max-w-[340px]">
             {technologies.map((tech, i) => (
               <TechBadge
-                name={tech.name}
+                name={tech.name!}
                 key={`intro-tech-${tech.name}`}
                 // {...techBadgeAnimation}
                 transition={{ duration: 0.2, delay: i * 0.1 }}
@@ -66,20 +64,20 @@ const HeroSection = ({
           </div>
 
           <div className="mt-6 flex flex-col sm:flex-row sm:items-center sm:gap-5 lg:mt-10">
-            <Button className="shadow-button w-max" onClick={handleContact}>
+            <Button className="w-max shadow-button" onClick={handleContact}>
               Get in touch
               <HiArrowNarrowRight size={18} />
             </Button>
 
             <div className="flex h-20 items-center gap-3 text-2xl text-gray-600">
-              {social.map((item, i: number) => (
+              {social!.map((item: any, i: number) => (
                 <a
                   key={i}
                   className="transition-colors hover:text-gray-100"
-                  href={item.url}
+                  href={item.url!}
                   target="_blank"
                 >
-                  <CMSIcon icon={item.icon} />
+                  <CMSIcon icon={item.icon!} />
                 </a>
               ))}
             </div>
