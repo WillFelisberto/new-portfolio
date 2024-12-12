@@ -7,9 +7,9 @@ import { fadeUpAnimation, techBadgeAnimation } from '@/lib/animations';
 import { motion } from 'framer-motion';
 import { TbBrandGithub } from 'react-icons/tb';
 import { FiGlobe } from 'react-icons/fi';
-import { Project } from '@/components/ProjectCard';
 import Link from '@/components/Link';
 import { HiArrowNarrowLeft } from 'react-icons/hi';
+import { Media, Project, Technology } from '@/app/(payload)/payload-types';
 
 type ProjectDetailsProps = {
   project: Project;
@@ -21,7 +21,7 @@ export const ProjectDetails = ({ project }: ProjectDetailsProps) => {
       <motion.div
         className="absolute inset-0 z-[-1]"
         style={{
-          background: `url(/images/hero-bg.png) no-repeat center/cover, url(${project.thumbnail!.url}) no-repeat center/cover`,
+          background: `url(/images/hero-bg.png) no-repeat center/cover, url(${(project.thumbnail as Media)!.url}) no-repeat center/cover`,
         }}
         initial={{ opacity: 0, scale: 1.3 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -30,19 +30,19 @@ export const ProjectDetails = ({ project }: ProjectDetailsProps) => {
 
       <SectionTitle
         subtitle="projects"
-        title={project.title}
+        title={project.title!}
         className="items-center text-center sm:[&>h3]:text-4xl"
       />
       <motion.div
         className="my-4 max-w-[640px] text-justify text-sm text-gray-400 sm:my-6 sm:text-base"
         {...fadeUpAnimation}
       >
-        <RichTextComponent lexicalData={project.description} />
+        <RichTextComponent lexicalData={project.description!} />
       </motion.div>
       <div className="flex w-full max-w-[330px] flex-wrap items-center justify-center gap-2">
-        {project.technologies.map((tech, i) => (
+        {(project.technologies as Technology[]).map((tech, i) => (
           <TechBadge
-            name={tech.name}
+            name={tech.name!}
             key={tech.name}
             {...techBadgeAnimation}
             transition={{ duration: 0.3, delay: i * 0.1 }}

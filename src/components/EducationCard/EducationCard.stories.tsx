@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
-import EducationCard, { Education } from '.';
+import EducationCard from '.';
+import { Education } from '@/app/(payload)/payload-types';
 
 const meta: Meta<typeof EducationCard> = {
   title: 'Components/EducationCard',
@@ -14,6 +15,9 @@ export default meta;
 type Story = StoryObj<typeof EducationCard>;
 
 const mockEducation: Education = {
+  id: '1',
+  createdAt: '2022-01-01',
+  updatedAt: '2022-01-01',
   title: 'University of Technology',
   description: {
     root: {
@@ -37,6 +41,9 @@ const mockEducation: Education = {
   },
   educationLogo: {
     url: '/ufsc.jpg',
+    id: 'sadas',
+    createdAt: '2022-01-01',
+    updatedAt: '2022-01-01',
   },
   url: 'https://university.tech',
   startDate: '2018-01-01',

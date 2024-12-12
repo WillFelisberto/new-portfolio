@@ -3,16 +3,13 @@
 exports[`<EducationCard /> renders the education details correctly 1`] = `
 <div>
   <h1>
-    Bachelor of Science
+    University of Technology
   </h1>
   <h2>
-    Information Technology
+    Computer Science
   </h2>
   <p>
     Jan 2020 • Dec 2023 • (3 years)
   </p>
-  <a
-    href="#"
-  />
 </div>
 `;

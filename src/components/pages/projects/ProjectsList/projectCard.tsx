@@ -1,4 +1,4 @@
-import { Project } from '@/components/ProjectCard';
+import { Media, Project, Technology } from '@/app/(payload)/payload-types';
 import Image from 'next/image';
 
 type ProjectCardProps = {
@@ -6,7 +6,9 @@ type ProjectCardProps = {
 };
 
 export const ProjectCard = ({ project }: ProjectCardProps) => {
-  const technologies = project.technologies.map((x) => x.name).join(', ');
+  const technologies = (project.technologies as Technology[])
+    .map((x) => x.name!)
+    .join(', ');
   return (
     <div className="group flex h-[436px] flex-col overflow-hidden rounded-lg border-2 border-gray-800 bg-gray-800 opacity-70 transition-all hover:border-sky-500 hover:opacity-100">
       <div className="h-48 w-full overflow-hidden">
@@ -15,7 +17,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
           height={200}
           className="h-full w-full object-cover transition-all duration-500 group-hover:scale-110"
           alt={`Thumbnail do projeto ${project.title}`}
-          src={project.thumbnail!.url}
+          src={(project.thumbnail as Media)!.url!}
           unoptimized
         />
       </div>
