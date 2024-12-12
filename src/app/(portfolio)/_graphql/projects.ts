@@ -5,6 +5,16 @@ export const PROJECTS = gql`
     Projects(limit: 300) {
       docs {
         slug
+        technologies {
+          name
+          id
+        }
+        title
+        shortDescription
+        thumbnail {
+          alt
+          url
+        }
       }
     }
   }
