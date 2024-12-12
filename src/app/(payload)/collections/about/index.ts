@@ -1,10 +1,8 @@
-import type { CollectionConfig } from 'payload';
+import type { GlobalConfig } from 'payload';
 
-export const About: CollectionConfig = {
+export const About: GlobalConfig = {
   slug: 'about',
-  admin: {
-    useAsTitle: 'name',
-  },
+
   access: {
     read: () => true,
   },

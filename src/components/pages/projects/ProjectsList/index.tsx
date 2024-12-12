@@ -1,10 +1,10 @@
 'use client';
 
 import Link from '@/components/Link';
-import { Project } from '@/components/ProjectCard';
 import { fadeUpAnimation } from '@/lib/animations';
 import { motion } from 'framer-motion';
 import { ProjectCard } from './projectCard';
+import { Project } from '@/app/(payload)/payload-types';
 
 type ProjectsListProps = {
   projects: Project[];

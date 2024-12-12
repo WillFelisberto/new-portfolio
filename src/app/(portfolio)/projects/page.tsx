@@ -1,7 +1,7 @@
 import { PageIntroduction } from '@/components/pages/projects/ProjectIntroduction';
-import createApolloClient from '../_api/apollo-client';
-import { PROJECTS } from '../_graphql/projects';
 import { ProjectsList } from '@/components/pages/projects/ProjectsList';
+import configPromise from '@payload-config';
+import { getPayload } from 'payload';
 
 export async function generateMetadata() {
   return {
@@ -21,18 +21,17 @@ export async function generateMetadata() {
   };
 }
 export default async function Projects() {
-  const client = createApolloClient();
+  const payload = await getPayload({ config: configPromise });
 
-  // Fazer a query de dados no servidor
-  const { data } = await client.query({
-    query: PROJECTS,
+  const projectsResponse = await payload.find({
+    collection: 'projects', // Nome da coleção no Payload CMS
+    limit: 300, // Limite de resultados, como na query GraphQL
   });
-  const projectDocs = data.Projects?.docs || [];
 
   return (
     <>
       <PageIntroduction />
-      <ProjectsList projects={projectDocs} />
+      <ProjectsList projects={projectsResponse.docs} />
     </>
   );
 }

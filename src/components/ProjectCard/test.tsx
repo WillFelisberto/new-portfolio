@@ -1,8 +1,12 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import ProjectCard, { Project } from '.';
+import ProjectCard from '.';
+import { Project, Technology } from '@/app/(payload)/payload-types';
 
 const mockDefaultProject: Project = {
+  id: 'as12asdasdasda',
+  createdAt: '2022-01-01',
+  updatedAt: '2022-01-01',
   title: 'My Awesome Project',
   slug: 'my-awesome-project',
   shortDescription: 'A short description of the project.',
@@ -27,11 +31,34 @@ const mockDefaultProject: Project = {
     },
   },
   technologies: [
-    { name: 'React', icon: '<svg></svg>' },
-    { name: 'Next.js', icon: '<svg></svg>' },
-    { name: 'TypeScript', icon: '<svg></svg>' },
+    {
+      name: 'React',
+      icon: '<svg></svg>',
+      id: '5sadsa',
+      createdAt: '2022-01-01',
+      updatedAt: '2022-01-01',
+    },
+    {
+      name: 'Next.js',
+      icon: '<svg></svg>',
+      id: 'asdas',
+      createdAt: '2022-01-01',
+      updatedAt: '2022-01-01',
+    },
+    {
+      name: 'TypeScript',
+      icon: '<svg></svg>',
+      id: 'asda',
+      createdAt: '2022-01-01',
+      updatedAt: '2022-01-01',
+    },
   ],
-  thumbnail: { url: 'https://via.placeholder.com/420x304' },
+  thumbnail: {
+    url: 'https://via.placeholder.com/420x304',
+    id: 'assadasdasda',
+    createdAt: '2022-01-01',
+    updatedAt: '2022-01-01',
+  },
 };
 
 describe('ProjectCard Component', () => {
@@ -61,8 +88,8 @@ describe('ProjectCard Component', () => {
   it('renders technology badges', () => {
     render(<ProjectCard project={mockDefaultProject} />);
 
-    mockDefaultProject.technologies.forEach((tech) => {
-      const badge = screen.getByText(tech.name);
+    (mockDefaultProject.technologies as Technology[]).forEach((tech) => {
+      const badge = screen.getByText(tech.name!);
       expect(badge).toBeInTheDocument();
     });
   });

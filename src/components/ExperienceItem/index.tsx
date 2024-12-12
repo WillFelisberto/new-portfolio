@@ -1,25 +1,14 @@
 import { formatDateRange } from '@/lib/utils';
 import CardItem from '../CardItem';
 import TechBadge from '../TechBadge';
-import { DescriptionType } from '../RichText';
-import { KnownTechProps } from '../KnownTech';
-
-export type WorkExperienceProps = {
-  companyName: string;
-  companyLogo: {
-    url: string;
-    alt?: string;
-  };
-  companyUrl: string;
-  role: string;
-  startDate: string;
-  endDate: string | null;
-  technologies: KnownTechProps['tech'][];
-  description: DescriptionType;
-};
+import {
+  Media,
+  Technology,
+  Workexperience,
+} from '@/app/(payload)/payload-types';
 
 type ExperienceItemProps = {
-  experience: WorkExperienceProps;
+  experience: Workexperience;
 };
 
 const ExperienceItem = ({ experience }: ExperienceItemProps) => {
@@ -34,15 +23,15 @@ const ExperienceItem = ({ experience }: ExperienceItemProps) => {
   } = experience;
 
   const { formattedStartDate, formattedEndDate, formattedDuration } =
-    formatDateRange(startDate, endDate);
+    formatDateRange(startDate!, endDate!);
 
   const additionalContent = (
     <>
       <p className="mb-3 mt-6 text-sm font-semibold text-gray-400">Skills</p>
       <div className="mb-8 flex flex-wrap gap-x-2 gap-y-3 lg:max-w-[350px]">
-        {technologies.map((tech, i) => (
+        {(technologies as Technology[]).map((tech, i) => (
           <TechBadge
-            name={tech.name}
+            name={tech.name!}
             key={`experience-${companyName}-tech-${tech.name}`}
             transition={{ duration: 0.2, delay: i * 0.1 }}
           />
@@ -53,13 +42,13 @@ const ExperienceItem = ({ experience }: ExperienceItemProps) => {
 
   return (
     <CardItem
-      logoUrl={companyLogo.url}
+      logoUrl={(companyLogo as Media).url!}
       logoAlt={`Logo da empresa ${companyName}`}
-      title={companyName}
-      subtitle={experience.role}
+      title={companyName!}
+      subtitle={experience.role!}
       dateRange={`${formattedStartDate} • ${formattedEndDate} • (${formattedDuration})`}
       description={description}
-      linkUrl={companyUrl}
+      linkUrl={companyUrl!}
       additionalContent={additionalContent}
     />
   );

@@ -1,18 +1,6 @@
 import { formatDateRange } from '@/lib/utils';
 import CardItem from '../CardItem';
-import { DescriptionType } from '../RichText';
-
-export type Education = {
-  title: string;
-  description: DescriptionType;
-  educationLogo: {
-    url: string;
-  };
-  url: string;
-  startDate: string;
-  endDate: string;
-  courseName: string;
-};
+import { Education, Media } from '@/app/(payload)/payload-types';
 
 type EducationCardProps = {
   education: Education;
@@ -30,18 +18,18 @@ const EducationCard = ({ education }: EducationCardProps) => {
   } = education;
 
   const { formattedStartDate, formattedEndDate, formattedDuration } =
-    formatDateRange(startDate, endDate);
+    formatDateRange(startDate!, endDate!);
 
   return (
     <CardItem
-      logoUrl={educationLogo.url}
+      logoUrl={(educationLogo as Media).url!}
       logoAlt={`Logo da empresa ${title}`}
-      subtitle={courseName}
-      title={title}
+      subtitle={courseName!}
+      title={title!}
       education
       dateRange={`${formattedStartDate} • ${formattedEndDate} • (${formattedDuration})`}
       description={description}
-      linkUrl={url}
+      linkUrl={url!}
     />
   );
 };

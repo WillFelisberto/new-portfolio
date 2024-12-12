@@ -1,10 +1,9 @@
-import ExperienceItem, {
-  WorkExperienceProps,
-} from '@/components/ExperienceItem';
+import { Workexperience } from '@/app/(payload)/payload-types';
+import ExperienceItem from '@/components/ExperienceItem';
 import SectionTitle from '@/components/SectionTitle';
 
 type WorkExperienceSection = {
-  experiences: WorkExperienceProps[];
+  experiences: Workexperience[];
 };
 
 const WorkExperienceSection = ({ experiences }: WorkExperienceSection) => {

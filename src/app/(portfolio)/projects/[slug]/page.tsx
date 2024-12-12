@@ -1,28 +1,33 @@
 import { ProjectDetails } from '@/components/pages/project/ProjectDetailsSection';
-import createApolloClient from '../../_api/apollo-client';
-import { PROJECT, PROJECTS } from '../../_graphql/projects';
 import { ProjectSections } from '@/components/pages/project/ProjectSetions';
+import { getPayload } from 'payload';
 import { Metadata } from 'next';
+import configPromise from '@payload-config';
+import { Media } from '@/app/(payload)/payload-types';
 
 type ProjectProps = {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>;
 };
+
 // Função para gerar metadados dinâmicos
 export async function generateMetadata({
   params,
 }: ProjectProps): Promise<Metadata> {
-  const { slug } = await params; // Extraia o `slug` de `params` de forma explícita
-  const client = createApolloClient();
+  const { slug } = await params; // Extraia o `slug` de `params`
+  const payload = await getPayload({ config: configPromise });
 
-  // Buscar dados do projeto com base no slug
-  const { data } = await client.query({
-    query: PROJECT,
-    variables: { slug },
+  // Buscar o projeto pelo slug
+  const projectResponse = await payload.find({
+    collection: 'projects',
+    where: {
+      slug: {
+        equals: slug,
+      },
+    },
+    limit: 1,
   });
 
-  const project = data.Projects?.docs[0];
+  const project = projectResponse?.docs?.[0];
 
   if (!project) {
     return {
@@ -34,54 +39,70 @@ export async function generateMetadata({
   return {
     title: project.title || 'Detalhes do Projeto',
     description:
-      project.description || 'Veja os detalhes deste projeto incrível.',
+      project.shortDescription || 'Veja os detalhes deste projeto incrível.',
     openGraph: {
-      title: project.title,
-      description: project.description,
-      images: project.image
-        ? [{ url: project.image.url, alt: project.title }]
+      title: project.title!,
+      description: project.shortDescription!,
+      images: project.thumbnail
+        ? [{ url: (project.thumbnail as Media).url!, alt: project.title! }]
         : [],
     },
     twitter: {
       card: 'summary_large_image',
-      title: project.title,
-      description: project.description,
-      images: project.image
-        ? [{ url: project.image.url, alt: project.title }]
+      title: project.title!,
+      description: project.shortDescription!,
+      images: project.thumbnail
+        ? [{ url: (project.thumbnail as Media).url!, alt: project.title! }]
         : [],
     },
   };
 }
 
 export default async function Project({ params }: ProjectProps) {
-  const client = createApolloClient();
   const { slug } = await params;
+  const payload = await getPayload({ config: configPromise });
 
-  // Fazer a query de dados no servidor
-  const { data } = await client.query({
-    query: PROJECT,
-    variables: { slug },
+  // Buscar o projeto pelo slug
+  const projectResponse = await payload.find({
+    collection: 'projects',
+    where: {
+      slug: {
+        equals: slug,
+      },
+    },
+    limit: 1,
   });
-  const projectDocs = data.Projects?.docs || [];
+
+  const projectDocs = projectResponse?.docs || [];
+
+  if (!projectDocs.length) {
+    return <div>Projeto não encontrado</div>;
+  }
+
+  const project = projectDocs[0];
 
   return (
     <>
-      <ProjectDetails project={projectDocs[0]} />
-      <ProjectSections sections={projectDocs[0].sections} />
+      <ProjectDetails project={project} />
+      <ProjectSections sections={project.sections} />
     </>
   );
 }
-export async function generateStaticParams() {
-  const client = createApolloClient();
 
-  // Query GraphQL para buscar todos os slugs dos projetos
-  const { data } = await client.query({
-    query: PROJECTS,
+// Função para gerar parâmetros dinâmicos com base nos slugs
+export async function generateStaticParams() {
+  const payload = await getPayload({ config: configPromise });
+
+  // Buscar todos os projetos
+  const projectsResponse = await payload.find({
+    collection: 'projects',
+    limit: 300, // Defina um limite apropriado
   });
 
-  // Mapeia os slugs para os parâmetros dinâmicos
-  const projects = data.Projects?.docs || [];
-  return projects.map((project: { slug: string }) => ({
-    slug: project.slug,
+  const projects = projectsResponse?.docs || [];
+
+  // Mapear os slugs para os parâmetros dinâmicos
+  return projects.map((project) => ({
+    slug: project.slug!,
   }));
 }

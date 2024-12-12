@@ -3,8 +3,8 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { fadeUpAnimation } from '@/lib/animations';
-import { Project } from '@/components/ProjectCard';
 import RichTextComponent from '@/components/RichText';
+import { Media, Project } from '@/app/(payload)/payload-types';
 
 export const ProjectSections = ({ sections }: Pick<Project, 'sections'>) => {
   if (!sections) return null;
@@ -34,8 +34,11 @@ export const ProjectSections = ({ sections }: Pick<Project, 'sections'>) => {
             width={1080}
             height={672}
             className="aspect-auto w-full rounded-lg object-cover"
-            alt={section.image.alt || `Imagem da sessão ${section.title}`}
-            src={section.image.url}
+            alt={
+              (section.image as Media)!.alt ||
+              `Imagem da sessão ${section.title}`
+            }
+            src={(section.image as Media)!.url!}
             unoptimized
           />
         </motion.div>
