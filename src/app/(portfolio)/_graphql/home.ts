@@ -2,24 +2,22 @@ import { gql } from '@apollo/client';
 
 export const HOME = gql`
   query Home {
-    Abouts {
-      docs {
+    About {
+      name
+      description
+      technologies {
         name
-        description
-        technologies {
-          name
-          id
-        }
-        social {
-          icon
-          url
-          name
-        }
-        image {
-          url
-          alt
-          filename
-        }
+        id
+      }
+      social {
+        icon
+        url
+        name
+      }
+      image {
+        url
+        alt
+        filename
       }
     }
     Technologies {

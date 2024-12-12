@@ -16,14 +16,8 @@ export default buildConfig({
   editor: lexicalEditor(),
 
   // Define and configure your collections in this array
-  collections: [
-    Projects,
-    Media,
-    Technologies,
-    Education,
-    WorkExperience,
-    About,
-  ],
+  collections: [Projects, Media, Technologies, Education, WorkExperience],
+  globals: [About],
 
   // Your Payload secret - should be a complex and secure string, unguessable
   secret: process.env.PAYLOAD_SECRET || '',

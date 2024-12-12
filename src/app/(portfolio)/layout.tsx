@@ -70,7 +70,7 @@ export default function RootLayout({
         {children}
         <ContactForm
           title="Contact Us"
-          subtitle="We would love to hear from you"
+          subtitle="I would love to hear from you"
           button="Send Message"
           labelName="Your Name"
           LabelMensagem="Your Message"

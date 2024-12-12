@@ -15,24 +15,21 @@ export default async function Home() {
   });
 
   // Desestruturação dos dados
-  const aboutsDocs = data.Abouts?.docs || [];
+  const aboutsDocs = data.About || [];
   const techDocs = data.Technologies?.docs || [];
   const educationDocs = data.Educations?.docs || [];
   const projectDocs = data.Projects?.docs || [];
   const workExperiencesDocs = data.Workexperiences?.docs || [];
 
-  // Pegando o primeiro objeto de Abouts para passar ao HeroSection
-  const about = aboutsDocs[0];
-
   return (
     <>
       <HeroSection
-        name={about.name}
-        description={about.description}
-        imageUrl={about.image?.url}
-        imageAlt={about.image?.alt}
-        technologies={about.technologies}
-        social={about.social}
+        name={aboutsDocs.name}
+        description={aboutsDocs.description}
+        imageUrl={aboutsDocs.image?.url}
+        imageAlt={aboutsDocs.image?.alt}
+        technologies={aboutsDocs.technologies}
+        social={aboutsDocs.social}
       />
       <KnownTechs technologies={techDocs} />
       <EducationSection
