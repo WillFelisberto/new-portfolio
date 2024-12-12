@@ -3,6 +3,7 @@ import KnownTechs from '@/components/pages/home/KnownTechs';
 import { HOME } from './_graphql/home';
 import createApolloClient from './_api/apollo-client';
 import { EducationSection } from '@/components/pages/home/EducationSection';
+import { HighlightedProjects } from '@/components/pages/home/highlightsSection';
 
 export default async function Home() {
   const client = createApolloClient();
@@ -16,10 +17,7 @@ export default async function Home() {
   const aboutsDocs = data.Abouts?.docs || [];
   const techDocs = data.Technologies?.docs || [];
   const educationDocs = data.Educations?.docs || [];
-  // const projectDocs = data.Projects?.docs || [];
-
-  // console.log('🚀 ~ Home ~ Educations:', educationDocs);
-  // console.log('🚀 ~ Home ~ Projects:', projectDocs);
+  const projectDocs = data.Projects?.docs || [];
 
   // Pegando o primeiro objeto de Abouts para passar ao HeroSection
   const about = aboutsDocs[0];
@@ -40,6 +38,8 @@ export default async function Home() {
         title="Education"
         subtitle="studies"
       />
+
+      <HighlightedProjects projects={projectDocs} />
     </>
   );
 }

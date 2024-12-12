@@ -51,6 +51,14 @@ export const HOME = gql`
         title
         slug
         shortDescription
+        thumbnail {
+          alt
+          url
+        }
+        technologies {
+          name
+          icon
+        }
         pageThumbnail {
           alt
           url
