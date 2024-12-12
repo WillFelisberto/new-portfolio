@@ -1,3 +1,4 @@
+'use client';
 import { fadeUpAnimation } from '@/lib/animations';
 import { motion } from 'framer-motion';
 import Image from 'next/image';

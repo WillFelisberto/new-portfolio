@@ -13,8 +13,6 @@ exports[`<ExperienceItem /> should render experience item with all required fiel
   </p>
   <a
     href="#"
-  >
-    @ TechCorp
-  </a>
+  />
 </div>
 `;

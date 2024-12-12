@@ -4,6 +4,7 @@ import { HOME } from './_graphql/home';
 import createApolloClient from './_api/apollo-client';
 import { EducationSection } from '@/components/pages/home/EducationSection';
 import { HighlightedProjects } from '@/components/pages/home/highlightsSection';
+import WorkExperienceSection from '@/components/pages/home/WorkExperiencesSection';
 
 export default async function Home() {
   const client = createApolloClient();
@@ -18,6 +19,7 @@ export default async function Home() {
   const techDocs = data.Technologies?.docs || [];
   const educationDocs = data.Educations?.docs || [];
   const projectDocs = data.Projects?.docs || [];
+  const workExperiencesDocs = data.Workexperiences?.docs || [];
 
   // Pegando o primeiro objeto de Abouts para passar ao HeroSection
   const about = aboutsDocs[0];
@@ -38,8 +40,8 @@ export default async function Home() {
         title="Education"
         subtitle="studies"
       />
-
       <HighlightedProjects projects={projectDocs} />
+      <WorkExperienceSection experiences={workExperiencesDocs} />
     </>
   );
 }

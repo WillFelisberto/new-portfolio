@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import ExperienceItem, { WorkExperience } from '.';
+import ExperienceItem, { WorkExperienceProps } from '.';
 
 const meta: Meta<typeof ExperienceItem> = {
   title: 'Components/ExperienceItem',
@@ -13,7 +13,7 @@ export default meta;
 
 type Story = StoryObj<typeof ExperienceItem>;
 
-const mockExperience: WorkExperience = {
+const mockExperience: WorkExperienceProps = {
   companyLogo: {
     url: '/ufsc.jpg',
   },

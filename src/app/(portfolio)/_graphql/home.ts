@@ -65,5 +65,24 @@ export const HOME = gql`
         }
       }
     }
+    Workexperiences(sort: "-startDate") {
+      docs {
+        id
+        companyName
+        companyLogo {
+          alt
+          url
+        }
+        companyUrl
+        role
+        startDate
+        endDate
+        technologies {
+          name
+          icon
+        }
+        description
+      }
+    }
   }
 `;

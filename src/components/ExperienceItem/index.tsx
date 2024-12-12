@@ -1,23 +1,25 @@
 import { formatDateRange } from '@/lib/utils';
 import CardItem from '../CardItem';
 import TechBadge from '../TechBadge';
-import { RichTextProps } from '../RichText';
+import { DescriptionType } from '../RichText';
+import { KnownTechProps } from '../KnownTech';
 
-export type WorkExperience = {
+export type WorkExperienceProps = {
+  companyName: string;
   companyLogo: {
     url: string;
+    alt?: string;
   };
-  role: string;
-  companyName: string;
   companyUrl: string;
+  role: string;
   startDate: string;
   endDate: string | null;
-  technologies: { name: string }[];
-  description: Pick<RichTextProps, 'lexicalData'>;
+  technologies: KnownTechProps['tech'][];
+  description: DescriptionType;
 };
 
 type ExperienceItemProps = {
-  experience: WorkExperience;
+  experience: WorkExperienceProps;
 };
 
 const ExperienceItem = ({ experience }: ExperienceItemProps) => {
@@ -58,7 +60,6 @@ const ExperienceItem = ({ experience }: ExperienceItemProps) => {
       dateRange={`${formattedStartDate} • ${formattedEndDate} • (${formattedDuration})`}
       description={description}
       linkUrl={companyUrl}
-      linkText={`@ ${companyName}`}
       additionalContent={additionalContent}
     />
   );
