@@ -5,6 +5,16 @@ export const PROJECTS = gql`
     Projects(limit: 300) {
       docs {
         slug
+        technologies {
+          name
+          id
+        }
+        title
+        shortDescription
+        thumbnail {
+          alt
+          url
+        }
       }
     }
   }
@@ -14,6 +24,10 @@ export const PROJECT = gql`
   query Project($slug: String) {
     Projects(where: { slug: { equals: $slug } }, limit: 1) {
       docs {
+        thumbnail {
+          alt
+          url
+        }
         id
         title
         slug

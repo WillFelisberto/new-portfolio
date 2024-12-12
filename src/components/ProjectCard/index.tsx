@@ -26,6 +26,14 @@ export type Project = {
   };
   liveProjectUrl?: string;
   githubUrl?: string;
+  sections?: {
+    title: string;
+    description: DescriptionType;
+    image: {
+      url: string;
+      alt: string;
+    };
+  }[];
 };
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
