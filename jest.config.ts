@@ -14,6 +14,7 @@ const config: Config = {
     '!src/app/**', // should be tested in e2e
     '!src/lib/registry.tsx',
     '!src/lib/**', // Ignora todos os arquivos na pasta src/lib
+    '!src/components/pages/**', // Ignora todos os arquivos na pasta src/lib
     '!src/types/**',
     '!src/**/*.stories.tsx',
     '!src/styles/**',

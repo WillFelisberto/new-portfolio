@@ -1,4 +1,6 @@
 import './globals.css';
+import { Inter, IBM_Plex_Mono, Source_Code_Pro } from 'next/font/google';
+
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Toaster from '@/components/Toaster';
@@ -6,6 +8,24 @@ import BackToTop from '@/components/BackToTop';
 import ContactForm from '@/components/ContactForm';
 import { GoogleAnalytics } from '@/components/Header/google-analytics';
 
+const inter = Inter({
+  variable: '--font-inter',
+  subsets: ['latin'],
+  preload: false,
+});
+
+const codePro = Source_Code_Pro({
+  variable: '--codePro',
+  subsets: ['latin'],
+  preload: false,
+});
+
+const plexMono = IBM_Plex_Mono({
+  variable: '--font-plex-mono',
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  preload: false,
+});
 export async function generateMetadata() {
   return {
     title: 'Portfolio Willian de Souza Felisberto',
@@ -38,7 +58,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`${inter.variable} ${plexMono.variable} ${codePro.variable}`}
+    >
       <body>
         <Toaster />
         <BackToTop />
