@@ -8941,14 +8941,6 @@ motion-utils@^11.13.0:
   resolved "https://registry.yarnpkg.com/motion-utils/-/motion-utils-11.13.0.tgz#e65fab5e26a1da3b18b4b4d1f3d0067977ccfd4a"
   integrity sha512-lq6TzXkH5c/ysJQBxgLXgM01qwBH1b4goTPh57VvZWJbVJZF/0SB31UWEn4EIqbVPf3au88n2rvK17SpDTja1A==
 
-motion@^11.13.5:
-  version "11.13.5"
-  resolved "https://registry.yarnpkg.com/motion/-/motion-11.13.5.tgz#607edfda672f16c0eb306f4879f5b10d4acea8dc"
-  integrity sha512-zmX/dz60w1ZtQB5NP9xYkLcCKwX9gc+pnHp4/mFhD9YW8wUe2ZmT8OPOtrTtq26/huxElSDu3hB7BMTSJa5iIQ==
-  dependencies:
-    framer-motion "^11.13.5"
-    tslib "^2.4.0"
-
 mpath@0.9.0:
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/mpath/-/mpath-0.9.0.tgz#0c122fe107846e31fc58c75b09c35514b3871904"

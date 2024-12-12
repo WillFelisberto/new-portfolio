@@ -4,7 +4,8 @@ import Button from '@/components/Button';
 import CMSIcon from '@/components/CmsIcon';
 import RichTextComponent, { DescriptionType } from '@/components/RichText';
 import TechBadge from '@/components/TechBadge';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
+
 import Image from 'next/image';
 import { HiArrowNarrowRight } from 'react-icons/hi';
 

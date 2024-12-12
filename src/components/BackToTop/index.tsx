@@ -1,5 +1,5 @@
 'use client';
-import { AnimatePresence, motion } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { TbArrowNarrowUp } from 'react-icons/tb';
 
 import { useCallback, useEffect, useState } from 'react';

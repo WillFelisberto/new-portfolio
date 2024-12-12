@@ -1,18 +1,17 @@
 'use client';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 
 import KnownTech, { KnownTechProps } from '@/components/KnownTech';
 import SectionTitle from '@/components/SectionTitle';
 import React from 'react';
-import { AiFillAlert } from 'react-icons/ai';
 
 const techs: KnownTechProps['tech'][] = [
   {
-    icon: AiFillAlert,
+    icon: 'AiFillAlert',
     name: 'string',
   },
   {
-    icon: AiFillAlert,
+    icon: 'AiFillAlert',
     name: 'strinsg',
   },
 ];
