@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import ExperienceItem, { WorkExperience } from '.';
+import ExperienceItem, { WorkExperienceProps } from '.';
 import { CardItemProps } from '../CardItem';
 import { formatDateRange } from '@/lib/utils';
 
@@ -31,7 +31,7 @@ jest.mock('@/lib/utils', () => ({
 
 describe('<ExperienceItem />', () => {
   it('should render experience item with all required fields when valid experience data is provided', () => {
-    const mockExperience: WorkExperience = {
+    const mockExperience: WorkExperienceProps = {
       companyLogo: {
         url: '/ufsc.jpg',
       },
@@ -45,7 +45,28 @@ describe('<ExperienceItem />', () => {
         { name: 'Node.js' },
         { name: 'TypeScript' },
       ],
-      description: 'Developed and maintained scalable web applications.',
+      description: {
+        lexicalData: {
+          root: {
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            type: 'root',
+            version: 1,
+            children: [
+              {
+                detail: 0,
+                format: 0,
+                mode: 'normal',
+                style: '',
+                text: 'Developed and maintained scalable web applications.',
+                type: 'text',
+                version: 1,
+              },
+            ],
+          },
+        },
+      },
     };
 
     const { formattedStartDate, formattedEndDate, formattedDuration } =

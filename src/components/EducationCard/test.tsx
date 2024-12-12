@@ -26,7 +26,28 @@ jest.mock('@/lib/utils', () => ({
 describe('<EducationCard />', () => {
   const mockEducation: Education = {
     title: 'Bachelor of Science',
-    description: 'Studied computer science concepts.',
+    description: {
+      lexicalData: {
+        root: {
+          direction: 'ltr',
+          format: '',
+          indent: 0,
+          type: 'root',
+          version: 1,
+          children: [
+            {
+              detail: 0,
+              format: 0,
+              mode: 'normal',
+              style: '',
+              text: 'Studied advanced computer science topics, including algorithms, data structures, and machine learning.',
+              type: 'text',
+              version: 1,
+            },
+          ],
+        },
+      },
+    },
     educationLogo: {
       url: '/path/to/logo.png',
     },

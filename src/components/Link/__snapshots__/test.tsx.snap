@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Link /> renders correctly with default props 1`] = `
+<div>
+  <a
+    class="flex items-center gap-2 text-sm text-gray-300 transition-colors hover:text-sky-500"
+    href="https://example.com"
+  >
+    Default Link
+  </a>
+</div>
+`;

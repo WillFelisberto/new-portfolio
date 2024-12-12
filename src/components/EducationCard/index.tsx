@@ -1,10 +1,10 @@
 import { formatDateRange } from '@/lib/utils';
 import CardItem from '../CardItem';
-import { RichTextProps } from '../RichText';
+import { DescriptionType } from '../RichText';
 
 export type Education = {
   title: string;
-  description: Pick<RichTextProps, 'lexicalData'>;
+  description: DescriptionType;
   educationLogo: {
     url: string;
   };
@@ -36,11 +36,12 @@ const EducationCard = ({ education }: EducationCardProps) => {
     <CardItem
       logoUrl={educationLogo.url}
       logoAlt={`Logo da empresa ${title}`}
-      title={courseName}
+      subtitle={courseName}
+      title={title}
+      education
       dateRange={`${formattedStartDate} • ${formattedEndDate} • (${formattedDuration})`}
       description={description}
       linkUrl={url}
-      linkText={`Go to ${title}`}
     />
   );
 };

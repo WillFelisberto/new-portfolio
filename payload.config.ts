@@ -8,6 +8,7 @@ import { Technologies } from '@/app/(payload)/collections/technologies';
 import path from 'path';
 import { Education } from '@/app/(payload)/collections/education';
 import { WorkExperience } from '@/app/(payload)/collections/workExperience';
+import { About } from '@/app/(payload)/collections/about';
 const __dirname = path.resolve();
 
 export default buildConfig({
@@ -15,7 +16,14 @@ export default buildConfig({
   editor: lexicalEditor(),
 
   // Define and configure your collections in this array
-  collections: [Projects, Media, Technologies, Education, WorkExperience],
+  collections: [
+    Projects,
+    Media,
+    Technologies,
+    Education,
+    WorkExperience,
+    About,
+  ],
 
   // Your Payload secret - should be a complex and secure string, unguessable
   secret: process.env.PAYLOAD_SECRET || '',

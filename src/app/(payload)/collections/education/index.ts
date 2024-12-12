@@ -5,6 +5,9 @@ export const Education: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
   },
+  access: {
+    read: () => true,
+  },
   fields: [
     {
       name: 'title',

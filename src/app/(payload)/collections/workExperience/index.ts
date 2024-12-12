@@ -6,6 +6,9 @@ export const WorkExperience: CollectionConfig = {
     plural: 'Work Experiences',
     singular: 'Work Experience',
   },
+  access: {
+    read: () => true,
+  },
   admin: {
     useAsTitle: 'companyName',
   },

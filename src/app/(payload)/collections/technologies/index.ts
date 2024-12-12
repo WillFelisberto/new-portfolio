@@ -5,9 +5,16 @@ export const Technologies: CollectionConfig = {
   admin: {
     useAsTitle: 'name',
   },
+  access: {
+    read: () => true,
+  },
   fields: [
     {
       name: 'name',
+      type: 'text',
+    },
+    {
+      name: 'icon',
       type: 'text',
     },
   ],
