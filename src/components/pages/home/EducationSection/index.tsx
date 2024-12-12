@@ -7,15 +7,14 @@ type EducationSectionProps = {
   educations: Education[];
   title: string;
   subtitle: string;
-  locale: string;
 };
 
 export const EducationSection = ({
   educations,
   title,
   subtitle,
-  locale,
 }: EducationSectionProps) => {
+  console.log('🚀 ~ educations:', educations);
   return (
     <section className="container py-16">
       <SectionTitle subtitle={subtitle} title={title} />
@@ -28,7 +27,7 @@ export const EducationSection = ({
             exit={{ opacity: 0, x: -100 }}
             transition={{ duration: 0.15, delay: i * 0.1 }}
           >
-            <EducationCard />
+            <EducationCard education={edu} />
           </motion.div>
         ))}
       </div>

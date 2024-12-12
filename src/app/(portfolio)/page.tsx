@@ -2,6 +2,7 @@ import HeroSection from '@/components/pages/home/HeroSection';
 import KnownTechs from '@/components/pages/home/KnownTechs';
 import { HOME } from './_graphql/home';
 import createApolloClient from './_api/apollo-client';
+import { EducationSection } from '@/components/pages/home/EducationSection';
 
 export default async function Home() {
   const client = createApolloClient();
@@ -15,10 +16,10 @@ export default async function Home() {
   const aboutsDocs = data.Abouts?.docs || [];
   const techDocs = data.Technologies?.docs || [];
   const educationDocs = data.Educations?.docs || [];
-  const projectDocs = data.Projects?.docs || [];
+  // const projectDocs = data.Projects?.docs || [];
 
-  console.log('🚀 ~ Home ~ Educations:', educationDocs);
-  console.log('🚀 ~ Home ~ Projects:', projectDocs);
+  // console.log('🚀 ~ Home ~ Educations:', educationDocs);
+  // console.log('🚀 ~ Home ~ Projects:', projectDocs);
 
   // Pegando o primeiro objeto de Abouts para passar ao HeroSection
   const about = aboutsDocs[0];
@@ -34,6 +35,11 @@ export default async function Home() {
         social={about.social}
       />
       <KnownTechs technologies={techDocs} />
+      <EducationSection
+        educations={educationDocs}
+        title="Education"
+        subtitle="studies"
+      />
     </>
   );
 }

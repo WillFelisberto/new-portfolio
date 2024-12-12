@@ -19,31 +19,29 @@ export const EducationExample: Story = {
     logoAlt: 'Education Logo',
     title: 'Computer Science',
     subtitle: 'Bachelor of Science',
+    education: true,
     dateRange: 'Jan 2015 • Dec 2019 • (4 years)',
     description: {
-      lexicalData: {
-        root: {
-          direction: 'ltr',
-          format: '',
-          indent: 0,
-          type: 'root',
-          version: 1,
-          children: [
-            {
-              detail: 0,
-              format: 0,
-              mode: 'normal',
-              style: '',
-              text: 'Description',
-              type: 'text',
-              version: 1,
-            },
-          ],
-        },
+      root: {
+        direction: 'ltr',
+        format: '',
+        indent: 0,
+        type: 'root',
+        version: 1,
+        children: [
+          {
+            detail: 0,
+            format: 0,
+            mode: 'normal',
+            style: '',
+            text: 'Description',
+            type: 'text',
+            version: 1,
+          },
+        ],
       },
     },
     linkUrl: 'https://university.edu',
-    linkText: 'University Name',
   },
 };
 
@@ -55,29 +53,26 @@ export const ExperienceExample: Story = {
     subtitle: 'Software Engineer',
     dateRange: 'Feb 2020 • Present • (3 years)',
     description: {
-      lexicalData: {
-        root: {
-          direction: 'ltr',
-          format: '',
-          indent: 0,
-          type: 'root',
-          version: 1,
-          children: [
-            {
-              detail: 0,
-              format: 0,
-              mode: 'normal',
-              style: '',
-              text: 'Description',
-              type: 'text',
-              version: 1,
-            },
-          ],
-        },
+      root: {
+        direction: 'ltr',
+        format: '',
+        indent: 0,
+        type: 'root',
+        version: 1,
+        children: [
+          {
+            detail: 0,
+            format: 0,
+            mode: 'normal',
+            style: '',
+            text: 'Description',
+            type: 'text',
+            version: 1,
+          },
+        ],
       },
     },
     linkUrl: 'https://company.com',
-    linkText: '@ Company Name',
     additionalContent: (
       <div>
         <p className="mb-3 mt-6 text-sm font-semibold text-gray-400">Skills</p>

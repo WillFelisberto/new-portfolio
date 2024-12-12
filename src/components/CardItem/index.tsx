@@ -1,17 +1,17 @@
 import { fadeUpAnimation } from '@/lib/animations';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import RichTextComponent, { RichTextProps } from '../RichText';
+import RichTextComponent, { DescriptionType } from '../RichText';
 
 export type CardItemProps = {
   logoUrl: string;
   logoAlt: string;
   title: string;
-  subtitle?: string;
   dateRange: string;
-  description?: Pick<RichTextProps, 'lexicalData'>; // RichText content
+  subtitle?: string;
+  description?: DescriptionType; // RichText content
   linkUrl?: string;
-  linkText?: string;
+  education?: boolean;
   additionalContent?: React.ReactNode;
 };
 
@@ -23,7 +23,7 @@ const CardItem = ({
   dateRange,
   description,
   linkUrl,
-  linkText,
+  education = false,
   additionalContent,
 }: CardItemProps) => {
   return (
@@ -33,37 +33,49 @@ const CardItem = ({
       transition={{ duration: 0.5 }}
     >
       <div className="flex flex-col items-center gap-4">
-        <div className="rounded-full border border-gray-500 p-0.5">
-          <Image
-            src={logoUrl}
-            width={40}
-            height={40}
-            className="rounded-full"
-            alt={logoAlt}
-          />
-        </div>
+        {education ? (
+          <div className="h-[60px] w-[60px] rounded-full border border-gray-500 bg-gray-50 p-0.5">
+            <Image
+              src={logoUrl}
+              width={60}
+              height={60}
+              className="h-[60px] w-[60px] rounded-full"
+              alt={`${title}`}
+            />
+          </div>
+        ) : (
+          <div className="rounded-full border border-gray-500 p-0.5">
+            <Image
+              src={logoUrl}
+              width={40}
+              height={40}
+              className="rounded-full"
+              alt={logoAlt}
+            />
+          </div>
+        )}
+
         <div className="h-full w-[1px] bg-gray-800" />
       </div>
 
       <div>
         <div className="flex flex-col gap-2 text-sm sm:text-base">
-          {linkUrl && linkText && (
+          {linkUrl ? (
             <a
               href={linkUrl}
               target="_blank"
-              aria-label={linkText}
+              aria-label={title}
               className="text-sky-100 transition-colors hover:text-sky-500"
               rel="noreferrer"
             >
-              {linkText}
+              {title}
             </a>
+          ) : (
+            <h4 className="text-gray-300">{title}</h4>
           )}
-          <h4 className="text-gray-300">{title}</h4>
           {subtitle && <p className="text-gray-400">{subtitle}</p>}
           <span className="text-gray-500">{dateRange}</span>
-          {description && (
-            <RichTextComponent lexicalData={description.lexicalData} />
-          )}
+          {description && <RichTextComponent lexicalData={description} />}
         </div>
 
         {additionalContent && <div className="mt-4">{additionalContent}</div>}
