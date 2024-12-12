@@ -26,6 +26,7 @@ export const HOME = gql`
       docs {
         id
         name
+        icon
       }
     }
     Educations {

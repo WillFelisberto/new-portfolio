@@ -21,6 +21,9 @@ export default {
         text: '#333333',
         danger: '#E63946',
       },
+      boxShadow: {
+        button: '0px 0px 68px 7px rgb(39, 90, 169, 0.4)',
+      },
     },
   },
   plugins: [],
