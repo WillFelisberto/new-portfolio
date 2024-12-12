@@ -13,6 +13,7 @@ exports[`<KnownTech /> renders the tech name 1`] = `
       React
     </p>
     <div
+      aria-label="React"
       data-testid="cms-icon"
     >
       <svg
