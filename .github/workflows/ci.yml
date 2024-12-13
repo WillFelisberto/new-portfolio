@@ -27,7 +27,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
-          DATABASE_URI: ${{ secrets.DATABASE_URI }}
-          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
-          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+          PAYLOAD_SECRET: '${{ secrets.PAYLOAD_SECRET-build }}'
+          DATABASE_URI: ${{ secrets.DATABASE_URI-build }}
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL-build }}
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN-build }}
