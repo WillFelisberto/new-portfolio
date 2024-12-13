@@ -1,36 +1,163 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# New Portfolio
+
+[![Tests](https://github.com/WillFelisberto/new-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/WillFelisberto/new-portfolio/actions/workflows/ci.yml)
+[![Storybook](https://img.shields.io/badge/Storybook-deployed-blue)](http://your-storybook-url)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Node.js](https://img.shields.io/badge/Node.js-16%2B-brightgreen.svg)](https://nodejs.org/)
+![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
+
+Welcome to the repository for my personal portfolio project! This portfolio serves as a showcase of my professional work, projects, and skills as a developer.
+
+## Table of Contents
+
+- [New Portfolio](#new-portfolio)
+  - [Table of Contents](#table-of-contents)
+  - [About the Project](#about-the-project)
+  - [Features](#features)
+  - [Technologies Used](#technologies-used)
+  - [Environment Variables](#environment-variables)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+  - [Payload CMS Documentation](#payload-cms-documentation)
+    - [Features](#features-1)
+    - [Configuration](#configuration)
+  - [Usage](#usage)
+    - [Storybook](#storybook)
+  - [Contributing](#contributing)
+  - [License](#license)
+
+## About the Project
+
+This portfolio is designed to provide a sleek and modern interface to highlight my skills, experiences, and completed projects. It is built with a focus on responsiveness and accessibility, ensuring it looks great on any device.
+
+## Features
+
+- Responsive design for seamless viewing on desktops, tablets, and mobile devices.
+- Dynamic project gallery showcasing my latest work.
+- About me section with a professional biography.
+- Contact form to reach out directly.
+- Integration with GitHub and LinkedIn for easy access to my profiles.
+
+## Technologies Used
+
+- **Frontend:** NextJs
+- **Deployment:** Vercel
+
+## Environment Variables
+
+This project uses the following environment variables:
+
+- `PAYLOAD_SECRET`: Secret key for payload operations.
+- `DATABASE_URI`: URI for the database connection.
+- `WEBHOOK_URL`: URL for webhook integrations.
+- `NODE_ENV`: Environment mode (e.g., `development` or `production`).
+- `PAYLOAD_CONFIG_PATH`: Path to the payload configuration file.
+- `BLOB_READ_WRITE_TOKEN`: Token for read/write access to storage.
+- `SMTP_HOST`: Hostname for the SMTP server.
+- `SMTP_USER`: Username for the SMTP server.
+- `SMTP_PASS`: Password for the SMTP server.
+- `SMTP_PORT`: Port number for the SMTP server.
+
+Ensure you have these variables set in your `.env` file before running the project.
 
 ## Getting Started
 
-First, run the development server:
+To get a local copy up and running, follow these steps:
+
+### Prerequisites
+
+Ensure you have the following installed on your system:
+
+- Node.js (https://nodejs.org/)
+- npm or yarn (comes with Node.js installation)
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/WillFelisberto/new-portfolio.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd new-portfolio
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+4. Start the development server:
+
+   ```bash
+   npm start
+   # or
+   yarn start
+   ```
+
+5. Open your browser and visit `http://localhost:3000` to view the application.
+
+## Payload CMS Documentation
+
+This project integrates with Payload CMS for content management. Below are the key features and configurations for using Payload CMS in this repository:
+
+### Features
+
+- **Customizable Admin Panel:** The admin panel is fully configurable to match the project’s requirements.
+- **Rich Text Editor:** Leverages Lexical for a seamless content editing experience.
+- **REST API:** Payload provides an out-of-the-box REST API for accessing your data.
+- **GraphQL Support:** Optionally enabled for flexible querying.
+- **File Storage:** Uses `@payloadcms/storage-vercel-blob` for handling uploads efficiently.
+
+### Configuration
+
+1. **Payload Config File:** The configuration file is located at the path specified by the `PAYLOAD_CONFIG_PATH` environment variable.
+2. **Database:** Connects to a MongoDB database via the `DATABASE_URI` variable.
+3. **Email Handling:** Configured using `@payloadcms/email-nodemailer` with SMTP settings.
+
+Visit `http://localhost:3000/admin` to access the admin panel.
+
+For more details, visit the [Payload CMS Documentation](https://payloadcms.com/docs).
+
+## Usage
+
+Explore the portfolio by:
+
+- Navigating through the sections to learn more about me.
+- Viewing detailed descriptions and links for featured projects.
+- Using the contact form to send a message directly.
+
+### Storybook
+
+This project includes a Storybook environment for component development and documentation. To start the Storybook server, run:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run storybook
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit `http://localhost:6006` to explore the Storybook interface.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Contributing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Contributions are welcome! If you have suggestions for improvements or encounter any issues, feel free to create an issue or submit a pull request.
 
-## Learn More
+To contribute:
 
-To learn more about Next.js, take a look at the following resources:
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/YourFeature`).
+3. Commit your changes (`git commit -m 'Add Some Feature'`).
+4. Push to the branch (`git push origin feature/YourFeature`).
+5. Open a pull request.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Distributed under the MIT License. See `LICENSE` for more information.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Thank you for checking out my portfolio repository!
