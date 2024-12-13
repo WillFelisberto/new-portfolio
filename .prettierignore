@@ -10,3 +10,4 @@ yarn.lock
 build
 coverage
 .next
+/src/app/(payload)/
