@@ -2524,7 +2524,7 @@
     ts-essentials "10.0.3"
     uuid "10.0.0"
 
-"@payloadcms/storage-vercel-blob@^3.6.0":
+"@payloadcms/storage-vercel-blob@^3.4.0":
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/@payloadcms/storage-vercel-blob/-/storage-vercel-blob-3.6.0.tgz#640eaec5a3203868444e16a392ef0a5d00da4b9c"
   integrity sha512-jcrEXQuQaZYIU0YMYbfqgVA5GVmW6Rm1UZQX+HUUTPFkejeW092rhELnqIJh8YMVd2X7Ni5LTtffs1e2+qOzCA==
