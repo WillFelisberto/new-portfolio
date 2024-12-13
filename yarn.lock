@@ -2457,6 +2457,13 @@
     prompts "2.4.2"
     uuid "10.0.0"
 
+"@payloadcms/email-nodemailer@^3.6.0":
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/@payloadcms/email-nodemailer/-/email-nodemailer-3.6.0.tgz#38d783c91e9b304f66661adb3b110c52a7f7573f"
+  integrity sha512-HdX3ysOotQfTh1pc07iOldeWRTHIII0ORJUdi4XpGewAcTf6tFI9erAujmtlJLsJW18KrjZU6uDT38AdYBPgXQ==
+  dependencies:
+    nodemailer "6.9.10"
+
 "@payloadcms/graphql@3.6.0":
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/@payloadcms/graphql/-/graphql-3.6.0.tgz#3e001e9215a2876ac69b89bbe7cea3b47a663b4b"
@@ -9136,6 +9143,11 @@ node-releases@^2.0.18:
   version "2.0.18"
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-2.0.18.tgz#f010e8d35e2fe8d6b2944f03f70213ecedc4ca3f"
   integrity sha512-d9VeXT4SJ7ZeOqGX6R5EM022wpL+eWPooLI+5UpWn2jCT1aosUQEhQP214x33Wkwx3JQMvIm+tIoVOdodFS40g==
+
+nodemailer@6.9.10:
+  version "6.9.10"
+  resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.9.10.tgz#54cc1e062f20726606d3289fcf38ee731aff0d9d"
+  integrity sha512-qtoKfGFhvIFW5kLfrkw2R6Nm6Ur4LNUMykyqu6n9BRKJuyQrqEGwdXXUAbwWEKt33dlWUGXb7rzmJP/p4+O+CA==
 
 normalize-path@^3.0.0, normalize-path@~3.0.0:
   version "3.0.0"
