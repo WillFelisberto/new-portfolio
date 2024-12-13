@@ -11,11 +11,25 @@ import { WorkExperience } from '@/app/(payload)/collections/workExperience';
 import { About } from '@/app/(payload)/collections/about';
 const __dirname = path.resolve();
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob';
+import { nodemailerAdapter } from '@payloadcms/email-nodemailer';
 
 export default buildConfig({
   // If you'd like to use Rich Text, pass your editor here
   editor: lexicalEditor(),
 
+  email: nodemailerAdapter({
+    defaultFromAddress: 'info@payloadcms.com',
+    defaultFromName: 'Payload',
+    // Nodemailer transportOptions
+    transportOptions: {
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    },
+  }),
   // Define and configure your collections in this array
   collections: [Projects, Media, Technologies, Education, WorkExperience],
   globals: [About],
@@ -30,6 +44,7 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(__dirname, 'src/app/(payload)/payload-types.ts'),
   },
+
   plugins: [
     vercelBlobStorage({
       enabled: true, // Optional, defaults to true
