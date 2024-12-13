@@ -27,4 +27,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          PAYLOAD_SECRET: 'anything'
+          PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
+          DATABASE_URI: ${{ secrets.DATABASE_URI }}
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
