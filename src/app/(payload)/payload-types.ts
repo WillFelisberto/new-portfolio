@@ -16,6 +16,7 @@ export interface Config {
     technologies: Technology;
     education: Education;
     workexperience: Workexperience;
+    jobs: Job;
     users: User;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -28,10 +29,17 @@ export interface Config {
     technologies: TechnologiesSelect<false> | TechnologiesSelect<true>;
     education: EducationSelect<false> | EducationSelect<true>;
     workexperience: WorkexperienceSelect<false> | WorkexperienceSelect<true>;
+    jobs: JobsSelect<false> | JobsSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
-    'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
-    'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
-    'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
+    'payload-locked-documents':
+      | PayloadLockedDocumentsSelect<false>
+      | PayloadLockedDocumentsSelect<true>;
+    'payload-preferences':
+      | PayloadPreferencesSelect<false>
+      | PayloadPreferencesSelect<true>;
+    'payload-migrations':
+      | PayloadMigrationsSelect<false>
+      | PayloadMigrationsSelect<true>;
   };
   db: {
     defaultIDType: string;
@@ -110,7 +118,14 @@ export interface Project {
               [k: string]: unknown;
             }[];
             direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            format:
+              | 'left'
+              | 'start'
+              | 'center'
+              | 'right'
+              | 'end'
+              | 'justify'
+              | '';
             indent: number;
             version: number;
           };
@@ -277,6 +292,30 @@ export interface Workexperience {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "jobs".
+ */
+export interface Job {
+  id: string;
+  title: string;
+  company: string;
+  companySite?: string | null;
+  location: string;
+  date: string;
+  recruiter?: string | null;
+  status:
+    | 'applied'
+    | 'interviewed'
+    | 'offer'
+    | 'hired'
+    | 'rejected'
+    | 'freezed';
+  jobDescription?: string | null;
+  resume?: (string | null) | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
@@ -318,6 +357,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'workexperience';
         value: string | Workexperience;
+      } | null)
+    | ({
+        relationTo: 'jobs';
+        value: string | Job;
       } | null)
     | ({
         relationTo: 'users';
@@ -520,6 +563,23 @@ export interface WorkexperienceSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "jobs_select".
+ */
+export interface JobsSelect<T extends boolean = true> {
+  title?: T;
+  company?: T;
+  companySite?: T;
+  location?: T;
+  date?: T;
+  recruiter?: T;
+  status?: T;
+  jobDescription?: T;
+  resume?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
@@ -628,7 +688,6 @@ export interface AboutSelect<T extends boolean = true> {
 export interface Auth {
   [k: string]: unknown;
 }
-
 
 declare module 'payload' {
   export interface GeneratedTypes extends Config {}
