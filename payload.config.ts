@@ -12,6 +12,7 @@ import { About } from '@/app/(payload)/collections/about';
 const __dirname = path.resolve();
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob';
 import { nodemailerAdapter } from '@payloadcms/email-nodemailer';
+import { Jobs } from '@/app/(payload)/collections/jobs';
 
 const plugins = [];
 
@@ -51,9 +52,18 @@ export default buildConfig({
       },
     }),
   }),
+  admin: {
+    components: {
+      afterDashboard: [
+        {
+          path: '/src/app/(payload)/components/dashboard.tsx',
+        },
+      ],
+    },
+  },
 
   // Define and configure your collections in this array
-  collections: [Projects, Media, Technologies, Education, WorkExperience],
+  collections: [Projects, Media, Technologies, Education, WorkExperience, Jobs],
   globals: [About],
 
   // Your Payload secret - should be a complex and secure string, unguessable
