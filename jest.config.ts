@@ -21,7 +21,7 @@ const config: Config = {
   ],
   modulePaths: ['<rootDir>/src/', '<rootDir>/.jest'],
   transformIgnorePatterns: [
-    '/node_modules/(?!(.*@payloadcms/richtext-lexical.*)/)',
+    '/node_modules/(?!(.*@payloadcms.*|.*lexical.*|.*@lexical.*|uuid)/)',
   ],
   extensionsToTreatAsEsm: ['.ts', '.tsx', '.jsx'],
   transform: {
