@@ -9,7 +9,8 @@ import { TbBrandGithub } from 'react-icons/tb';
 import { FiGlobe } from 'react-icons/fi';
 import Link from '@/components/Link';
 import { HiArrowNarrowLeft } from 'react-icons/hi';
-import { Media, Project, Technology } from '@/app/(payload)/payload-types';
+import { Project, Technology } from '@/app/(payload)/payload-types';
+import { getProjectThumbnail } from '@/lib/project-image';
 
 type ProjectDetailsProps = {
   project: Project;
@@ -21,7 +22,7 @@ export const ProjectDetails = ({ project }: ProjectDetailsProps) => {
       <motion.div
         className="absolute inset-0 z-[-1]"
         style={{
-          background: `url(/images/hero-bg.png) no-repeat center/cover, url(${(project.thumbnail as Media)!.url}) no-repeat center/cover`,
+          background: `linear-gradient(to top, #150F23 8%, rgba(21,15,35,0.82) 100%), url(${getProjectThumbnail(project)}) no-repeat center/cover`,
         }}
         initial={{ opacity: 0, scale: 1.3 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -34,7 +35,7 @@ export const ProjectDetails = ({ project }: ProjectDetailsProps) => {
         className="items-center text-center sm:[&>h3]:text-4xl"
       />
       <motion.div
-        className="my-4 max-w-[640px] text-justify text-sm text-gray-400 sm:my-6 sm:text-base"
+        className="my-4 max-w-[640px] text-base text-muted sm:my-6"
         {...fadeUpAnimation}
       >
         <RichTextComponent lexicalData={project.description!} />
@@ -63,7 +64,7 @@ export const ProjectDetails = ({ project }: ProjectDetailsProps) => {
         )}
         {project?.liveProjectUrl && (
           <a href={project.liveProjectUrl} target="_blank" rel="noreferrer">
-            <Button className="min-w-[180px]">
+            <Button variant="secondary" className="min-w-[180px]">
               <FiGlobe size={20} />
               Online Project
             </Button>

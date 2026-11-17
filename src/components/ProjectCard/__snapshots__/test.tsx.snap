@@ -4,14 +4,13 @@ exports[`ProjectCard Component renders the project title and description 1`] = `
 <div>
   <div
     class="flex flex-col gap-6 lg:flex-row lg:gap-12"
-    style="opacity: 0; transform: translateY(100px);"
+    style="opacity: 0; transform: translateY(60px);"
   >
     <div
       class="h-[200px] w-full sm:h-[300px] lg:min-h-full lg:w-[420px]"
-      style="opacity: 0; transform: translateY(100px) scale(0.5);"
     >
       <a
-        class="flex items-center gap-2 text-sm text-gray-300 transition-colors hover:text-sky-500"
+        class="label-mono items-center gap-2 text-muted transition-colors hover:text-lime card-tactile card-tactile-interactive block h-full overflow-hidden p-1.5"
         href="/projects/my-awesome-project"
       >
         <img
@@ -21,8 +20,7 @@ exports[`ProjectCard Component renders the project title and description 1`] = `
           decoding="async"
           height="304"
           loading="lazy"
-          src="/_next/image?url=https%3A%2F%2Fvia.placeholder.com%2F420x304&w=1080&q=75"
-          srcset="/_next/image?url=https%3A%2F%2Fvia.placeholder.com%2F420x304&w=640&q=75 1x, /_next/image?url=https%3A%2F%2Fvia.placeholder.com%2F420x304&w=1080&q=75 2x"
+          src="https://via.placeholder.com/420x304"
           style="color: transparent;"
           width="420"
         />
@@ -32,11 +30,11 @@ exports[`ProjectCard Component renders the project title and description 1`] = `
       class="flex-1 lg:py-[18px]"
     >
       <a
-        class="flex items-center gap-2 text-sm text-gray-300 transition-colors hover:text-sky-500"
+        class="label-mono flex items-center gap-2 text-muted transition-colors hover:text-lime normal-case"
         href="/projects/my-awesome-project"
       >
         <h3
-          class="flex items-center gap-3 text-lg font-medium text-gray-50"
+          class="flex items-center gap-3 font-display text-2xl font-bold tracking-tight text-ink"
           style="opacity: 0; transform: translateY(50px);"
         >
           <img
@@ -52,41 +50,36 @@ exports[`ProjectCard Component renders the project title and description 1`] = `
           My Awesome Project
         </h3>
       </a>
-      <a
-        class="flex items-center gap-2 text-sm text-gray-300 transition-colors hover:text-sky-500"
-        href="/projects/my-awesome-project"
+      <p
+        class="my-6 max-w-[60ch] text-muted"
+        style="opacity: 0; transform: translateY(50px);"
       >
-        <p
-          class="my-6 text-gray-400"
-          style="opacity: 0; transform: translateY(50px);"
-        >
-          A short description of the project.
-        </p>
-      </a>
+        A short description of the project.
+      </p>
       <div
         class="mb-8 flex flex-wrap gap-x-2 gap-y-3 lg:max-w-[350px]"
       >
         <span
-          class="rounded-lg bg-sky-900/80 px-3 py-1 text-sm text-sky-400"
+          class="label-mono inline-block rounded-md border border-line bg-raised px-3 py-1 text-xs text-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_2px_0_0_#0B0716] transition-colors hover:border-lime hover:text-lime"
           style="opacity: 0; transform: scale(0);"
         >
           React
         </span>
         <span
-          class="rounded-lg bg-sky-900/80 px-3 py-1 text-sm text-sky-400"
+          class="label-mono inline-block rounded-md border border-line bg-raised px-3 py-1 text-xs text-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_2px_0_0_#0B0716] transition-colors hover:border-lime hover:text-lime"
           style="opacity: 0; transform: scale(0);"
         >
           Next.js
         </span>
         <span
-          class="rounded-lg bg-sky-900/80 px-3 py-1 text-sm text-sky-400"
+          class="label-mono inline-block rounded-md border border-line bg-raised px-3 py-1 text-xs text-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_2px_0_0_#0B0716] transition-colors hover:border-lime hover:text-lime"
           style="opacity: 0; transform: scale(0);"
         >
           TypeScript
         </span>
       </div>
       <a
-        class="flex items-center gap-2 text-sm text-gray-300 transition-colors hover:text-sky-500"
+        class="label-mono flex items-center gap-2 transition-colors hover:text-lime text-lime"
         href="/projects/my-awesome-project"
       >
         See project
