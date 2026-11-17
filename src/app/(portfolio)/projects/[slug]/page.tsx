@@ -3,7 +3,7 @@ import { ProjectSections } from '@/components/pages/project/ProjectSetions';
 import { getPayload } from 'payload';
 import { Metadata } from 'next';
 import configPromise from '@payload-config';
-import { Media } from '@/app/(payload)/payload-types';
+import { getProjectThumbnail } from '@/lib/project-image';
 
 type ProjectProps = {
   params: Promise<{ slug: string }>;
@@ -13,10 +13,9 @@ type ProjectProps = {
 export async function generateMetadata({
   params,
 }: ProjectProps): Promise<Metadata> {
-  const { slug } = await params; // Extraia o `slug` de `params`
+  const { slug } = await params;
   const payload = await getPayload({ config: configPromise });
 
-  // Buscar o projeto pelo slug
   const projectResponse = await payload.find({
     collection: 'projects',
     where: {
@@ -31,29 +30,40 @@ export async function generateMetadata({
 
   if (!project) {
     return {
-      title: 'Projeto não encontrado',
-      description: 'O projeto solicitado não foi encontrado.',
+      title: 'Project Not Found | Willian de Souza Felisberto',
+      description: 'The requested project could not be found.',
     };
   }
 
+  const projectTitle = `${project.title} | Willian de Souza Felisberto`;
+  const projectDesc =
+    project.shortDescription ||
+    'Explore technical architecture, stack, and source code.';
+  const thumbnailUrl = getProjectThumbnail(project);
+
   return {
-    title: project.title || 'Detalhes do Projeto',
-    description:
-      project.shortDescription || 'Veja os detalhes deste projeto incrível.',
+    title: projectTitle,
+    description: projectDesc,
+    alternates: {
+      canonical: `/projects/${slug}`,
+    },
     openGraph: {
-      title: project.title!,
-      description: project.shortDescription!,
-      images: project.thumbnail
-        ? [{ url: (project.thumbnail as Media).url!, alt: project.title! }]
-        : [],
+      title: projectTitle,
+      description: projectDesc,
+      url: `https://www.willianfelisberto.com.br/projects/${slug}`,
+      type: 'article',
+      images: [
+        {
+          url: thumbnailUrl,
+          alt: project.title!,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: project.title!,
-      description: project.shortDescription!,
-      images: project.thumbnail
-        ? [{ url: (project.thumbnail as Media).url!, alt: project.title! }]
-        : [],
+      title: projectTitle,
+      description: projectDesc,
+      images: [thumbnailUrl],
     },
   };
 }

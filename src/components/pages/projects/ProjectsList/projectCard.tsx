@@ -33,7 +33,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
           unoptimized
         />
         <div className="absolute right-3 top-3">
-          <span className="label-mono rounded border border-line/80 bg-night/85 px-2 py-0.5 text-[10px] text-coral backdrop-blur-sm">
+          <span className="label-mono rounded border border-line/80 bg-night/85 px-2 py-0.5 text-xs text-coral backdrop-blur-sm">
             {categoryLabel}
           </span>
         </div>
