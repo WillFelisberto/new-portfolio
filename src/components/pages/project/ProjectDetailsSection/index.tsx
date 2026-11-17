@@ -16,12 +16,15 @@ type ProjectDetailsProps = {
 };
 
 export const ProjectDetails = ({ project }: ProjectDetailsProps) => {
+  const thumbnailUrl =
+    (project?.thumbnail as Media)?.url || '/images/hero-bg.png';
+
   return (
     <section className="relative flex w-full flex-col items-center justify-end overflow-hidden px-6 py-24 pb-10 sm:min-h-[750px] sm:pb-24">
       <motion.div
         className="absolute inset-0 z-[-1]"
         style={{
-          background: `url(/images/hero-bg.png) no-repeat center/cover, url(${(project.thumbnail as Media)!.url}) no-repeat center/cover`,
+          background: `url(/images/hero-bg.png) no-repeat center/cover, url(${thumbnailUrl}) no-repeat center/cover`,
         }}
         initial={{ opacity: 0, scale: 1.3 }}
         animate={{ opacity: 1, scale: 1 }}
