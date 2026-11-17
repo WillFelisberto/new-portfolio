@@ -7,7 +7,7 @@ const Link = ({ className, children, ...props }: LinkProps) => {
   return (
     <NextLink
       className={cn(
-        'flex items-center gap-2 text-sm text-gray-300 transition-colors hover:text-sky-500',
+        'label-mono flex items-center gap-2 text-muted transition-colors hover:text-lime',
         className,
       )}
       {...props}

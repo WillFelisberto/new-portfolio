@@ -15,7 +15,7 @@ describe('<Button />', () => {
     render(<Button>Click me!</Button>);
     const button = screen.getByRole('button', { name: /click me!/i });
     expect(button).toHaveClass(
-      'flex items-center justify-center gap-2 rounded-lg bg-sky-600 px-4 py-3 text-gray-50 transition-all hover:bg-sky-500 disabled:opacity-50',
+      'inline-flex items-center justify-center gap-2 rounded-lg border bg-lime text-night shadow-tactile',
     );
   });
 

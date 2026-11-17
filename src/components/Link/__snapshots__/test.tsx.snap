@@ -3,7 +3,7 @@
 exports[`<Link /> renders correctly with default props 1`] = `
 <div>
   <a
-    class="flex items-center gap-2 text-sm text-gray-300 transition-colors hover:text-sky-500"
+    class="label-mono flex items-center gap-2 text-muted transition-colors hover:text-lime"
     href="https://example.com"
   >
     Default Link

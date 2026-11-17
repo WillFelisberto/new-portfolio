@@ -51,7 +51,7 @@ export type RichTextProps = {
 
 const RichTextComponent = ({ lexicalData }: RichTextProps) => {
   return (
-    <div className="text-gray-400">
+    <div className="text-muted">
       <RichText data={lexicalData!} />
     </div>
   );

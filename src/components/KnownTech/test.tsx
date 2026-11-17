@@ -13,7 +13,7 @@ describe('<KnownTech />', () => {
 
     const nameElement = screen.getByText(mockTech.name);
     expect(nameElement).toBeInTheDocument();
-    expect(nameElement).toHaveClass('font-medium');
+    expect(nameElement).toHaveClass('label-mono');
 
     expect(container.firstChild).toMatchSnapshot();
   });

@@ -2,13 +2,13 @@
 
 exports[`<KnownTech /> renders the tech name 1`] = `
 <div
-  class="flex flex-col gap-2 rounded-lg bg-gray-600/20 p-6 text-gray-500 transition-all hover:bg-gray-600/30 hover:text-sky-500"
+  class="card-tactile card-tactile-interactive group flex flex-col gap-2 p-5 text-muted hover:text-lime"
 >
   <div
     class="flex items-center justify-between"
   >
     <p
-      class="font-medium"
+      class="label-mono text-ink group-hover:text-lime"
     >
       React
     </p>

@@ -59,7 +59,7 @@ const ContactForm = ({
 
   return (
     <section
-      className="flex items-center justify-center bg-gray-950 px-6 py-16 md:py-32"
+      className="flex items-center justify-center border-t border-line bg-well/60 px-6 py-16 md:py-32"
       id="contact"
     >
       <div className="mx-auto w-full max-w-[420px]">
@@ -75,28 +75,27 @@ const ContactForm = ({
         >
           <input
             placeholder={labelName}
-            className="h-14 w-full rounded-lg bg-gray-800 p-4 text-gray-50 ring-sky-600 placeholder:text-gray-400 focus:outline-none focus:ring-2"
+            className="h-14 w-full rounded-lg border border-line bg-surface p-4 text-ink shadow-[inset_0_2px_0_rgba(0,0,0,0.35)] transition-colors placeholder:text-dim hover:border-violet focus:border-lime focus:outline-none focus:ring-2 focus:ring-lime/40"
             {...register('name')}
           />
           <input
             placeholder="E-mail"
             type="email"
-            className="h-14 w-full rounded-lg bg-gray-800 p-4 text-gray-50 ring-sky-600 placeholder:text-gray-400 focus:outline-none focus:ring-2"
+            className="h-14 w-full rounded-lg border border-line bg-surface p-4 text-ink shadow-[inset_0_2px_0_rgba(0,0,0,0.35)] transition-colors placeholder:text-dim hover:border-violet focus:border-lime focus:outline-none focus:ring-2 focus:ring-lime/40"
             {...register('email')}
           />
           <textarea
             placeholder={LabelMensagem}
-            className="h-[138px] w-full resize-none rounded-lg bg-gray-800 p-4 text-gray-50 ring-sky-600 placeholder:text-gray-400 focus:outline-none focus:ring-2"
+            className="h-[138px] w-full resize-none rounded-lg border border-line bg-surface p-4 text-ink shadow-[inset_0_2px_0_rgba(0,0,0,0.35)] transition-colors placeholder:text-dim hover:border-violet focus:border-lime focus:outline-none focus:ring-2 focus:ring-lime/40"
             {...register('message')}
             maxLength={500}
           />
 
-          <div className="relative mx-auto mt-6 w-max">
-            <Button className="relative z-[2]" disabled={isSubmitting}>
+          <div className="mx-auto mt-6 w-max">
+            <Button type="submit" disabled={isSubmitting}>
               {button}
               <HiArrowNarrowRight size={18} />
             </Button>
-            <div className="absolute inset-0 bg-sky-600 opacity-20 blur-2xl" />
           </div>
         </motion.form>
       </div>
