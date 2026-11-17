@@ -17,6 +17,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "prepare": "husky",
+    "postinstall": "node -e \"if (process.platform === 'linux') { try { require('child_process').execSync('npm install --legacy-peer-deps --no-save --os=linux --cpu=x64 @img/sharp-linux-x64@0.35.5 sharp@0.35.5', { stdio: 'inherit' }); } catch (e) { console.warn(e.message); } }\"",
     "commit": "git-cz",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
