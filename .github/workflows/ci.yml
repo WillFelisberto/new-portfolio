@@ -17,7 +17,9 @@ jobs:
           cache: 'yarn'
 
       - name: Install dependencies
-        run: yarn install
+        run: |
+          yarn install
+          yarn add --optional @img/sharp-linux-x64@0.35.5
 
       - name: Linting
         run: yarn lint
