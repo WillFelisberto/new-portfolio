@@ -31,29 +31,84 @@ export async function generateMetadata() {
     metadataBase: new URL(
       process.env.NEXT_PUBLIC_APP_URL || 'https://www.willianfelisberto.com.br',
     ),
-    title: 'Portfolio Willian de Souza Felisberto',
+    title: 'Willian de Souza Felisberto | Senior Frontend & Edge AI Engineer',
     description:
-      'Experienced Front-end Developer with 5+ years of expertise in Javascript, NodeJs, React, HTML, CSS, and Docker. Currently at Compass.UOL, maintaining a B2C e-commerce platform, with previous experience in B2B e-commerce. Committed to delivering exceptional user experiences and staying updated on web development trends.',
+      'Senior Frontend Developer & Edge AI Researcher with 7+ years of expertise in TypeScript, React, Next.js, Node.js, and TinyML. Proven track record in high-traffic e-commerce (+120% revenue) and embedded intelligence research at UFSC.',
     keywords:
-      'Front-end Developer, Javascript, NodeJs, React, HTML, CSS, Docker, Compass.UOL, B2B e-commerce, B2C e-commerce, User Experience, Web Development',
+      'Senior Frontend Developer, Edge AI, TinyML, React, Next.js, TypeScript, Node.js, ESP32, Compass.UOL, UFSC, Computer Vision, Software Architecture',
+    authors: [
+      {
+        name: 'Willian de Souza Felisberto',
+        url: 'https://www.willianfelisberto.com.br',
+      },
+    ],
+    creator: 'Willian de Souza Felisberto',
+    alternates: {
+      canonical: '/',
+    },
     openGraph: {
-      siteName: 'Portfolio Willian de Souza Felisberto',
-      title: 'Portfolio Willian de Souza Felisberto',
+      siteName: 'Willian de Souza Felisberto Portfolio',
+      title: 'Willian de Souza Felisberto | Senior Frontend & Edge AI Engineer',
       description:
-        'Experienced Front-end Developer with 5+ years of expertise in Javascript, NodeJs, React, HTML, CSS, and Docker. Currently at Compass.UOL, maintaining a B2C e-commerce platform, with previous experience in B2B e-commerce. Committed to delivering exceptional user experiences and staying updated on web development trends.',
-      url: 'https://www.linkedin.com/in/willianfelisberto/',
+        'Senior Frontend Developer & Edge AI Researcher with 7+ years of expertise in TypeScript, React, Next.js, Node.js, and TinyML.',
+      url: 'https://www.willianfelisberto.com.br',
       type: 'website',
+      locale: 'en_US',
       images: [
         {
-          url: '/images/will.jpg', // Replace with the actual URL of your Open Graph image
-          width: 1200,
-          height: 630,
+          url: '/images/will.jpg',
+          width: 800,
+          height: 800,
           alt: 'Willian de Souza Felisberto',
         },
       ],
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Willian de Souza Felisberto | Senior Frontend & Edge AI Engineer',
+      description:
+        'Senior Frontend Developer & Edge AI Researcher with 7+ years of expertise in TypeScript, React, Next.js, Node.js, and TinyML.',
+      images: ['/images/will.jpg'],
+    },
   };
 }
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Willian de Souza Felisberto',
+  url: 'https://www.willianfelisberto.com.br',
+  image: 'https://www.willianfelisberto.com.br/images/will.jpg',
+  jobTitle: 'Senior Frontend Developer & Edge AI Researcher',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Compass.UOL',
+  },
+  alumniOf: [
+    {
+      '@type': 'CollegeOrUniversity',
+      name: 'Federal University of Santa Catarina',
+      sameAs: 'https://ufsc.br/',
+    },
+  ],
+  sameAs: [
+    'https://www.linkedin.com/in/willianfelisberto/',
+    'https://github.com/WillFelisberto',
+  ],
+  knowsAbout: [
+    'Front-end Development',
+    'React',
+    'Next.js',
+    'TypeScript',
+    'JavaScript',
+    'Node.js',
+    'Edge AI',
+    'TinyML',
+    'ESP32',
+    'Computer Vision',
+    'E-commerce Engineering',
+  ],
+};
 
 export default function RootLayout({
   children,
@@ -66,6 +121,12 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${display.variable} ${body.variable} ${mono.variable}`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
+      </head>
       <body>
         <Toaster />
         <BackToTop />

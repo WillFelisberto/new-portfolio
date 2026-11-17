@@ -5,18 +5,36 @@ import { getPayload } from 'payload';
 
 export async function generateMetadata() {
   return {
-    title: 'Projects - Willian de Souza Felisberto',
+    title: 'Projects | Willian de Souza Felisberto',
     description:
-      "Explore my front-end programming projects! From websites to intuitive interfaces, dive into my world of code and design. Discover how I turn ideas into digital experiences. Let's create something amazing together? Come check it out!",
+      'Explore full-stack web applications, technical challenges, and Edge AI projects developed by Willian de Souza Felisberto.',
     keywords:
-      'Front-end Developer, Javascript, NodeJs, React, HTML, CSS, Docker, Compass.UOL, B2B e-commerce, B2C e-commerce, User Experience, Web Development',
+      'Projects, Portfolio, Frontend Developer, React, Next.js, TypeScript, TinyML, Edge AI, Open Source',
+    alternates: {
+      canonical: '/projects',
+    },
     openGraph: {
-      siteName: 'Projects - Willian de Souza Felisberto',
-      title: 'Projects - Willian de Souza Felisberto',
+      siteName: 'Willian de Souza Felisberto Portfolio',
+      title: 'Projects | Willian de Souza Felisberto',
       description:
-        "Explore my front-end programming projects! From websites to intuitive interfaces, dive into my world of code and design. Discover how I turn ideas into digital experiences. Let's create something amazing together? Come check it out!",
-      url: 'https://www.linkedin.com/in/willianfelisberto/',
+        'Explore full-stack web applications, technical challenges, and Edge AI projects developed by Willian de Souza Felisberto.',
+      url: 'https://www.willianfelisberto.com.br/projects',
       type: 'website',
+      images: [
+        {
+          url: '/images/will.jpg',
+          width: 800,
+          height: 800,
+          alt: 'Willian de Souza Felisberto Projects',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Projects | Willian de Souza Felisberto',
+      description:
+        'Explore full-stack web applications, technical challenges, and Edge AI projects developed by Willian de Souza Felisberto.',
+      images: ['/images/will.jpg'],
     },
   };
 }

@@ -115,7 +115,7 @@ export const ProjectsList = ({ projects }: ProjectsListProps) => {
               >
                 <span>{label}</span>
                 <span
-                  className={`py-0.2 rounded-full px-1.5 text-[10px] font-bold ${
+                  className={`rounded-full px-2 py-0.5 font-mono text-xs font-bold ${
                     isActive
                       ? 'bg-night/15 text-night'
                       : 'border border-line/60 bg-raised text-dim'
