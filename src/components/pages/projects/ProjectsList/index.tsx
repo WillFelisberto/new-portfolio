@@ -4,6 +4,7 @@ import Link from '@/components/Link';
 import { fadeUpAnimation } from '@/lib/animations';
 import { motion } from 'framer-motion';
 import { ProjectCard } from './projectCard';
+import EmptyState from '@/components/EmptyState';
 import { Project } from '@/app/(payload)/payload-types';
 
 type ProjectsListProps = {
@@ -11,6 +12,18 @@ type ProjectsListProps = {
 };
 
 export const ProjectsList = ({ projects }: ProjectsListProps) => {
+  if (!projects?.length) {
+    return (
+      <section className="container py-32">
+        <EmptyState
+          title="No projects here yet"
+          description="The workbench is empty for now. New builds are on the way, so check back soon."
+          actionLabel="Back to Home"
+          actionHref="/"
+        />
+      </section>
+    );
+  }
   return (
     <section className="container grid grid-cols-1 gap-x-4 gap-y-6 py-32 sm:grid-cols-[repeat(auto-fit,minmax(350px,1fr))]">
       {projects.map((project, i) => (
