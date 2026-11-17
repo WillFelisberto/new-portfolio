@@ -25,6 +25,18 @@ export const Projects: CollectionConfig = {
       type: 'text',
     },
     {
+      name: 'category',
+      type: 'select',
+      options: [
+        { label: 'Edge AI & TinyML', value: 'edge-ai' },
+        { label: 'Fullstack & Web', value: 'web' },
+        { label: 'Technical Challenges', value: 'challenges' },
+      ],
+      admin: {
+        position: 'sidebar',
+      },
+    },
+    {
       name: 'pageThumbnail',
       type: 'upload',
       relationTo: 'media',
