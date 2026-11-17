@@ -11,6 +11,7 @@ const config = [
       '!**/.storybook',
       '!**/.jest',
       '**/generators',
+      '**/scripts',
       '**/.next',
       '**/.cache',
       '**/package-lock.json',
