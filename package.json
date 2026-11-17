@@ -56,6 +56,9 @@
     "tailwind-merge": "^2.5.5",
     "zod": "^3.23.8"
   },
+  "optionalDependencies": {
+    "@img/sharp-linux-x64": "0.35.5"
+  },
   "resolutions": {
     "mongoose": "^8.24.10",
     "happy-dom": "^21.0.4"
