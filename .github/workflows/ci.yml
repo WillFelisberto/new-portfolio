@@ -19,7 +19,7 @@ jobs:
       - name: Install dependencies
         run: |
           yarn install
-          yarn add --optional @img/sharp-linux-x64@0.35.5
+          npm install --os=linux --cpu=x64 sharp
 
       - name: Linting
         run: yarn lint
