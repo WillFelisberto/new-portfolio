@@ -2,7 +2,6 @@
 import { Education } from '@/app/(payload)/payload-types';
 import EducationCard from '@/components/EducationCard';
 import SectionTitle from '@/components/SectionTitle';
-import { motion } from 'framer-motion';
 
 type EducationSectionProps = {
   educations: Education[];
@@ -16,19 +15,22 @@ export const EducationSection = ({
   subtitle,
 }: EducationSectionProps) => {
   return (
-    <section className="container py-16">
-      <SectionTitle subtitle={subtitle} title={title} />
-      <div className="mt-[60px] grid w-full grid-cols-[repeat(auto-fit,minmax(264px,1fr))] gap-3">
-        {educations.map((edu, i) => (
-          <motion.div
-            key={`education-${edu.title}`}
-            initial={{ opacity: 0, x: -100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -100 }}
-            transition={{ duration: 0.15, delay: i * 0.1 }}
-          >
-            <EducationCard education={edu} />
-          </motion.div>
+    <section className="container flex flex-col gap-10 py-16 md:flex-row md:gap-4 lg:gap-16">
+      <div className="max-w-[420px]">
+        <SectionTitle subtitle={subtitle} title={title} />
+        <p className="mt-6 text-muted">
+          Academic foundation in Information and Communication Technologies at
+          UFSC, currently developing graduate research focused on Edge AI and
+          TinyML.
+        </p>
+      </div>
+
+      <div className="flex flex-1 flex-col gap-4">
+        {educations?.map((edu) => (
+          <EducationCard
+            key={`education-${edu.id || edu.courseName || edu.title}`}
+            education={edu}
+          />
         ))}
       </div>
     </section>

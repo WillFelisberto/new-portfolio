@@ -19,6 +19,7 @@ export default async function Home() {
   });
   const educationsResponse = await payload.find({
     collection: 'education',
+    sort: '-startDate',
   });
   const projectsResponse = await payload.find({
     collection: 'projects',
