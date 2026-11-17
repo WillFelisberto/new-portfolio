@@ -3,16 +3,17 @@ import KnownTechs from '@/components/pages/home/KnownTechs';
 import { EducationSection } from '@/components/pages/home/EducationSection';
 import { HighlightedProjects } from '@/components/pages/home/highlightsSection';
 import WorkExperienceSection from '@/components/pages/home/WorkExperiencesSection';
+import { PublicationsSection } from '@/components/pages/home/PublicationsSection';
+import { CertificationsSection } from '@/components/pages/home/CertificationsSection';
 import configPromise from '@payload-config';
 import { getPayload } from 'payload';
 import { Media, Technology } from '../(payload)/payload-types';
+
 export default async function Home() {
   const payload = await getPayload({ config: configPromise });
   const aboutsDocs = await payload.findGlobal({
     slug: 'about',
   });
-
-  // Desestruturação dos dados
 
   const technologiesResponse = await payload.find({
     collection: 'technologies',
@@ -23,11 +24,19 @@ export default async function Home() {
   });
   const projectsResponse = await payload.find({
     collection: 'projects',
-    limit: 2, // Limitando a 2 projetos, como na query GraphQL
+    limit: 2,
   });
   const workExperiencesResponse = await payload.find({
     collection: 'workexperience',
-    sort: '-startDate', // Ordenando por data de início decrescente
+    sort: '-startDate',
+  });
+  const publicationsResponse = await payload.find({
+    collection: 'publications',
+    sort: '-publicationDate',
+  });
+  const certificationsResponse = await payload.find({
+    collection: 'certifications',
+    sort: '-issueDate',
   });
 
   return (
@@ -46,6 +55,8 @@ export default async function Home() {
         title="Education"
         subtitle="studies"
       />
+      <PublicationsSection publications={publicationsResponse.docs} />
+      <CertificationsSection certifications={certificationsResponse.docs} />
       <HighlightedProjects projects={projectsResponse.docs} />
       <WorkExperienceSection experiences={workExperiencesResponse.docs} />
     </>

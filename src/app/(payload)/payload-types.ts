@@ -73,6 +73,8 @@ export interface Config {
     education: Education;
     workexperience: Workexperience;
     jobs: Job;
+    publications: Publication;
+    certifications: Certification;
     'payload-kv': PayloadKv;
     users: User;
     'payload-locked-documents': PayloadLockedDocument;
@@ -87,6 +89,8 @@ export interface Config {
     education: EducationSelect<false> | EducationSelect<true>;
     workexperience: WorkexperienceSelect<false> | WorkexperienceSelect<true>;
     jobs: JobsSelect<false> | JobsSelect<true>;
+    publications: PublicationsSelect<false> | PublicationsSelect<true>;
+    certifications: CertificationsSelect<false> | CertificationsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-locked-documents':
@@ -367,6 +371,80 @@ export interface Job {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "publications".
+ */
+export interface Publication {
+  id: string;
+  title: string;
+  abstract?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  venue: string;
+  publicationDate: string;
+  authors: string;
+  doiUrl?: string | null;
+  pdfUrl?: string | null;
+  githubUrl?: string | null;
+  tags?:
+    | {
+        name?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  _objectKey?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "certifications".
+ */
+export interface Certification {
+  id: string;
+  title: string;
+  issuer: string;
+  issueDate: string;
+  expirationDate?: string | null;
+  credentialId?: string | null;
+  credentialUrl?: string | null;
+  certificateLogo?: (string | null) | Media;
+  skills?: string | null;
+  _objectKey?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -438,6 +516,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'jobs';
         value: string | Job;
+      } | null)
+    | ({
+        relationTo: 'publications';
+        value: string | Publication;
+      } | null)
+    | ({
+        relationTo: 'certifications';
+        value: string | Certification;
       } | null)
     | ({
         relationTo: 'users';
@@ -659,6 +745,64 @@ export interface JobsSelect<T extends boolean = true> {
   resume?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "publications_select".
+ */
+export interface PublicationsSelect<T extends boolean = true> {
+  title?: T;
+  abstract?: T;
+  venue?: T;
+  publicationDate?: T;
+  authors?: T;
+  doiUrl?: T;
+  pdfUrl?: T;
+  githubUrl?: T;
+  tags?:
+    | T
+    | {
+        name?: T;
+        id?: T;
+      };
+  _objectKey?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "certifications_select".
+ */
+export interface CertificationsSelect<T extends boolean = true> {
+  title?: T;
+  issuer?: T;
+  issueDate?: T;
+  expirationDate?: T;
+  credentialId?: T;
+  credentialUrl?: T;
+  certificateLogo?: T;
+  skills?: T;
+  _objectKey?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
