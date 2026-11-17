@@ -36,7 +36,7 @@ const CardItem = ({
     >
       <div className="flex flex-col items-center gap-4">
         {education ? (
-          <div className="h-[60px] w-[60px] rounded-full border border-gray-500 bg-gray-50 p-0.5">
+          <div className="h-[60px] w-[60px] rounded-full border border-line bg-ink p-0.5 shadow-chip">
             <Image
               src={logoUrl}
               width={60}
@@ -46,7 +46,7 @@ const CardItem = ({
             />
           </div>
         ) : (
-          <div className="rounded-full border border-gray-500 p-0.5">
+          <div className="rounded-full border border-line bg-surface p-0.5 shadow-chip">
             <Image
               src={logoUrl}
               width={40}
@@ -57,7 +57,7 @@ const CardItem = ({
           </div>
         )}
 
-        <div className="h-full w-[1px] bg-gray-800" />
+        <div className="h-full w-px bg-line" />
       </div>
 
       <div>
@@ -67,16 +67,16 @@ const CardItem = ({
               href={linkUrl}
               target="_blank"
               aria-label={title}
-              className="text-sky-100 transition-colors hover:text-sky-500"
+              className="font-display text-xl font-bold text-ink underline decoration-line decoration-2 transition-colors hover:text-lime hover:decoration-lime"
               rel="noreferrer"
             >
               {title}
             </a>
           ) : (
-            <h4 className="text-gray-300">{title}</h4>
+            <h4 className="font-display text-xl font-bold">{title}</h4>
           )}
-          {subtitle && <p className="text-gray-400">{subtitle}</p>}
-          <span className="text-gray-500">{dateRange}</span>
+          {subtitle && <p className="text-muted">{subtitle}</p>}
+          <span className="label-mono text-xs text-dim">{dateRange}</span>
           {description && <RichTextComponent lexicalData={description} />}
         </div>
 

@@ -5,7 +5,8 @@ import { motion } from 'framer-motion';
 import TechBadge from '../TechBadge';
 import Link from '@/components/Link';
 import { fadeUpAnimation, techBadgeAnimation } from '@/lib/animations';
-import { Media, Project, Technology } from '@/app/(payload)/payload-types';
+import { Project, Technology } from '@/app/(payload)/payload-types';
+import { getProjectThumbnail } from '@/lib/project-image';
 
 type ProjectCardProps = {
   project: Project;
@@ -15,35 +16,33 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
     <motion.div
       className="flex flex-col gap-6 lg:flex-row lg:gap-12"
-      initial={{ opacity: 0, y: 100 }}
+      initial={{ opacity: 0, y: 60 }}
       whileInView={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 100 }}
-      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
     >
-      <motion.div
-        className="h-[200px] w-full sm:h-[300px] lg:min-h-full lg:w-[420px]"
-        initial={{ opacity: 0, y: 100, scale: 0.5 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: 100, scale: 0.5 }}
-        transition={{ duration: 0.3, delay: 0.3 }}
-      >
-        <Link href={`/projects/${project.slug}`}>
+      <div className="h-[200px] w-full sm:h-[300px] lg:min-h-full lg:w-[420px]">
+        <Link
+          href={`/projects/${project.slug}`}
+          className="card-tactile card-tactile-interactive block h-full overflow-hidden p-1.5"
+        >
           <Image
-            src={(project?.thumbnail as Media)?.url || '/images/hero-bg.png'}
+            src={getProjectThumbnail(project)}
             width={420}
             height={304}
             alt={`Thumbnail do projeto ${project.title}`}
             className="h-full w-full rounded-lg object-cover"
+            unoptimized
           />
         </Link>
-      </motion.div>
+      </div>
 
       <div className="flex-1 lg:py-[18px]">
-        <Link href={`/projects/${project.slug}`}>
+        <Link href={`/projects/${project.slug}`} className="normal-case">
           <motion.h3
-            className="flex items-center gap-3 text-lg font-medium text-gray-50"
+            className="flex items-center gap-3 font-display text-2xl font-bold tracking-tight text-ink"
             {...fadeUpAnimation}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.5 }}
           >
             <Image
               width={20}
@@ -54,15 +53,13 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
             {project.title}
           </motion.h3>
         </Link>
-        <Link href={`/projects/${project.slug}`}>
-          <motion.p
-            className="my-6 text-gray-400"
-            {...fadeUpAnimation}
-            transition={{ duration: 0.2, delay: 0.3 }}
-          >
-            {project.shortDescription}
-          </motion.p>
-        </Link>
+        <motion.p
+          className="my-6 max-w-[60ch] text-muted"
+          {...fadeUpAnimation}
+          transition={{ duration: 0.4, delay: 0.1 }}
+        >
+          {project.shortDescription}
+        </motion.p>
 
         <div className="mb-8 flex flex-wrap gap-x-2 gap-y-3 lg:max-w-[350px]">
           {(project.technologies as Technology[]).map((tech, i) => (
@@ -70,12 +67,12 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
               name={tech.name!}
               key={`${project.title}-tech-${tech.name}`}
               {...techBadgeAnimation}
-              transition={{ duration: 0.2, delay: 0.5 + i * 0.1 }}
+              transition={{ duration: 0.2, delay: 0.3 + i * 0.08 }}
             />
           ))}
         </div>
 
-        <Link href={`/projects/${project.slug}`}>
+        <Link href={`/projects/${project.slug}`} className="text-lime">
           See project
           <HiArrowNarrowRight />
         </Link>

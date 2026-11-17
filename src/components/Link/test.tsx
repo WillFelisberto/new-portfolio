@@ -12,7 +12,7 @@ describe('<Link />', () => {
     expect(link).toBeInTheDocument();
     expect(link).toHaveAttribute('href', 'https://example.com');
     expect(link).toHaveClass(
-      'flex items-center gap-2 text-sm text-gray-300 transition-colors hover:text-sky-500',
+      'label-mono flex items-center gap-2 text-muted transition-colors hover:text-lime',
     );
 
     expect(container).toMatchSnapshot();

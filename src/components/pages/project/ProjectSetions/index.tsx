@@ -17,13 +17,13 @@ export const ProjectSections = ({ sections }: Pick<Project, 'sections'>) => {
           {...fadeUpAnimation}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-2xl font-medium text-gray-300 md:text-3xl">
+          <h2 className="font-display text-3xl font-extrabold md:text-4xl">
             {section.title}
           </h2>
 
           {section.description && (
             <motion.div
-              className="my-4 max-w-[640px] text-justify text-sm text-gray-400 sm:my-6 sm:text-base"
+              className="my-4 max-w-[640px] text-base text-muted sm:my-6"
               {...fadeUpAnimation}
             >
               <RichTextComponent lexicalData={section.description} />
@@ -33,7 +33,7 @@ export const ProjectSections = ({ sections }: Pick<Project, 'sections'>) => {
           <Image
             width={1080}
             height={672}
-            className="aspect-auto w-full rounded-lg object-cover"
+            className="aspect-auto w-full rounded-xl border border-line bg-surface object-cover p-1.5 shadow-card"
             alt={
               (section.image as Media)!.alt ||
               `Imagem da sessão ${section.title}`

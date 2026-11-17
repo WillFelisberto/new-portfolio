@@ -2,7 +2,7 @@
 
 exports[`<TechBadge /> should render badge with provided name text 1`] = `
 <span
-  class="rounded-lg bg-sky-900/80 px-3 py-1 text-sm text-sky-400"
+  class="label-mono inline-block rounded-md border border-line bg-raised px-3 py-1 text-xs text-ink shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_2px_0_0_#0B0716] transition-colors hover:border-lime hover:text-lime"
 >
   React
 </span>

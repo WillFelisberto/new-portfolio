@@ -9,12 +9,7 @@ describe('<Divider />', () => {
 
     const divider = container.firstChild;
 
-    expect(divider).toHaveClass(
-      'my-8',
-      'w-full',
-      'border-b',
-      'border-b-gray-800',
-    );
+    expect(divider).toHaveClass('my-8', 'w-full', 'border-b', 'border-dashed');
 
     expect(container.firstChild).toMatchSnapshot();
   });
@@ -24,12 +19,7 @@ describe('<Divider />', () => {
 
     const divider = container.firstChild;
 
-    expect(divider).toHaveClass(
-      'my-8',
-      'w-full',
-      'border-b',
-      'border-b-gray-800',
-    );
+    expect(divider).toHaveClass('my-8', 'w-full', 'border-b', 'border-dashed');
     expect(divider).not.toHaveClass('undefined');
   });
 });

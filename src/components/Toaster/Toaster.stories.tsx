@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import Toaster from '.';
 import toast from 'react-hot-toast';
+import Button from '../Button';
 
 const meta: Meta<typeof Toaster> = {
   title: 'Components/Toaster',
@@ -8,7 +9,7 @@ const meta: Meta<typeof Toaster> = {
   parameters: {
     layout: 'fullscreen',
   },
-};
+} satisfies Meta<typeof Toaster>;
 
 export default meta;
 
@@ -16,31 +17,16 @@ type Story = StoryObj<typeof Toaster>;
 
 export const Default: Story = {
   render: () => {
-    // Função para disparar notificações de exemplo
     const triggerToast = () => {
-      toast.success('This is a success message!');
-      toast.error('This is an error message!');
+      toast.success('Message sent successfully!');
+      toast.error('Failed to send the message.');
     };
 
     return (
-      <>
+      <div className="flex flex-col items-center justify-center gap-4 p-8">
         <Toaster />
-        <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-          <button
-            onClick={triggerToast}
-            style={{
-              padding: '10px 20px',
-              background: '#0070f3',
-              color: '#fff',
-              border: 'none',
-              borderRadius: '5px',
-              cursor: 'pointer',
-            }}
-          >
-            Trigger Toast
-          </button>
-        </div>
-      </>
+        <Button onClick={triggerToast}>Trigger Toasts</Button>
+      </div>
     );
   },
 };

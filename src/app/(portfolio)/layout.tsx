@@ -1,5 +1,5 @@
 import './globals.css';
-import { Inter, IBM_Plex_Mono, Source_Code_Pro } from 'next/font/google';
+import { Bricolage_Grotesque, Rubik, JetBrains_Mono } from 'next/font/google';
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -8,24 +8,24 @@ import BackToTop from '@/components/BackToTop';
 import ContactForm from '@/components/ContactForm';
 import { GoogleAnalytics } from '@/components/Header/google-analytics';
 
-const inter = Inter({
-  variable: '--font-inter',
+const display = Bricolage_Grotesque({
+  variable: '--font-display',
   subsets: ['latin'],
-  preload: false,
+  display: 'swap',
 });
 
-const codePro = Source_Code_Pro({
-  variable: '--codePro',
+const body = Rubik({
+  variable: '--font-body',
   subsets: ['latin'],
-  preload: false,
+  display: 'swap',
 });
 
-const plexMono = IBM_Plex_Mono({
-  variable: '--font-plex-mono',
+const mono = JetBrains_Mono({
+  variable: '--font-mono',
   subsets: ['latin'],
-  weight: ['400', '500'],
-  preload: false,
+  display: 'swap',
 });
+
 export async function generateMetadata() {
   return {
     title: 'Portfolio Willian de Souza Felisberto',
@@ -61,7 +61,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} ${plexMono.variable} ${codePro.variable}`}
+      className={`${display.variable} ${body.variable} ${mono.variable}`}
     >
       <body>
         <Toaster />

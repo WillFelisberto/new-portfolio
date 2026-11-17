@@ -2,15 +2,15 @@
 
 exports[`<Footer /> should render footer with provided text props 1`] = `
 <footer
-  class="flex h-14 w-full items-center justify-center bg-gray-950"
+  class="flex h-16 w-full items-center justify-center border-t border-line bg-well"
 >
   <span
-    class="flex items-center gap-1.5 font-mono text-xs text-gray-400 sm:text-sm"
+    class="label-mono flex items-center gap-1.5 text-dim"
   >
     Made with
     <svg
       aria-label="Heart icon"
-      class="text-sky-500"
+      class="text-coral-hot"
       fill="currentColor"
       height="13"
       stroke="currentColor"
@@ -25,7 +25,7 @@ exports[`<Footer /> should render footer with provided text props 1`] = `
     </svg>
     by
     <strong
-      class="font-medium"
+      class="font-semibold text-ink"
     >
       Willian Souza
     </strong>
