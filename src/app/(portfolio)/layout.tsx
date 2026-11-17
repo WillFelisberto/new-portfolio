@@ -28,6 +28,9 @@ const mono = JetBrains_Mono({
 
 export async function generateMetadata() {
   return {
+    metadataBase: new URL(
+      process.env.NEXT_PUBLIC_APP_URL || 'https://www.willianfelisberto.com.br',
+    ),
     title: 'Portfolio Willian de Souza Felisberto',
     description:
       'Experienced Front-end Developer with 5+ years of expertise in Javascript, NodeJs, React, HTML, CSS, and Docker. Currently at Compass.UOL, maintaining a B2C e-commerce platform, with previous experience in B2B e-commerce. Committed to delivering exceptional user experiences and staying updated on web development trends.',
