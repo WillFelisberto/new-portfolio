@@ -148,6 +148,7 @@ export interface Project {
   slug?: string | null;
   thumbnail?: (string | null) | Media;
   shortDescription?: string | null;
+  category?: ('edge-ai' | 'web' | 'challenges') | null;
   pageThumbnail?: (string | null) | Media;
   description?: {
     root: {
@@ -580,6 +581,7 @@ export interface ProjectsSelect<T extends boolean = true> {
   slug?: T;
   thumbnail?: T;
   shortDescription?: T;
+  category?: T;
   pageThumbnail?: T;
   description?: T;
   liveProjectUrl?: T;
