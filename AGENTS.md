@@ -147,13 +147,60 @@ O repositório utiliza o **Husky v9** com Conventional Commits:
 
 ---
 
-## 8. Registro de Decisões e Histórico Recente
+## 8. Fluxo Git e Política de Branches Obrigatória (Regra Fundamental)
 
+> [!IMPORTANT]
+> **REQUISITO MANDATÓRIO PARA AGENTES E DESENVOLVEDORES:**
+> Para QUALQUER nova funcionalidade, alteração visual, atualização de dados ou correção, é **estritamente obrigatório separar por branch dedicada**. Nunca desenvolva ou commite diretamente na branch `main`.
+
+### 8.1. Ciclo de Vida de uma Tarefa:
+1. **Criação da Branch:**
+   ```bash
+   git checkout main
+   git pull origin main
+   git checkout -b <tipo>/<nome-curto-da-tarefa>
+   ```
+   *Exemplos:* `feat/academic-publications-collection`, `fix/header-contrast`, `chore/deps-update`.
+
+2. **Desenvolvimento e Validações Locais:**
+   Antes de abrir PR ou dar push, certifique-se de validar a tríade:
+   ```bash
+   npx eslint .          # 0 erros
+   npx jest              # 100% dos testes passando
+   npx next build        # Compilação estática (SSG) limpa
+   ```
+
+3. **Commit com Conventional Commits:**
+   O hook do Husky interceptará e validará via Commitlint (`feat(...)`, `fix(...)`, `chore(...)`).
+
+4. **Abertura e Validação de Pull Request no GitHub:**
+   - O branch `main` possui uma Ruleset com **Branch Protection** ativa exigindo o status check `"ci github"` para permitir merge.
+   - Suba a branch com `git push origin <branch>`.
+   - Crie a PR: `gh pr create --head <branch> --base main --title "..." --body "..."`.
+   - Monitore a conclusão do GitHub Actions: `gh pr checks <PR_NUMBER>`.
+   - Assim que o check `ci github` passar, efetue o merge pelo GitHub:
+     ```bash
+     gh pr merge <PR_NUMBER> --merge
+     ```
+   - Sincronize localmente:
+     ```bash
+     git checkout main
+     git pull origin main
+     ```
+
+5. **Proteção de Segredos e Repositório Público:**
+   - Este repositório é público. O arquivo `.env` deve permanecer sempre no `.gitignore`.
+   - Nunca insira strings de conexão, senhas ou chaves em arquivos de código, scripts ou documentações.
+
+---
+
+## 9. Registro de Decisões e Histórico Recente
+
+- **Integração das PRs #17 e #18 no GitHub:**
+  - **PR #17 (Merge commit `3014f6d`):** Atualização de stack de produção para Node 26 LTS, Next.js 16.4.6, Payload CMS 3.93.0, Husky v9, Commitlint e atualização do workflow do GitHub Actions (`ci.yml`) para Node 22 com resolução multiplataforma de binários do Sharp.
+  - **PR #18 (Merge commit `facbe27`):** Implementação completa do Design System S.C.R.A.P.S. Acid Dark Mode, tokens táteis, componentes táteis, EmptyState, fontes Bricolage/Rubik/JetBrains Mono, thumbnails dinâmicos de projetos, ilustrações isométricas e documentações técnicas.
 - **Sincronização com Dados Reais do CV (PDF):** Conectado ao MongoDB de produção e atualizado perfil para 7+ anos de experiência, métricas de e-commerce (120% de faturamento, 106% transações), adição do Mestrado em TIC com foco em Edge AI na UFSC, e enriquecimento das 4 experiências profissionais (Compass.UOL, Smart Sistemas, Agrosys, Zaib).
 - **Projetos GitHub e Resolução Dinâmica de Thumbnails:** Adicionados projetos reais como `fadigAI` e `shelfkeep`. Criado helper `getProjectThumbnail` com hierarquia de fallback dinâmico (OpenGraph do GitHub, screenshots locais e media do CMS).
 - **Tratamento do Projeto Gatil:** O domínio oficial (`https://gatildosresgatados.com/`) foi preservado, enquanto a captura de tela foi atualizada para a prévia ativa em `https://gatil-cms.vercel.app/` (`public/images/projects/gatil-cms.png`).
 - **Husky & Commitlint Operacionais:** Configurado `.husky/commit-msg` e renomeado `commitlint.config.cjs` resolvendo o erro de escopo de ES Module.
-- **Atualização de Segurança Next.js 16 + Payload 3.93:** Resolvidas vulnerabilidades críticas de RCE e DoS anteriores ao Next 15.5.
-- **Node.js v26.13.1:** Adotado para atender à especificação de engines do ecossistema Payload v3.
-- **Inclusão do EmptyState:** Adicionado suporte a estado vazio amigável na página de projetos.
 - **Ponte Babelrc para Storybook:** `.babelrc` incluído para viabilizar compatibilidade entre o bundler Webpack do Storybook 8 e os loaders do Next 16.
