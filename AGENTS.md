@@ -196,11 +196,15 @@ O repositório utiliza o **Husky v9** com Conventional Commits:
 
 ## 9. Registro de Decisões e Histórico Recente
 
-- **Integração das PRs #17 e #18 no GitHub:**
+- **Integração das PRs Recentes no GitHub:**
   - **PR #17 (Merge commit `3014f6d`):** Atualização de stack de produção para Node 26 LTS, Next.js 16.4.6, Payload CMS 3.93.0, Husky v9, Commitlint e atualização do workflow do GitHub Actions (`ci.yml`) para Node 22 com resolução multiplataforma de binários do Sharp.
   - **PR #18 (Merge commit `facbe27`):** Implementação completa do Design System S.C.R.A.P.S. Acid Dark Mode, tokens táteis, componentes táteis, EmptyState, fontes Bricolage/Rubik/JetBrains Mono, thumbnails dinâmicos de projetos, ilustrações isométricas e documentações técnicas.
-- **Sincronização com Dados Reais do CV (PDF):** Conectado ao MongoDB de produção e atualizado perfil para 7+ anos de experiência, métricas de e-commerce (120% de faturamento, 106% transações), adição do Mestrado em TIC com foco em Edge AI na UFSC, e enriquecimento das 4 experiências profissionais (Compass.UOL, Smart Sistemas, Agrosys, Zaib).
+  - **PR #19 (Merge commit `2792839`):** Inclusão formal da política de branches obrigatórias e ciclo de vida de PRs no `AGENTS.md`.
+  - **PR #20 (Merge commit `2d6c115`):** Resolução multiplataforma do Sharp e libvips para Linux x64 na Vercel e CI (`serverExternalPackages: ['sharp']`).
+  - **PR #21 (Merge commit `6ce927c`):** Unificação da timeline vertical da seção Education com `sort: '-startDate'` (Mestrado em Edge AI no topo), ajuste de semântica `<h1>` e inclusão de badges táteis na foto do Hero (`SENIOR DEV // EDGE AI` e `7+ YRS • AVAILABLE`).
+  - **PR #22 (Merge commit `0eaf878`):** Atualização da foto de perfil em alta resolução (800x800) e logos oficiais das empresas (`public/images/companies/`) extraídos do LinkedIn, sincronizando dados no MongoDB Atlas.
+  - **PR #23 (Merge commit `da35660`):** Otimização de performance de build e CI: remoção do `.babelrc` raiz em favor de configuração local no `.storybook/main.ts` (reabilitando o compilador nativo SWC em Rust), eliminação de chamadas duplicadas de instalação e adição de cache do Next.js no GitHub Actions.
+- **Sincronização com Dados Reais do CV (PDF) e LinkedIn:** Conectado ao MongoDB de produção e atualizado perfil para 7+ anos de experiência, métricas de e-commerce (120% de faturamento, 106% transações), adição do Mestrado em TIC com foco em Edge AI na UFSC, inclusão da publicação no IEEE Xplore (*Embedded TinyML for Driver Drowsiness Detection*), 3 certificações Oracle, e enriquecimento das 4 experiências profissionais (Compass.UOL, Smart Sistemas, Agrosys, Zaib).
 - **Projetos GitHub e Resolução Dinâmica de Thumbnails:** Adicionados projetos reais como `fadigAI` e `shelfkeep`. Criado helper `getProjectThumbnail` com hierarquia de fallback dinâmico (OpenGraph do GitHub, screenshots locais e media do CMS).
 - **Tratamento do Projeto Gatil:** O domínio oficial (`https://gatildosresgatados.com/`) foi preservado, enquanto a captura de tela foi atualizada para a prévia ativa em `https://gatil-cms.vercel.app/` (`public/images/projects/gatil-cms.png`).
 - **Husky & Commitlint Operacionais:** Configurado `.husky/commit-msg` e renomeado `commitlint.config.cjs` resolvendo o erro de escopo de ES Module.
-- **Ponte Babelrc para Storybook:** `.babelrc` incluído para viabilizar compatibilidade entre o bundler Webpack do Storybook 8 e os loaders do Next 16.
