@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "type": "module",
   "private": true,
+  "engines": {
+    "node": "^22.23.4 || >=24.22.1"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -15,29 +18,24 @@
     "build-storybook": "storybook build",
     "prepare": "husky",
     "commit": "git-cz",
-    "lint": "next lint",
-    "lint:fix": "next lint --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "pre-commit": "yarn test && yarn lint",
-    "lint:strict": "next lint '*/**/*.{js,jsx,ts,tsx}'",
+    "lint:strict": "eslint . --max-warnings=0",
     "generate:types": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts payload generate:types",
     "prettier": "prettier --write */**/*.{js,jsx,json,ts,tsx,scss,css,md}"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run prettier-format && npm run lint"
-    }
-  },
   "dependencies": {
     "@apollo/client": "^3.12.2",
     "@hookform/resolvers": "^3.9.1",
-    "@payloadcms/db-mongodb": "^3.6.0",
-    "@payloadcms/email-nodemailer": "^3.6.0",
-    "@payloadcms/next": "^3.6.0",
-    "@payloadcms/richtext-lexical": "3.6.0",
-    "@payloadcms/storage-vercel-blob": "^3.6.0",
+    "@payloadcms/db-mongodb": "3.93.0",
+    "@payloadcms/email-nodemailer": "3.93.0",
+    "@payloadcms/next": "3.93.0",
+    "@payloadcms/richtext-lexical": "3.93.0",
+    "@payloadcms/storage-vercel-blob": "3.93.0",
     "axios": "^1.7.9",
     "chart.js": "^4.4.7",
     "clsx": "^2.1.1",
@@ -45,18 +43,22 @@
     "date-fns": "^4.1.0",
     "framer-motion": "^11.13.5",
     "graphql": "^16.9.0",
-    "next": "15.0.4",
-    "payload": "^3.6.0",
+    "next": "^16.4.6",
+    "payload": "3.93.0",
     "plop": "^4.0.1",
-    "react": "^19.0.0",
+    "react": "^19.1.10",
     "react-chartjs-2": "^5.3.0",
-    "react-dom": "^19.0.0",
+    "react-dom": "^19.1.10",
     "react-hook-form": "^7.54.0",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^5.4.0",
-    "sharp": "^0.33.5",
+    "sharp": "^0.35.5",
     "tailwind-merge": "^2.5.5",
     "zod": "^3.23.8"
+  },
+  "resolutions": {
+    "mongoose": "^8.24.10",
+    "happy-dom": "^21.0.4"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "3.2.2",
@@ -73,8 +75,9 @@
     "@storybook/react": "8.4.7",
     "@storybook/test": "8.4.7",
     "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.1.0",
+    "@testing-library/user-event": "^14.6.12",
     "@types/jest": "^29.5.14",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -84,7 +87,7 @@
     "commitizen": "^4.3.1",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^9.16.0",
-    "eslint-config-next": "^15.0.4",
+    "eslint-config-next": "^16.4.6",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react-hooks": "^5.1.0",
