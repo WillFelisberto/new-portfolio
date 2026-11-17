@@ -27,6 +27,8 @@ const config = [
   {
     plugins: {
       prettier,
+      react: nextVitals[0].plugins.react,
+      'react-hooks': nextVitals[0].plugins['react-hooks'],
     },
 
     languageOptions: {
