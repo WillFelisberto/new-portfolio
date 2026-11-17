@@ -13,6 +13,8 @@ const __dirname = path.resolve();
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob';
 import { nodemailerAdapter } from '@payloadcms/email-nodemailer';
 import { Jobs } from '@/app/(payload)/collections/jobs';
+import { Publications } from '@/app/(payload)/collections/publications';
+import { Certifications } from '@/app/(payload)/collections/certifications';
 
 const plugins = [];
 
@@ -28,6 +30,8 @@ if (process.env.BLOB_READ_WRITE_TOKEN) {
         [Education.slug]: true,
         [WorkExperience.slug]: true,
         [About.slug]: true,
+        [Publications.slug]: true,
+        [Certifications.slug]: true,
       },
       token: process.env.BLOB_READ_WRITE_TOKEN!,
     }),
@@ -63,7 +67,16 @@ export default buildConfig({
   },
 
   // Define and configure your collections in this array
-  collections: [Projects, Media, Technologies, Education, WorkExperience, Jobs],
+  collections: [
+    Projects,
+    Media,
+    Technologies,
+    Education,
+    WorkExperience,
+    Jobs,
+    Publications,
+    Certifications,
+  ],
   globals: [About],
 
   // Your Payload secret - should be a complex and secure string, unguessable
