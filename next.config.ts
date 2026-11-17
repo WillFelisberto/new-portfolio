@@ -3,6 +3,7 @@ import { withPayload } from '@payloadcms/next/withPayload';
 
 const nextConfig: NextConfig = {
   turbopack: { root: process.cwd() },
+  serverExternalPackages: ['sharp'],
   images: {
     remotePatterns: [
       {
