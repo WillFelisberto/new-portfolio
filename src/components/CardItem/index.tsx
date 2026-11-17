@@ -30,7 +30,7 @@ const CardItem = ({
 }: CardItemProps) => {
   return (
     <motion.div
-      className="grid grid-cols-[40px,1fr] gap-4 md:gap-10"
+      className={`grid ${education ? 'grid-cols-[60px,1fr]' : 'grid-cols-[40px,1fr]'} gap-4 md:gap-8`}
       {...fadeUpAnimation}
       transition={{ duration: 0.5 }}
     >

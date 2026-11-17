@@ -44,11 +44,17 @@ const HeroSection = ({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="font-display text-5xl font-extrabold leading-[1.05] sm:text-6xl">
-            <span className="sr-only">Hello, my name is </span>
+          <div className="mb-3 flex items-center gap-2">
+            <span className="label-mono text-xs font-semibold uppercase tracking-label text-coral sm:text-sm">
+              {"// HELLO WORLD, I'M"}
+            </span>
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-lime" />
+          </div>
+
+          <h1 className="font-display text-5xl font-extrabold leading-[1.05] text-ink sm:text-6xl">
             <span className="chip-hl">{name.split(' ')[0]}</span>{' '}
             {name.split(' ').slice(1).join(' ')}
-          </h2>
+          </h1>
 
           <div className="my-6 text-base text-muted sm:text-lg">
             <RichTextComponent lexicalData={description!} />
@@ -98,10 +104,17 @@ const HeroSection = ({
           />
           <span
             aria-hidden
-            className="label-mono absolute -left-3 -top-4 z-10 -rotate-6 rounded-md border border-well bg-coral px-3 py-1.5 text-night shadow-chip"
+            className="label-mono absolute -left-3 -top-4 z-10 -rotate-3 rounded-md border border-well bg-coral px-3 py-1.5 text-xs font-bold text-night shadow-chip"
           >
-            Hello, my name is
+            SENIOR DEV // EDGE AI
           </span>
+          <div className="label-mono absolute -bottom-3 -right-3 z-10 flex items-center gap-2 rounded-md border border-line bg-surface/95 px-3 py-1.5 text-xs text-ink shadow-tactile backdrop-blur">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-lime opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-lime" />
+            </span>
+            <span>7+ YRS • AVAILABLE</span>
+          </div>
           <Image
             width={420}
             height={404}
