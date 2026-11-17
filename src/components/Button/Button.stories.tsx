@@ -15,6 +15,11 @@ const meta: Meta<typeof Button> = {
       control: 'text',
       description: 'Classes CSS adicionais para estilização personalizada.',
     },
+    variant: {
+      control: 'radio',
+      options: ['primary', 'secondary'],
+      description: 'Primary (lime, acid) or secondary (raised surface).',
+    },
     disabled: {
       control: 'boolean',
       description: 'Desativa o botão.',
@@ -36,7 +41,14 @@ export const Default: Story = {
 export const WithCustomClass: Story = {
   args: {
     children: 'Custom Class Button',
-    className: 'bg-red-500 hover:bg-red-400',
+    className: 'w-full',
+  },
+};
+
+export const Secondary: Story = {
+  args: {
+    children: 'Secondary Button',
+    variant: 'secondary',
   },
 };
 

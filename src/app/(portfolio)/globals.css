@@ -1,30 +1,115 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
 
 @layer base {
+  html {
+    @apply bg-night;
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-gray-900 text-gray-100;
+    @apply relative min-h-screen bg-transparent font-sans text-ink antialiased;
+  }
+
+  /* Technical grid, faded toward the edges so it never fights content. */
+  body::before {
+    content: '';
+    @apply pointer-events-none fixed inset-0 -z-10 bg-grid-tech;
+    background-size: 56px 56px;
+    mask-image: radial-gradient(
+      ellipse 90% 70% at 50% 0%,
+      #000 20%,
+      transparent 80%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 90% 70% at 50% 0%,
+      #000 20%,
+      transparent 80%
+    );
+  }
+
+  /* Film grain over everything: texture, never interaction. */
+  body::after {
+    content: '';
+    @apply pointer-events-none fixed inset-0 z-[60] bg-grain opacity-[0.07] mix-blend-overlay;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight text-ink;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    @apply bg-lime text-night;
+  }
+
+  :focus-visible {
+    @apply outline outline-2 outline-offset-4 outline-lime;
+  }
+
+  input,
+  textarea {
+    caret-color: theme('colors.lime');
+  }
+
+  a {
+    text-underline-offset: 4px;
   }
 }
 
-.container {
-  @apply mx-auto w-full max-w-[1200px] px-6;
+@layer components {
+  .container {
+    @apply mx-auto w-full max-w-[1200px] px-6;
+  }
+
+  /* Keyword highlighted as a lime "chip" inside titles. */
+  .chip-hl {
+    @apply rounded-md bg-lime px-[0.22em] py-[0.02em] text-night shadow-chip;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+
+  /* Tactile surface shared by cards. */
+  .card-tactile {
+    @apply rounded-xl border border-line bg-surface shadow-card transition-all duration-200 ease-out-expo;
+  }
+  .card-tactile-interactive {
+    @apply hover:-translate-y-0.5 hover:border-violet-electric hover:shadow-card-lift;
+  }
+
+  /* Mono label voice: tags, dates, nav, buttons. */
+  .label-mono {
+    @apply font-mono text-xs font-medium uppercase tracking-label;
+  }
 }
 
+/* Scrollbar, themed */
+* {
+  scrollbar-color: theme('colors.violet.DEFAULT') theme('colors.night');
+}
 *::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
-
 *::-webkit-scrollbar-track {
-  background: #374151;
-  border-radius: 5px;
+  background: theme('colors.night');
+}
+*::-webkit-scrollbar-thumb {
+  background-color: theme('colors.violet.DEFAULT');
+  border: 2px solid theme('colors.night');
+  border-radius: 999px;
 }
 
-*::-webkit-scrollbar-thumb {
-  background-color: #acc2ef;
-  border-radius: 14px;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

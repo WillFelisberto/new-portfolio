@@ -15,12 +15,13 @@ const NavItem = ({ label, href }: NavItemProps) => {
   return (
     <Link
       className={cn(
-        'flex items-center gap-2 font-mono font-medium text-gray-400',
-        isActive && 'text-gray-50',
+        'label-mono flex items-center gap-2 rounded-md border border-transparent px-3 py-2 text-muted transition-colors hover:text-ink',
+        isActive && 'border-line bg-surface text-ink',
       )}
+      aria-current={isActive ? 'page' : undefined}
       href={href}
     >
-      <span className="text-sky-400">#</span>
+      <span className="text-lime">#</span>
       {label}
     </Link>
   );

@@ -27,7 +27,7 @@ const ExperienceItem = ({ experience }: ExperienceItemProps) => {
 
   const additionalContent = (
     <>
-      <p className="mb-3 mt-6 text-sm font-semibold text-gray-400">Skills</p>
+      <p className="label-mono mb-3 mt-6 text-dim">Skills</p>
       <div className="mb-8 flex flex-wrap gap-x-2 gap-y-3 lg:max-w-[350px]">
         {(technologies as Technology[]).map((tech, i) => (
           <TechBadge

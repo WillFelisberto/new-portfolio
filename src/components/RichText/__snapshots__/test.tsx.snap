@@ -2,7 +2,7 @@
 
 exports[`<RichTextComponent /> renders a single paragraph correctly 1`] = `
 <div
-  class="text-gray-400"
+  class="text-muted"
 >
   <div
     class="payload-richtext"

@@ -1,12 +1,16 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import ExperienceItem, { WorkExperienceProps } from '.';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import ExperienceItem from '.';
 import { CardItemProps } from '../CardItem';
 import { formatDateRange } from '@/lib/utils';
 
+type WorkExperienceProps = any;
+type MockCardItemProps = CardItemProps & { linkText?: string };
+
 jest.mock('../CardItem', () => ({
   __esModule: true,
-  default: ({ title, subtitle, dateRange, linkText }: CardItemProps) => (
+  default: ({ title, subtitle, dateRange, linkText }: MockCardItemProps) => (
     <div>
       <h1>{title}</h1>
       <h2>{subtitle}</h2>

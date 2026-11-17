@@ -33,7 +33,7 @@ const BackToTop = () => {
           <Button
             aria-label="Back to top"
             onClick={scrollToTop}
-            className="shadow-lg shadow-sky-400/20"
+            className="px-3"
           >
             <TbArrowNarrowUp size={20} />
           </Button>

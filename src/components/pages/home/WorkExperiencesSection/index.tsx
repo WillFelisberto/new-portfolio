@@ -14,7 +14,7 @@ const WorkExperienceSection = ({ experiences }: WorkExperienceSection) => {
           subtitle={'experiences'}
           title={'Professional Experience'}
         />
-        <p className="mt-6 text-gray-400">
+        <p className="mt-6 text-muted">
           {
             "I am always open to new challenges and exciting projects. Let's work together to create amazing solutions for your company"
           }

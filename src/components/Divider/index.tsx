@@ -5,7 +5,12 @@ type DividerProps = {
 };
 const Divider = ({ className }: DividerProps) => {
   return (
-    <div className={cn('my-8 w-full border-b border-b-gray-800', className)} />
+    <div
+      className={cn(
+        'my-8 w-full border-b border-dashed border-b-line',
+        className,
+      )}
+    />
   );
 };
 
