@@ -8,27 +8,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18.x
-          cache: 'npm'
+          node-version: 22.x
+          cache: 'yarn'
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          yarn install
+          npm install --legacy-peer-deps --no-save --os=linux --cpu=x64 @img/sharp-linux-x64@0.35.5 sharp@0.35.5
 
       - name: Linting
-        run: npm run lint
+        run: yarn lint
 
       - name: Testing
-        run: npm run test:ci
+        run: yarn test:ci
 
       - name: Build
-        run: npm run build
+        run: yarn build
         env:
           PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
           DATABASE_URI: ${{ secrets.DATABASE_URI }}
           WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
           BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+

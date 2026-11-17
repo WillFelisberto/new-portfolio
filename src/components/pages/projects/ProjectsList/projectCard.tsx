@@ -17,7 +17,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
           height={200}
           className="h-full w-full object-cover transition-all duration-500 group-hover:scale-110"
           alt={`Thumbnail do projeto ${project.title}`}
-          src={(project.thumbnail as Media)!.url!}
+          src={(project?.thumbnail as Media)?.url || '/images/hero-bg.png'}
           unoptimized
         />
       </div>

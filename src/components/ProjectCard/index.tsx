@@ -29,7 +29,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
       >
         <Link href={`/projects/${project.slug}`}>
           <Image
-            src={project.thumbnail ? (project.thumbnail as Media).url! : ''}
+            src={(project?.thumbnail as Media)?.url || '/images/hero-bg.png'}
             width={420}
             height={304}
             alt={`Thumbnail do projeto ${project.title}`}

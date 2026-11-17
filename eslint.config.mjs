@@ -1,21 +1,9 @@
 import prettier from 'eslint-plugin-prettier';
-import typescriptEslint from '@typescript-eslint/eslint-plugin';
-import react from 'eslint-plugin-react';
-import reactHooks from 'eslint-plugin-react-hooks';
+import nextVitals from 'eslint-config-next/core-web-vitals';
+import nextTs from 'eslint-config-next/typescript';
+import storybook from 'eslint-plugin-storybook';
 import globals from 'globals';
 import tsParser from '@typescript-eslint/parser';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import js from '@eslint/js';
-import { FlatCompat } from '@eslint/eslintrc';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
-});
 
 const config = [
   {
@@ -33,17 +21,14 @@ const config = [
       '**/yarn.lock',
     ],
   },
-  ...compat.extends(
-    'next/core-web-vitals',
-    'next/typescript',
-    'plugin:storybook/recommended',
-  ),
+  ...nextVitals,
+  ...nextTs,
+  ...storybook.configs['flat/recommended'],
   {
     plugins: {
       prettier,
-      '@typescript-eslint': typescriptEslint,
-      react,
-      'react-hooks': reactHooks,
+      react: nextVitals[0].plugins.react,
+      'react-hooks': nextVitals[0].plugins['react-hooks'],
     },
 
     languageOptions: {
