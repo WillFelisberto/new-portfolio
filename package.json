@@ -12,7 +12,7 @@
     "start": "next start",
     "test": "jest --passWithNoTests --maxWorkers=50%",
     "test:watch": "jest --watch --maxWorkers=25%",
-    "test:ci": "jest --runInBand",
+    "test:ci": "jest --passWithNoTests --maxWorkers=2",
     "generate": "npx plop --plopfile generators/plopfile.cjs",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",

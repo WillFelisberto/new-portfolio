@@ -20,28 +20,9 @@ const config: StorybookConfig = {
     options: {},
   },
   staticDirs: ['..\\public'],
+  babel: async (config) => ({
+    ...config,
+    presets: [...(config.presets || []), 'next/babel'],
+  }),
 };
 export default config;
-
-// const config = {
-//   staticDirs: ['../public'],
-//   stories: ['../src/components/**/stories.tsx'],
-//   addons: ['@storybook/addon-essentials'],
-//   framework: {
-//     name: '@storybook/nextjs',
-//     options: {}
-//   },
-//   docs: {
-//     autodocs: true
-//   },
-//   webpackFinal: (config) => {
-//     config.resolve.modules.push(`${process.cwd()}/src`)
-//     config.resolve.alias = {
-//       ...config.resolve.alias,
-//       '@': `${process.cwd()}/src` // Alias do `@` definido no tsconfig.json.
-//     }
-
-//     return config
-//   }
-// }
-// export default config
