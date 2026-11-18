@@ -6,8 +6,52 @@ exports[`<ContactForm /> renders the form fields and button after animation 1`] 
   id="contact"
 >
   <div
-    class="mx-auto w-full max-w-[420px]"
+    class="relative mx-auto w-full max-w-[420px]"
   >
+    <div
+      aria-hidden="true"
+      class="pointer-events-none inline-flex select-none items-center justify-center drop-shadow-[2px_3px_0px_#0B0716] filter absolute -top-7 right-4 z-10"
+      style="transform: rotate(-2deg);"
+    >
+      <svg
+        class="h-6 w-auto"
+        fill="none"
+        height="26"
+        viewBox="0 0 120 26"
+        width="120"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M5 2 L0 7 L5 12 L0 17 L5 22 L0 26 L115 26 L120 21 L115 16 L120 11 L115 6 L120 2 L5 2 Z"
+          fill="#C2EF4E"
+          stroke="#0B0716"
+          stroke-linejoin="round"
+          stroke-width="1.5"
+        />
+        <line
+          stroke="#FFFFFF"
+          stroke-dasharray="4 2"
+          stroke-opacity="0.35"
+          stroke-width="1"
+          x1="8"
+          x2="112"
+          y1="5"
+          y2="5"
+        />
+        <text
+          fill="#0B0716"
+          font-family="var(--font-mono, monospace)"
+          font-size="9"
+          font-weight="700"
+          letter-spacing="0.08em"
+          text-anchor="middle"
+          x="60"
+          y="17"
+        >
+          // DISPATCH MSG
+        </text>
+      </svg>
+    </div>
     <div>
       <h1>
         Contact Us

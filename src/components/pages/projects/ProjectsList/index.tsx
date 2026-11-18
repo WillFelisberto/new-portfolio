@@ -157,24 +157,16 @@ export const ProjectsList = ({ projects }: ProjectsListProps) => {
 
       {/* Projects Grid or Filter Empty State */}
       {filteredProjects.length === 0 ? (
-        <div className="card-tactile flex flex-col items-center justify-center rounded-lg p-12 text-center">
-          <p className="font-display text-lg font-bold text-ink">
-            No projects matched your filter
-          </p>
-          <p className="mt-2 text-sm text-muted">
-            Try choosing another category or clearing your search query.
-          </p>
-          <button
-            type="button"
-            onClick={() => {
-              setSelectedCategory('all');
-              setSearchQuery('');
-            }}
-            className="mt-6 rounded-md bg-lime px-4 py-2 font-mono text-xs font-bold text-night shadow-tactile transition-transform hover:-translate-y-0.5 active:translate-y-0.5"
-          >
-            Reset Filters
-          </button>
-        </div>
+        <EmptyState
+          title="No projects matched your filter"
+          description="The probe scanner returned 0 signals. Try choosing another category or clearing your search query."
+          actionLabel="Reset Filters"
+          actionOnClick={() => {
+            setSelectedCategory('all');
+            setSearchQuery('');
+          }}
+          className="my-8"
+        />
       ) : (
         <motion.div
           layout

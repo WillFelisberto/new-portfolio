@@ -9,6 +9,7 @@ import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import SectionTitle from '../SectionTitle';
 import Button from '../Button';
+import { WorkbenchTape } from '@/components/TactileIllustrations';
 import { fadeUpAnimation } from '@/lib/animations';
 
 const contactFormSchema = z.object({
@@ -62,7 +63,13 @@ const ContactForm = ({
       className="flex items-center justify-center border-t border-line bg-well/60 px-6 py-16 md:py-32"
       id="contact"
     >
-      <div className="mx-auto w-full max-w-[420px]">
+      <div className="relative mx-auto w-full max-w-[420px]">
+        <WorkbenchTape
+          color="lime"
+          label="// DISPATCH MSG"
+          angle={-2}
+          className="absolute -top-7 right-4 z-10"
+        />
         <SectionTitle
           subtitle={subtitle}
           title={title}
