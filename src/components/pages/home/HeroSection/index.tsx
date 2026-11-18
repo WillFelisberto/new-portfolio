@@ -10,6 +10,11 @@ import { motion } from 'framer-motion';
 
 import Image from 'next/image';
 import { HiArrowNarrowRight } from 'react-icons/hi';
+import {
+  WorkbenchTape,
+  TactileWire,
+  TinyMLOscilloscope,
+} from '@/components/TactileIllustrations';
 
 export type HeroSectionProps = {
   name: string;
@@ -96,32 +101,59 @@ const HeroSection = ({
           initial={{ opacity: 0, y: 60, rotate: 4 }}
           animate={{ opacity: 1, y: 0, rotate: 2 }}
           transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="relative origin-center"
+          className="relative flex origin-center flex-col items-center lg:items-end"
         >
-          <span
-            aria-hidden
-            className="absolute inset-0 translate-x-3 translate-y-3 rounded-xl border border-well bg-violet-electric"
-          />
-          <span
-            aria-hidden
-            className="label-mono absolute -left-3 -top-4 z-10 -rotate-3 rounded-md border border-well bg-coral px-3 py-1.5 text-xs font-bold text-night shadow-chip"
-          >
-            SENIOR DEV // EDGE AI
-          </span>
-          <div className="label-mono absolute -bottom-3 -right-3 z-10 flex items-center gap-2 rounded-md border border-line bg-surface/95 px-3 py-1.5 text-xs text-ink shadow-tactile backdrop-blur">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-lime opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-lime" />
+          <div className="relative">
+            <span
+              aria-hidden
+              className="absolute inset-0 translate-x-3 translate-y-3 rounded-xl border border-well bg-violet-electric"
+            />
+            {/* Workbench Tape: Top Right */}
+            <WorkbenchTape
+              color="coral"
+              label="// SYS:OK"
+              angle={12}
+              className="absolute -right-3 -top-3 z-20"
+            />
+            {/* Workbench Tape: Bottom Left */}
+            <WorkbenchTape
+              color="lime"
+              label="PIN #04"
+              angle={-8}
+              className="absolute -bottom-4 -left-3 z-20"
+            />
+            {/* Tactile Wire connecting to Edge AI badge */}
+            <TactileWire
+              variant="curved-horizontal"
+              label="SIG: 3.3V"
+              className="absolute -left-36 top-6 z-20 hidden xl:block"
+            />
+            <span
+              aria-hidden
+              className="label-mono absolute -left-3 -top-4 z-10 -rotate-3 rounded-md border border-well bg-coral px-3 py-1.5 text-xs font-bold text-night shadow-chip"
+            >
+              SENIOR DEV // EDGE AI
             </span>
-            <span>7+ YRS • AVAILABLE</span>
+            <div className="label-mono absolute -bottom-3 -right-3 z-10 flex items-center gap-2 rounded-md border border-line bg-surface/95 px-3 py-1.5 text-xs text-ink shadow-tactile backdrop-blur">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-lime opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-lime" />
+              </span>
+              <span>7+ YRS • AVAILABLE</span>
+            </div>
+            <Image
+              width={420}
+              height={404}
+              className="relative h-[300px] w-[300px] rounded-xl border border-line object-cover shadow-card lg:h-[404px] lg:w-[420px]"
+              src={imageUrl}
+              alt={imageAlt}
+            />
           </div>
-          <Image
-            width={420}
-            height={404}
-            className="relative h-[300px] w-[300px] rounded-xl border border-line object-cover shadow-card lg:h-[404px] lg:w-[420px]"
-            src={imageUrl}
-            alt={imageAlt}
-          />
+
+          {/* TinyML Benchtop Oscilloscope */}
+          <div className="mt-8 flex w-full justify-center lg:justify-end">
+            <TinyMLOscilloscope />
+          </div>
         </motion.div>
       </div>
     </section>

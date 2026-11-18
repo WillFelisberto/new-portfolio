@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import EmptyState from '.';
 
 describe('<EmptyState />', () => {
@@ -22,5 +22,21 @@ describe('<EmptyState />', () => {
   it('omits the action when no link is given', () => {
     render(<EmptyState title="Nothing" description="Empty" />);
     expect(screen.queryByRole('link')).not.toBeInTheDocument();
+  });
+
+  it('triggers actionOnClick when provided', () => {
+    const handleClick = jest.fn();
+    render(
+      <EmptyState
+        title="No results"
+        description="Try again"
+        actionLabel="Reset"
+        actionOnClick={handleClick}
+      />,
+    );
+    const button = screen.getByRole('button', { name: /reset/i });
+    expect(button).toBeInTheDocument();
+    fireEvent.click(button);
+    expect(handleClick).toHaveBeenCalledTimes(1);
   });
 });
