@@ -23,6 +23,8 @@ export type CardItemProps = {
   isLast?: boolean;
   jumperColor?: 'lime' | 'violet' | 'coral';
   jumperLabel?: string;
+  degreeBadge?: string;
+  isHighlightedNode?: boolean;
 };
 
 const CardItem = ({
@@ -38,12 +40,14 @@ const CardItem = ({
   isLast = false,
   jumperColor,
   jumperLabel,
+  degreeBadge,
+  isHighlightedNode = false,
 }: CardItemProps) => {
   const resolvedJumperColor = jumperColor || (education ? 'lime' : 'violet');
 
   return (
     <motion.div
-      className={`grid ${education ? 'grid-cols-[60px,1fr]' : 'grid-cols-[40px,1fr]'} gap-4 md:gap-8`}
+      className={`grid ${education ? 'grid-cols-[58px,1fr]' : 'grid-cols-[40px,1fr]'} gap-4 md:gap-8`}
       {...fadeUpAnimation}
       transition={{ duration: 0.5 }}
     >
@@ -54,14 +58,31 @@ const CardItem = ({
           <TactileNodeConnector position="top" color={resolvedJumperColor} />
 
           {education ? (
-            <div className="h-[60px] w-[60px] rounded-full border-2 border-line bg-ink p-0.5 shadow-chip">
+            <div
+              className={`relative flex h-[58px] w-[58px] items-center justify-center rounded-full border-2 p-2 shadow-chip transition-all ${
+                isHighlightedNode
+                  ? 'border-lime/90 bg-surface shadow-[0_0_12px_rgba(194,239,78,0.25)]'
+                  : 'border-line bg-surface'
+              }`}
+            >
               <Image
                 src={logoUrl}
-                width={60}
-                height={60}
-                className="h-[60px] w-[60px] rounded-full object-cover"
+                width={42}
+                height={42}
+                className="h-full w-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]"
                 alt={`${title}`}
               />
+              {degreeBadge && (
+                <span
+                  className={`absolute -bottom-0.5 -right-0.5 z-10 rounded px-1 py-0.5 font-mono text-[9px] font-bold leading-none tracking-tight shadow-tactile ${
+                    isHighlightedNode
+                      ? 'border border-lime bg-lime text-night shadow-[0_0_8px_rgba(194,239,78,0.35)]'
+                      : 'border border-line bg-raised text-muted'
+                  }`}
+                >
+                  {degreeBadge}
+                </span>
+              )}
             </div>
           ) : (
             <div className="rounded-full border-2 border-line bg-surface p-0.5 shadow-chip">

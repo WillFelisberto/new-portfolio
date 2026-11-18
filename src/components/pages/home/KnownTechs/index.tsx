@@ -9,15 +9,24 @@ import { Technology } from '@/app/(payload)/payload-types';
 const KnownTechs = ({ technologies }: { technologies: Technology[] }) => {
   return (
     <section className="container py-16">
-      <SectionTitle subtitle={'skills'} title={'Knowledge'} />
-      <div className="mt-[60px] grid w-full grid-cols-[repeat(auto-fit,minmax(264px,1fr))] gap-3">
-        {technologies.map((tech) => (
+      <div className="flex flex-col gap-2">
+        <SectionTitle subtitle={'skills'} title={'Knowledge'} />
+        <p className="mt-2 max-w-2xl text-sm text-muted sm:text-base">
+          Modular technical stack spanning high-scale frontend architectures,
+          distributed backend platforms, and graduate research in Edge AI and
+          embedded intelligence.
+        </p>
+      </div>
+
+      <div className="mt-8 grid w-full grid-cols-1 gap-3.5 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
+        {technologies.map((tech, index) => (
           <motion.div key={`knownTech-${tech.name}`}>
             <KnownTech
               tech={{
                 icon: tech.icon!,
                 name: tech.name!,
               }}
+              index={index}
             />
           </motion.div>
         ))}

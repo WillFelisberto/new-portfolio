@@ -63,10 +63,16 @@ describe('<CardItem />', () => {
   });
 
   it('renders education-specific styles when education is true', () => {
-    const propsWithEducation = { ...defaultProps, education: true };
+    const propsWithEducation = {
+      ...defaultProps,
+      education: true,
+      degreeBadge: 'MSc',
+      isHighlightedNode: true,
+    };
     render(<CardItem {...propsWithEducation} />);
 
-    const logoContainer = screen.getByRole('img', { hidden: true });
-    expect(logoContainer).toHaveClass('h-[60px] w-[60px]');
+    const logoImage = screen.getByRole('img', { hidden: true });
+    expect(logoImage).toHaveClass('object-contain');
+    expect(screen.getByText('MSc')).toBeInTheDocument();
   });
 });
