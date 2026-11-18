@@ -39,13 +39,13 @@ const SectionTitle = ({
 
   return (
     <div className={cn('flex flex-col gap-4', className)}>
-      <motion.h3
+      <motion.h2
         className="text-4xl font-extrabold leading-[1.1] sm:text-5xl"
         {...animProps}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
         {renderTitle(title, highlight)}
-      </motion.h3>
+      </motion.h2>
       <motion.span
         {...animProps}
         transition={{ duration: 0.5, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}

@@ -5,7 +5,7 @@ exports[`<SectionTitle /> renders the title and subtitle with default styles 1`]
   <div
     class="flex flex-col gap-4"
   >
-    <h3
+    <h2
       class="text-4xl font-extrabold leading-[1.1] sm:text-5xl"
       initial="[object Object]"
       transition="[object Object]"
@@ -18,7 +18,7 @@ exports[`<SectionTitle /> renders the title and subtitle with default styles 1`]
       >
         Title
       </span>
-    </h3>
+    </h2>
     <span
       class="label-mono w-fit -rotate-1 rounded border border-line bg-surface px-2.5 py-1 text-coral"
       initial="[object Object]"
