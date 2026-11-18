@@ -7,6 +7,7 @@ import Link from '@/components/Link';
 import { fadeUpAnimation, techBadgeAnimation } from '@/lib/animations';
 import { Project, Technology } from '@/app/(payload)/payload-types';
 import { getProjectThumbnail } from '@/lib/project-image';
+import { WorkbenchTape } from '@/components/TactileIllustrations';
 
 type ProjectCardProps = {
   project: Project;
@@ -21,7 +22,14 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
       viewport={{ once: true }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
     >
-      <div className="h-[200px] w-full sm:h-[300px] lg:min-h-full lg:w-[420px]">
+      <div className="relative h-[200px] w-full sm:h-[300px] lg:min-h-full lg:w-[420px]">
+        {/* Workbench Tape pinning the card */}
+        <WorkbenchTape
+          color={project.slug === 'fadigai' ? 'lime' : 'coral'}
+          label={project.slug === 'fadigai' ? '// EDGE AI' : '// FEATURED'}
+          angle={project.slug === 'fadigai' ? -2 : 3}
+          className="absolute -top-3 left-4 z-20"
+        />
         <Link
           href={`/projects/${project.slug}`}
           className="card-tactile card-tactile-interactive block h-full overflow-hidden p-1.5"

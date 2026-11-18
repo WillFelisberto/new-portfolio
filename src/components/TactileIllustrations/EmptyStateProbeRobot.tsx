@@ -3,31 +3,54 @@ import { cn } from '@/lib/utils';
 
 export type EmptyStateProbeRobotProps = {
   className?: string;
+  size?: 'sm' | 'md' | 'lg';
+  symbol?: string;
+  statusBadge?: string;
 };
 
 /**
  * Editorial indie-comic isometric Robot Probe Inspector in pure SVG.
  * Designed according to docs/ILLUSTRATION_PROMPTS.md style bible:
  * 30° isometric angle, 3px uniform outline (#0B0716), flat fills, lime accent sparks.
+ * Can be perched over empty state cards or contact form containers.
  */
 export const EmptyStateProbeRobot: React.FC<EmptyStateProbeRobotProps> = ({
   className,
+  size = 'md',
+  symbol = '?',
+  statusBadge,
 }) => {
+  const sizeClasses = {
+    sm: 'h-24 w-24 sm:h-28 sm:w-28',
+    md: 'h-36 w-36 sm:h-40 sm:w-40',
+    lg: 'h-44 w-44 sm:h-48 sm:w-48',
+  };
+
   return (
     <div
       aria-hidden="true"
       className={cn(
-        'inline-block select-none drop-shadow-[4px_6px_0px_#0B0716] filter',
+        'relative inline-flex select-none flex-col items-center drop-shadow-[4px_6px_0px_#0B0716] filter',
         className,
       )}
     >
+      {/* Optional Status Badge / Speech Bubble */}
+      {statusBadge && (
+        <div className="mb-2 flex items-center gap-1.5 rounded-md border border-line bg-night/95 px-2.5 py-1 text-center shadow-tactile backdrop-blur">
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-lime" />
+          <span className="font-mono text-xs font-bold uppercase tracking-wider text-coral">
+            {statusBadge}
+          </span>
+        </div>
+      )}
+
       <svg
         width="160"
         height="160"
         viewBox="0 0 160 160"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="h-36 w-36 overflow-visible sm:h-40 sm:w-40"
+        className={cn('overflow-visible', sizeClasses[size])}
       >
         {/* Soft Isometric Contact Shadow on Ground */}
         <ellipse
@@ -242,17 +265,17 @@ export const EmptyStateProbeRobot: React.FC<EmptyStateProbeRobotProps> = ({
           fill="none"
         />
 
-        {/* Question Mark or Empty Symbol in Lens */}
+        {/* Question Mark or Empty/Message Symbol in Lens */}
         <text
           x="120"
           y="129"
           textAnchor="middle"
           fill="#FA7FAA"
-          fontSize="14"
+          fontSize={symbol === '?' ? '14' : '11'}
           fontWeight="900"
           fontFamily="var(--font-mono, monospace)"
         >
-          ?
+          {symbol}
         </text>
 
         {/* Sparks around magnifying glass */}

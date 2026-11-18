@@ -9,7 +9,10 @@ import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import SectionTitle from '../SectionTitle';
 import Button from '../Button';
-import { WorkbenchTape } from '@/components/TactileIllustrations';
+import {
+  WorkbenchTape,
+  EmptyStateProbeRobot,
+} from '@/components/TactileIllustrations';
 import { fadeUpAnimation } from '@/lib/animations';
 
 const contactFormSchema = z.object({
@@ -64,6 +67,15 @@ const ContactForm = ({
       id="contact"
     >
       <div className="relative mx-auto w-full max-w-[420px]">
+        {/* Robot Probe perched on the top-right corner of the contact form */}
+        <div className="absolute -top-24 right-0 z-20 hidden sm:block">
+          <EmptyStateProbeRobot
+            size="sm"
+            symbol="✉"
+            statusBadge="// TRANSMISSION: READY"
+          />
+        </div>
+
         <WorkbenchTape
           color="lime"
           label="// DISPATCH MSG"

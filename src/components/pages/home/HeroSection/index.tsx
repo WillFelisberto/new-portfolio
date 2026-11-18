@@ -115,32 +115,37 @@ const HeroSection = ({
               angle={12}
               className="absolute -right-3 -top-3 z-20"
             />
-            {/* Workbench Tape: Bottom Left */}
+            {/* Workbench Tape: Bottom Right */}
             <WorkbenchTape
               color="lime"
               label="PIN #04"
               angle={-8}
-              className="absolute -bottom-4 -left-3 z-20"
+              className="absolute -bottom-3 right-6 z-20"
             />
-            {/* Tactile Wire connecting to Edge AI badge */}
+
+            {/* Tactile Wire: connecting from the Edge AI badge down along the card edge */}
             <TactileWire
-              variant="curved-horizontal"
-              label="SIG: 3.3V"
-              className="absolute -left-36 top-6 z-20 hidden xl:block"
+              label="TEST POINT #01"
+              className="absolute -left-6 top-0 z-20 sm:-left-7"
             />
+
+            {/* Senior Dev // Edge AI Badge */}
             <span
               aria-hidden
-              className="label-mono absolute -left-3 -top-4 z-10 -rotate-3 rounded-md border border-well bg-coral px-3 py-1.5 text-xs font-bold text-night shadow-chip"
+              className="label-mono absolute -left-3 -top-4 z-30 -rotate-3 rounded-md border border-well bg-coral px-3 py-1.5 text-xs font-bold text-night shadow-chip"
             >
               SENIOR DEV // EDGE AI
             </span>
-            <div className="label-mono absolute -bottom-3 -right-3 z-10 flex items-center gap-2 rounded-md border border-line bg-surface/95 px-3 py-1.5 text-xs text-ink shadow-tactile backdrop-blur">
+
+            {/* Available Badge */}
+            <div className="label-mono absolute -bottom-3 -right-3 z-20 flex items-center gap-2 rounded-md border border-line bg-surface/95 px-3 py-1.5 text-xs text-ink shadow-tactile backdrop-blur">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-lime opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-lime" />
               </span>
               <span>7+ YRS • AVAILABLE</span>
             </div>
+
             <Image
               width={420}
               height={404}
@@ -148,11 +153,11 @@ const HeroSection = ({
               src={imageUrl}
               alt={imageAlt}
             />
-          </div>
 
-          {/* TinyML Benchtop Oscilloscope */}
-          <div className="mt-8 flex w-full justify-center lg:justify-end">
-            <TinyMLOscilloscope />
+            {/* TinyML Benchtop Oscilloscope resting on the bottom-left corner of the presentation card */}
+            <div className="absolute -bottom-10 -left-4 z-30 sm:-bottom-12 sm:-left-8">
+              <TinyMLOscilloscope className="w-[210px] sm:w-[260px] lg:w-[290px]" />
+            </div>
           </div>
         </motion.div>
       </div>

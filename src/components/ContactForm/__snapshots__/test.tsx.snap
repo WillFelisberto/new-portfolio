@@ -9,6 +9,254 @@ exports[`<ContactForm /> renders the form fields and button after animation 1`] 
     class="relative mx-auto w-full max-w-[420px]"
   >
     <div
+      class="absolute -top-24 right-0 z-20 hidden sm:block"
+    >
+      <div
+        aria-hidden="true"
+        class="relative inline-flex select-none flex-col items-center drop-shadow-[4px_6px_0px_#0B0716] filter"
+      >
+        <div
+          class="mb-2 flex items-center gap-1.5 rounded-md border border-line bg-night/95 px-2.5 py-1 text-center shadow-tactile backdrop-blur"
+        >
+          <span
+            class="h-1.5 w-1.5 animate-pulse rounded-full bg-lime"
+          />
+          <span
+            class="font-mono text-xs font-bold uppercase tracking-wider text-coral"
+          >
+            // TRANSMISSION: READY
+          </span>
+        </div>
+        <svg
+          class="overflow-visible h-24 w-24 sm:h-28 sm:w-28"
+          fill="none"
+          height="160"
+          viewBox="0 0 160 160"
+          width="160"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <ellipse
+            cx="80"
+            cy="144"
+            fill="#0B0716"
+            fill-opacity="0.4"
+            rx="52"
+            ry="12"
+          />
+          <path
+            d="M80 112 L126 126 L80 140 L34 126 Z"
+            fill="#1F1633"
+            stroke="#0B0716"
+            stroke-linejoin="round"
+            stroke-width="3"
+          />
+          <path
+            d="M50 82 L80 72 L110 82 L110 114 L80 126 L50 114 Z"
+            fill="#2B1D38"
+            stroke="#0B0716"
+            stroke-linejoin="round"
+            stroke-width="3"
+          />
+          <path
+            d="M80 72 L110 82 L110 114 L80 126 Z"
+            fill="#7553FF"
+            stroke="#0B0716"
+            stroke-linejoin="round"
+            stroke-width="3"
+          />
+          <rect
+            fill="#0B0716"
+            height="8"
+            rx="2"
+            stroke="#3E2C59"
+            stroke-width="1.5"
+            width="14"
+            x="88"
+            y="88"
+          />
+          <circle
+            class="animate-pulse"
+            cx="95"
+            cy="92"
+            fill="#C2EF4E"
+            r="2"
+          />
+          <path
+            d="M56 46 L80 34 L104 46 L104 70 L80 82 L56 70 Z"
+            fill="#1F1633"
+            stroke="#0B0716"
+            stroke-linejoin="round"
+            stroke-width="3"
+          />
+          <path
+            d="M56 46 L80 34 L104 46 L80 58 Z"
+            fill="#7553FF"
+            stroke="#0B0716"
+            stroke-linejoin="round"
+            stroke-width="3"
+          />
+          <path
+            d="M80 58 L104 46 L104 70 L80 82 Z"
+            fill="#6C5FC7"
+            stroke="#0B0716"
+            stroke-linejoin="round"
+            stroke-width="3"
+          />
+          <rect
+            fill="#0B0716"
+            height="8"
+            rx="2"
+            stroke="#3E2C59"
+            stroke-width="1.5"
+            width="16"
+            x="61"
+            y="56"
+          />
+          <circle
+            cx="65"
+            cy="60"
+            fill="#C2EF4E"
+            r="1.5"
+          />
+          <circle
+            cx="73"
+            cy="60"
+            fill="#C2EF4E"
+            r="1.5"
+          />
+          <path
+            d="M80 34 L80 16"
+            stroke="#0B0716"
+            stroke-linecap="round"
+            stroke-width="3"
+          />
+          <path
+            d="M77 26 C83 24, 77 22, 83 20"
+            fill="none"
+            stroke="#FA7FAA"
+            stroke-linecap="round"
+            stroke-width="2"
+          />
+          <circle
+            cx="80"
+            cy="12"
+            fill="#C2EF4E"
+            r="5"
+            stroke="#0B0716"
+            stroke-width="2.5"
+          />
+          <circle
+            class="animate-ping"
+            cx="80"
+            cy="12"
+            r="7"
+            stroke="#C2EF4E"
+            stroke-opacity="0.5"
+            stroke-width="1"
+          />
+          <line
+            stroke="#C2EF4E"
+            stroke-linecap="round"
+            stroke-width="2"
+            x1="72"
+            x2="68"
+            y1="8"
+            y2="4"
+          />
+          <line
+            stroke="#C2EF4E"
+            stroke-linecap="round"
+            stroke-width="2"
+            x1="88"
+            x2="92"
+            y1="8"
+            y2="4"
+          />
+          <line
+            stroke="#C2EF4E"
+            stroke-linecap="round"
+            stroke-width="2"
+            x1="80"
+            x2="80"
+            y1="3"
+            y2="0"
+          />
+          <circle
+            cx="112"
+            cy="84"
+            fill="#2B1D38"
+            r="5"
+            stroke="#0B0716"
+            stroke-width="2.5"
+          />
+          <path
+            d="M114 86 L130 96 L124 114"
+            fill="none"
+            stroke="#0B0716"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="5"
+          />
+          <path
+            d="M114 86 L130 96 L124 114"
+            fill="none"
+            stroke="#FA7FAA"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2.5"
+          />
+          <circle
+            cx="120"
+            cy="124"
+            fill="#1F1633"
+            r="16"
+            stroke="#0B0716"
+            stroke-width="3"
+          />
+          <circle
+            cx="120"
+            cy="124"
+            fill="#0B0716"
+            fill-opacity="0.6"
+            r="12"
+            stroke="#C2EF4E"
+            stroke-width="1.5"
+          />
+          <path
+            d="M112 118 Q120 114, 126 120"
+            fill="none"
+            stroke="#F6F6F8"
+            stroke-linecap="round"
+            stroke-opacity="0.8"
+            stroke-width="2"
+          />
+          <text
+            fill="#FA7FAA"
+            font-family="var(--font-mono, monospace)"
+            font-size="11"
+            font-weight="900"
+            text-anchor="middle"
+            x="120"
+            y="129"
+          >
+            ✉
+          </text>
+          <circle
+            cx="140"
+            cy="116"
+            fill="#C2EF4E"
+            r="2"
+          />
+          <circle
+            cx="102"
+            cy="136"
+            fill="#C2EF4E"
+            r="1.5"
+          />
+        </svg>
+      </div>
+    </div>
+    <div
       aria-hidden="true"
       class="pointer-events-none inline-flex select-none items-center justify-center drop-shadow-[2px_3px_0px_#0B0716] filter absolute -top-7 right-4 z-10"
       style="transform: rotate(-2deg);"
