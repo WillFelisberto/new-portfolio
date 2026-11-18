@@ -59,17 +59,17 @@ const CardItem = ({
 
           {education ? (
             <div
-              className={`relative flex h-[58px] w-[58px] items-center justify-center rounded-full border-2 p-2 shadow-chip transition-all ${
+              className={`relative flex h-[58px] w-[58px] items-center justify-center rounded-full border-2 p-1.5 shadow-chip transition-all ${
                 isHighlightedNode
-                  ? 'border-lime/90 bg-surface shadow-[0_0_12px_rgba(194,239,78,0.25)]'
-                  : 'border-line bg-surface'
+                  ? 'border-lime/90 bg-white shadow-[0_0_12px_rgba(194,239,78,0.35)]'
+                  : 'border-line bg-white'
               }`}
             >
               <Image
                 src={logoUrl}
                 width={42}
                 height={42}
-                className="h-full w-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]"
+                className="h-full w-full object-contain"
                 alt={`${title}`}
               />
               {degreeBadge && (
