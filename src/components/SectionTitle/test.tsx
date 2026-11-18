@@ -6,6 +6,7 @@ import SectionTitle from '.';
 jest.mock('framer-motion', () => ({
   motion: {
     span: ({ children, ...props }: any) => <span {...props}>{children}</span>,
+    h2: ({ children, ...props }: any) => <h2 {...props}>{children}</h2>,
     h3: ({ children, ...props }: any) => <h3 {...props}>{children}</h3>,
   },
 }));

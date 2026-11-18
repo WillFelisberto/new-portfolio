@@ -6,6 +6,7 @@ export type CMSIconProps = {
 const CMSIcon = ({ icon, name = 'Icon SVG' }: CMSIconProps) => {
   return (
     <div
+      role="img"
       aria-label={name}
       data-testid="cms-icon"
       dangerouslySetInnerHTML={{

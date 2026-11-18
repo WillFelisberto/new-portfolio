@@ -30,6 +30,7 @@ exports[`<KnownTech /> renders the tech name 1`] = `
     <div
       aria-label="React"
       data-testid="cms-icon"
+      role="img"
     >
       <svg
         fill="currentColor"

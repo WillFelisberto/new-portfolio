@@ -88,6 +88,13 @@ export async function generateMetadata() {
     alternates: {
       canonical: '/',
     },
+    icons: {
+      icon: [
+        { url: '/favicon.ico', sizes: 'any' },
+        { url: '/icon.svg', type: 'image/svg+xml' },
+      ],
+      apple: [{ url: '/apple-touch-icon.png' }],
+    },
     openGraph: {
       siteName: 'Willian de Souza Felisberto Portfolio',
       title: 'Willian de Souza Felisberto | Senior Frontend & Edge AI Engineer',

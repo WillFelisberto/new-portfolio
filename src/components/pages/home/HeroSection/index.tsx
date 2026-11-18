@@ -89,8 +89,9 @@ const HeroSection = ({
                   href={item.url!}
                   target="_blank"
                   rel="noreferrer"
+                  aria-label={item.name || 'Social profile'}
                 >
-                  <CMSIcon icon={item.icon!} />
+                  <CMSIcon icon={item.icon!} name={item.name} />
                 </a>
               ))}
             </div>
@@ -98,7 +99,7 @@ const HeroSection = ({
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 60, rotate: 4 }}
+          initial={{ opacity: 1, y: 24, rotate: 3 }}
           animate={{ opacity: 1, y: 0, rotate: 2 }}
           transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="relative flex origin-center flex-col items-center lg:items-end"
