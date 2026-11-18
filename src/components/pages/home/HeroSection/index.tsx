@@ -146,6 +146,7 @@ const HeroSection = ({
               className="relative h-[300px] w-[300px] rounded-xl border border-line object-cover shadow-card lg:h-[404px] lg:w-[420px]"
               src={imageUrl}
               alt={imageAlt}
+              sizes="(max-width: 1024px) 300px, 420px"
               priority
             />
           </div>
