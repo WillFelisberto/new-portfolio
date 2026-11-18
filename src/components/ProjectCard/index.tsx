@@ -40,7 +40,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
             height={304}
             alt={`Thumbnail do projeto ${project.title}`}
             className="h-full w-full rounded-lg object-cover"
-            unoptimized
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 420px"
           />
         </Link>
       </div>

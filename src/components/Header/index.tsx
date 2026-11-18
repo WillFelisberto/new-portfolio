@@ -38,7 +38,13 @@ const Header = ({ navItems = NAV_ITEMS }: HeaderProps) => {
       >
         <div className="container flex items-center justify-between">
           <Link href="/">
-            <Image width={58} height={49} src="/images/logo.svg" alt="Logo" />
+            <Image
+              width={58}
+              height={49}
+              src="/images/logo.svg"
+              alt="Logo"
+              priority
+            />
           </Link>
           <nav className="flex items-center gap-4 sm:gap-10">
             {navItems.map((item: NavItemType) => (

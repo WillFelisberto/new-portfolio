@@ -11,7 +11,7 @@ import { Media, Project } from '@/app/(payload)/payload-types';
 export function getProjectThumbnail(project: Partial<Project>): string {
   // Specific projects with custom captured screenshots
   if (project.slug === 'gatil-dos-resgatados' || project.slug === 'gatil-cms') {
-    return '/images/projects/gatil-cms.png';
+    return '/images/projects/gatil-cms.webp';
   }
 
   // Uploaded Payload media

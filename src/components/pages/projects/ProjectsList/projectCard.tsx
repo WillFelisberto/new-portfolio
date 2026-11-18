@@ -30,7 +30,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
           className="h-full w-full object-cover transition-transform duration-500 ease-out-expo group-hover:scale-105"
           alt={`Thumbnail do projeto ${project.title}`}
           src={getProjectThumbnail(project)}
-          unoptimized
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 380px"
         />
         <div className="absolute right-3 top-3">
           <span className="label-mono rounded border border-line/80 bg-night/85 px-2 py-0.5 text-xs text-coral backdrop-blur-sm">
