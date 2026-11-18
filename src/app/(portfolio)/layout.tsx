@@ -154,6 +154,7 @@ const knowledgeGraphSchema = {
         'Senior Frontend Developer & Edge AI Researcher with 7+ years of expertise in TypeScript, React, Next.js, Node.js, and TinyML.',
       address: {
         '@type': 'PostalAddress',
+        addressLocality: 'Araranguá',
         addressRegion: 'Santa Catarina',
         addressCountry: 'BR',
       },
@@ -173,11 +174,6 @@ const knowledgeGraphSchema = {
           name: 'Universidade Federal de Santa Catarina (UFSC)',
           sameAs: 'https://ufsc.br/',
         },
-        {
-          '@type': 'CollegeOrUniversity',
-          name: 'Universidade do Extremo Sul Catarinense (UNESC)',
-          sameAs: 'https://www.unesc.net/',
-        },
       ],
       sameAs: [
         'https://www.linkedin.com/in/willianfelisberto/',
@@ -191,35 +187,38 @@ const knowledgeGraphSchema = {
         'TypeScript',
         'JavaScript',
         'Node.js',
+        'KnockoutJS',
+        'Redux',
         'Edge AI',
         'TinyML',
         'ESP32',
         'TensorFlow Lite for Microcontrollers',
         'Computer Vision',
         'E-commerce Architecture',
+        'Oracle Cloud Commerce',
       ],
       hasCredential: [
         {
           '@type': 'EducationalOccupationalCredential',
-          name: 'Oracle Cloud Infrastructure 2024 Generative AI Certified Professional',
-          credentialCategory: 'Professional Certification',
-          recognizedBy: {
-            '@type': 'Organization',
-            name: 'Oracle',
-          },
-        },
-        {
-          '@type': 'EducationalOccupationalCredential',
-          name: 'Oracle Cloud Infrastructure 2024 Certified AI Foundations Associate',
-          credentialCategory: 'Associate Certification',
-          recognizedBy: {
-            '@type': 'Organization',
-            name: 'Oracle',
-          },
-        },
-        {
-          '@type': 'EducationalOccupationalCredential',
           name: 'Oracle Cloud Infrastructure 2024 Certified Foundations Associate',
+          credentialCategory: 'Foundations Certification',
+          recognizedBy: {
+            '@type': 'Organization',
+            name: 'Oracle',
+          },
+        },
+        {
+          '@type': 'EducationalOccupationalCredential',
+          name: 'Oracle Fusion AI Agent Studio Certified Foundations Associate - Rel 1',
+          credentialCategory: 'Specialist Certification',
+          recognizedBy: {
+            '@type': 'Organization',
+            name: 'Oracle',
+          },
+        },
+        {
+          '@type': 'EducationalOccupationalCredential',
+          name: 'Oracle Cloud Infrastructure 2023 Certified Foundations Associate',
           credentialCategory: 'Foundations Certification',
           recognizedBy: {
             '@type': 'Organization',
@@ -234,16 +233,23 @@ const knowledgeGraphSchema = {
       '@id': 'https://ieeexplore.ieee.org/document/10850239',
       name: 'Embedded TinyML for Driver Drowsiness Detection',
       headline: 'Embedded TinyML for Driver Drowsiness Detection',
-      author: {
-        '@id': 'https://www.willianfelisberto.com.br/#person',
-      },
+      author: [
+        {
+          '@id': 'https://www.willianfelisberto.com.br/#person',
+        },
+        {
+          '@type': 'Person',
+          name: 'Roderval Marcelino',
+        },
+      ],
       publisher: {
         '@type': 'Organization',
         name: 'IEEE',
         sameAs: 'https://www.ieee.org/',
       },
-      datePublished: '2024',
+      datePublished: '2026',
       url: 'https://ieeexplore.ieee.org/document/10850239',
+      sameAs: 'https://doi.org/10.1109/ColCACI71483.2026.11691515',
       description:
         'Evaluation of embedded TinyML architectures (custom CNN and MobileNetV1) running at 14+ FPS on-device on ESP32-S3 for real-time driver drowsiness detection.',
     },
