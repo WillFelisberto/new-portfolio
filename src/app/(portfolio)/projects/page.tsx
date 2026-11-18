@@ -8,8 +8,28 @@ export async function generateMetadata() {
     title: 'Projects | Willian de Souza Felisberto',
     description:
       'Explore full-stack web applications, technical challenges, and Edge AI projects developed by Willian de Souza Felisberto.',
-    keywords:
-      'Projects, Portfolio, Frontend Developer, React, Next.js, TypeScript, TinyML, Edge AI, Open Source',
+    keywords: [
+      'Projects',
+      'Portfolio',
+      'Frontend Developer',
+      'React',
+      'Next.js',
+      'TypeScript',
+      'TinyML',
+      'Edge AI',
+      'Open Source',
+    ],
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
     alternates: {
       canonical: '/projects',
     },
@@ -38,16 +58,66 @@ export async function generateMetadata() {
     },
   };
 }
+
 export default async function Projects() {
   const payload = await getPayload({ config: configPromise });
 
   const projectsResponse = await payload.find({
-    collection: 'projects', // Nome da coleção no Payload CMS
-    limit: 300, // Limite de resultados, como na query GraphQL
+    collection: 'projects',
+    limit: 300,
   });
+
+  const breadcrumbsSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://www.willianfelisberto.com.br',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Projects',
+        item: 'https://www.willianfelisberto.com.br/projects',
+      },
+    ],
+  };
+
+  const collectionSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Projects | Willian de Souza Felisberto',
+    description:
+      'Explore full-stack web applications, technical challenges, and Edge AI projects developed by Willian de Souza Felisberto.',
+    url: 'https://www.willianfelisberto.com.br/projects',
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: projectsResponse.docs.map((project, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: project.title,
+        url: `https://www.willianfelisberto.com.br/projects/${project.slug}`,
+      })),
+    },
+  };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbsSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(collectionSchema),
+        }}
+      />
       <PageIntroduction />
       <ProjectsList projects={projectsResponse.docs} />
     </>

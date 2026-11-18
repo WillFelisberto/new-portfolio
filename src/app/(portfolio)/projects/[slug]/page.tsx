@@ -44,6 +44,17 @@ export async function generateMetadata({
   return {
     title: projectTitle,
     description: projectDesc,
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
     alternates: {
       canonical: `/projects/${slug}`,
     },
@@ -90,9 +101,69 @@ export default async function Project({ params }: ProjectProps) {
   }
 
   const project = projectDocs[0];
+  const thumbnailUrl = getProjectThumbnail(project);
+
+  const breadcrumbsSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://www.willianfelisberto.com.br',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Projects',
+        item: 'https://www.willianfelisberto.com.br/projects',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: project.title,
+        item: `https://www.willianfelisberto.com.br/projects/${slug}`,
+      },
+    ],
+  };
+
+  const softwareSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: project.title,
+    headline: project.title,
+    description:
+      project.shortDescription ||
+      'Technical project developed by Willian de Souza Felisberto.',
+    url: `https://www.willianfelisberto.com.br/projects/${slug}`,
+    image: thumbnailUrl,
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'Cross-platform, Web, Microcontrollers',
+    author: {
+      '@type': 'Person',
+      name: 'Willian de Souza Felisberto',
+      url: 'https://www.willianfelisberto.com.br',
+    },
+    ...(project.githubUrl && {
+      codeRepository: project.githubUrl,
+    }),
+  };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbsSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(softwareSchema),
+        }}
+      />
       <ProjectDetails project={project} />
       <ProjectSections sections={project.sections} />
     </>
