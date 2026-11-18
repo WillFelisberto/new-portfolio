@@ -9,9 +9,17 @@ import {
 
 type ExperienceItemProps = {
   experience: Workexperience;
+  isFirst?: boolean;
+  isLast?: boolean;
+  index?: number;
 };
 
-const ExperienceItem = ({ experience }: ExperienceItemProps) => {
+const ExperienceItem = ({
+  experience,
+  isFirst,
+  isLast,
+  index = 0,
+}: ExperienceItemProps) => {
   const {
     startDate,
     endDate,
@@ -40,6 +48,9 @@ const ExperienceItem = ({ experience }: ExperienceItemProps) => {
     </>
   );
 
+  // Technical bus label for the jumper wire (e.g. // BUS.01, // BUS.02, ...)
+  const jumperLabel = `// BUS.0${index + 1}`;
+
   return (
     <CardItem
       logoUrl={(companyLogo as Media).url!}
@@ -50,6 +61,10 @@ const ExperienceItem = ({ experience }: ExperienceItemProps) => {
       description={description}
       linkUrl={companyUrl!}
       additionalContent={additionalContent}
+      isFirst={isFirst}
+      isLast={isLast}
+      jumperColor="violet"
+      jumperLabel={jumperLabel}
     />
   );
 };

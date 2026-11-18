@@ -5,6 +5,8 @@ import {
   TactileWire,
   TinyMLOscilloscope,
   EmptyStateProbeRobot,
+  TactileNodeConnector,
+  TactileJumperWire,
 } from './index';
 
 describe('TactileIllustrations', () => {
@@ -67,6 +69,34 @@ describe('TactileIllustrations', () => {
         screen.getByText('// NO SIGNALS DETECTED [RETRY PROBE]'),
       ).toBeInTheDocument();
       expect(screen.getByText('✉')).toBeInTheDocument();
+    });
+  });
+
+  describe('<TactileNodeConnector />', () => {
+    it('renders top node connector SVG', () => {
+      const { container } = render(
+        <TactileNodeConnector position="top" color="lime" />,
+      );
+      expect(container.querySelector('svg')).toBeInTheDocument();
+    });
+
+    it('renders bottom node connector with pulsing indicator', () => {
+      const { container } = render(
+        <TactileNodeConnector position="bottom" color="violet" />,
+      );
+      expect(container.querySelector('svg')).toBeInTheDocument();
+    });
+  });
+
+  describe('<TactileJumperWire />', () => {
+    it('renders continuous jumper wire with optional label', () => {
+      render(<TactileJumperWire color="violet" label="// BUS.01" />);
+      expect(screen.getByText('// BUS.01')).toBeInTheDocument();
+    });
+
+    it('renders grounded termination lug when isLast is true', () => {
+      render(<TactileJumperWire color="lime" isLast />);
+      expect(screen.getByText('GND')).toBeInTheDocument();
     });
   });
 });

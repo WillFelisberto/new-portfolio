@@ -4,9 +4,11 @@ import { Education, Media } from '@/app/(payload)/payload-types';
 
 type EducationCardProps = {
   education: Education;
+  isFirst?: boolean;
+  isLast?: boolean;
 };
 
-const EducationCard = ({ education }: EducationCardProps) => {
+const EducationCard = ({ education, isFirst, isLast }: EducationCardProps) => {
   const {
     startDate,
     endDate,
@@ -20,6 +22,11 @@ const EducationCard = ({ education }: EducationCardProps) => {
   const { formattedStartDate, formattedEndDate, formattedDuration } =
     formatDateRange(startDate!, endDate!);
 
+  // Distinguish academic milestones with authentic circuit label tags
+  const jumperLabel = courseName?.toLowerCase().includes('mestrado')
+    ? '// EDGE AI [UFSC]'
+    : '// B.SC. TIC';
+
   return (
     <CardItem
       logoUrl={(educationLogo as Media).url!}
@@ -30,6 +37,10 @@ const EducationCard = ({ education }: EducationCardProps) => {
       dateRange={`${formattedStartDate} • ${formattedEndDate} • (${formattedDuration})`}
       description={description}
       linkUrl={url!}
+      isFirst={isFirst}
+      isLast={isLast}
+      jumperColor="lime"
+      jumperLabel={jumperLabel}
     />
   );
 };
