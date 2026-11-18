@@ -2,75 +2,49 @@
 
 exports[`<KnownTech /> renders the tech name 1`] = `
 <div
-  class="card-tactile card-tactile-interactive group relative flex flex-col justify-between gap-3 p-4 transition-all hover:border-violet-electric sm:p-5"
+  class="card-tactile card-tactile-interactive group relative flex items-center justify-between p-4 transition-all hover:border-violet-electric sm:p-5"
 >
   <div
-    class="flex items-center justify-between border-b border-line/60 pb-2.5"
+    class="flex items-center gap-3"
   >
     <span
-      class="label-mono text-[10px] tracking-widest text-dim transition-colors group-hover:text-muted"
-    >
-      // U05 :: FRONTEND
-    </span>
-    <div
-      class="flex items-center gap-1.5"
-      title="Core Specialization"
+      aria-hidden="true"
+      class="relative flex h-2 w-2 shrink-0 items-center justify-center"
     >
       <span
-        class="relative flex h-2 w-2"
-      >
-        <span
-          class="absolute inline-flex h-full w-full animate-ping rounded-full bg-lime opacity-75"
-        />
-        <span
-          class="relative inline-flex h-2 w-2 rounded-full bg-lime"
-        />
-      </span>
-    </div>
-  </div>
-  <div
-    class="my-1 flex items-center gap-3.5"
-  >
-    <div
-      class="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-line bg-well p-2 text-ink shadow-inner transition-colors group-hover:border-lime/50 group-hover:text-lime"
-    >
-      <div
-        aria-label="React"
-        data-testid="cms-icon"
-      >
-        <svg
-          fill="currentColor"
-          height="1em"
-          stroke="currentColor"
-          stroke-width="0"
-          viewBox="0 0 1024 1024"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M847.7 112H176.3c-35.5 0-64.3 28.8-64.3 64.3v671.4c0 35.5 28.8 64.3 64.3 64.3h671.4c35.5 0 64.3-28.8 64.3-64.3V176.3c0-35.5-28.8-64.3-64.3-64.3zm0 736c-447.8-.1-671.7-.2-671.7-.3.1-447.8.2-671.7.3-671.7 447.8.1 671.7.2 671.7.3-.1 447.8-.2 671.7-.3 671.7zM230.6 411.9h118.7v381.8H230.6zm59.4-52.2c37.9 0 68.8-30.8 68.8-68.8a68.8 68.8 0 1 0-137.6 0c-.1 38 30.7 68.8 68.8 68.8zm252.3 245.1c0-49.8 9.5-98 71.2-98 60.8 0 61.7 56.9 61.7 101.2v185.7h118.6V584.3c0-102.8-22.2-181.9-142.3-181.9-57.7 0-96.4 31.7-112.3 61.7h-1.6v-52.2H423.7v381.8h118.6V604.8z"
-          />
-        </svg>
-      </div>
-    </div>
-    <div
-      class="min-w-0 flex-1"
-    >
-      <p
-        class="label-mono truncate font-display text-base font-bold text-ink transition-colors group-hover:text-lime sm:text-lg"
-      >
-        React
-      </p>
-    </div>
-  </div>
-  <div
-    class="mt-1 flex items-center justify-between rounded border border-line/40 bg-surface/80 px-2 py-1"
-  >
-    <span
-      class="label-mono truncate text-[10px] text-dim transition-colors group-hover:text-ink/80"
-    >
-      REACT 19 • COMPONENT LIBS
+        class="absolute inline-flex h-full w-full animate-ping rounded-full bg-lime/40 opacity-75 transition-opacity group-hover:bg-lime group-hover:opacity-100"
+      />
+      <span
+        class="relative inline-flex h-1.5 w-1.5 rounded-full bg-lime/80 shadow-[0_0_6px_rgba(194,239,78,0.5)] transition-all group-hover:bg-lime group-hover:shadow-[0_0_8px_rgba(194,239,78,0.9)]"
+      />
     </span>
+    <p
+      class="label-mono truncate text-xs font-medium text-ink transition-colors group-hover:text-lime sm:text-sm"
+    >
+      React
+    </p>
+  </div>
+  <div
+    class="flex h-9 w-9 shrink-0 items-center justify-center rounded border border-line bg-well p-1.5 text-muted shadow-inner transition-colors group-hover:border-lime/40 group-hover:text-lime"
+  >
+    <div
+      aria-label="React"
+      data-testid="cms-icon"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 1024 1024"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M847.7 112H176.3c-35.5 0-64.3 28.8-64.3 64.3v671.4c0 35.5 28.8 64.3 64.3 64.3h671.4c35.5 0 64.3-28.8 64.3-64.3V176.3c0-35.5-28.8-64.3-64.3-64.3zm0 736c-447.8-.1-671.7-.2-671.7-.3.1-447.8.2-671.7.3-671.7 447.8.1 671.7.2 671.7.3-.1 447.8-.2 671.7-.3 671.7zM230.6 411.9h118.7v381.8H230.6zm59.4-52.2c37.9 0 68.8-30.8 68.8-68.8a68.8 68.8 0 1 0-137.6 0c-.1 38 30.7 68.8 68.8 68.8zm252.3 245.1c0-49.8 9.5-98 71.2-98 60.8 0 61.7 56.9 61.7 101.2v185.7h118.6V584.3c0-102.8-22.2-181.9-142.3-181.9-57.7 0-96.4 31.7-112.3 61.7h-1.6v-52.2H423.7v381.8h118.6V604.8z"
+        />
+      </svg>
+    </div>
   </div>
 </div>
 `;
