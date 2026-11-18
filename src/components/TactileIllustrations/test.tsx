@@ -21,14 +21,14 @@ describe('TactileIllustrations', () => {
   });
 
   describe('<TactileWire />', () => {
-    it('renders horizontal curved variant with label', () => {
-      render(<TactileWire label="SIG: 3.3V" />);
-      expect(screen.getByText('SIG: 3.3V')).toBeInTheDocument();
+    it('renders tactile wire with default TEST POINT #01 label', () => {
+      render(<TactileWire />);
+      expect(screen.getByText('TEST POINT #01')).toBeInTheDocument();
     });
 
-    it('renders vertical drape variant', () => {
-      const { container } = render(<TactileWire variant="vertical-drape" />);
-      expect(container.querySelector('svg')).toBeInTheDocument();
+    it('renders tactile wire with custom label', () => {
+      render(<TactileWire label="SIG: 3.3V" />);
+      expect(screen.getByText('SIG: 3.3V')).toBeInTheDocument();
     });
   });
 
@@ -50,10 +50,23 @@ describe('TactileIllustrations', () => {
   });
 
   describe('<EmptyStateProbeRobot />', () => {
-    it('renders the isometric probe robot SVG', () => {
+    it('renders the isometric probe robot SVG with default symbol', () => {
       const { container } = render(<EmptyStateProbeRobot />);
       expect(container.querySelector('svg')).toBeInTheDocument();
       expect(screen.getByText('?')).toBeInTheDocument();
+    });
+
+    it('renders with custom statusBadge and symbol', () => {
+      render(
+        <EmptyStateProbeRobot
+          statusBadge="// NO SIGNALS DETECTED [RETRY PROBE]"
+          symbol="✉"
+        />,
+      );
+      expect(
+        screen.getByText('// NO SIGNALS DETECTED [RETRY PROBE]'),
+      ).toBeInTheDocument();
+      expect(screen.getByText('✉')).toBeInTheDocument();
     });
   });
 });

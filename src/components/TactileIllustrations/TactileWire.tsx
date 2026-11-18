@@ -4,40 +4,44 @@ import { cn } from '@/lib/utils';
 export type TactileWireProps = {
   className?: string;
   label?: string;
-  variant?: 'curved-horizontal' | 'vertical-drape';
 };
 
 /**
- * Tactile Signal Cable & Test Probe in pure SVG.
- * Inspired by retro electronics test benches (Sentry S.C.R.A.P.S. aesthetic).
- * Connects visual components with a patch cord, crocodile clip/lug and blinking LED.
+ * Tactile Signal Patch Cable & Debug Probe in pure SVG.
+ * Hugs the container border from the badge down to a physical test point clamp.
+ * Features:
+ * - Screw mount terminal connected to the badge.
+ * - Smooth vertical curved cable draping along the container edge.
+ * - Test point clamp (TEST POINT #01) gripping the card border.
+ * - Pulsing lime LED indicator (#C2EF4E).
+ * - Mobile-first: stays within ~36px width, hugging the border with 0 horizontal overflow.
  */
 export const TactileWire: React.FC<TactileWireProps> = ({
   className,
-  label = 'SIG: 3.3V // TP-01',
-  variant = 'curved-horizontal',
+  label = 'TEST POINT #01',
 }) => {
-  if (variant === 'vertical-drape') {
-    return (
-      <div
-        aria-hidden="true"
-        className={cn(
-          'pointer-events-none inline-block select-none',
-          className,
-        )}
+  return (
+    <div
+      aria-hidden="true"
+      className={cn(
+        'pointer-events-none absolute z-20 select-none overflow-visible drop-shadow-[2px_3px_0px_#0B0716] filter',
+        className,
+      )}
+    >
+      <svg
+        width="44"
+        height="150"
+        viewBox="0 0 44 150"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-[150px] w-[44px] overflow-visible"
       >
-        <svg
-          width="44"
-          height="120"
-          viewBox="0 0 44 120"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          {/* Top Lug / Screw Mount */}
+        {/* Top Screw Lug Mount (Anchored to Badge) */}
+        <g id="top-mount">
           <rect
-            x="12"
+            x="14"
             y="2"
-            width="20"
+            width="18"
             height="14"
             rx="3"
             fill="#2B1D38"
@@ -45,7 +49,7 @@ export const TactileWire: React.FC<TactileWireProps> = ({
             strokeWidth="2.5"
           />
           <circle
-            cx="22"
+            cx="23"
             cy="9"
             r="3.5"
             fill="#C2EF4E"
@@ -53,166 +57,107 @@ export const TactileWire: React.FC<TactileWireProps> = ({
             strokeWidth="1.5"
           />
           <line
-            x1="20"
+            x1="21"
             y1="9"
-            x2="24"
+            x2="25"
             y2="9"
             stroke="#0B0716"
             strokeWidth="1.5"
           />
+        </g>
 
-          {/* Hard Shadow for Cable */}
-          <path
-            d="M22 16 C 22 45, 38 60, 36 90 C 35 105, 26 110, 24 116"
-            stroke="#0B0716"
-            strokeWidth="6"
-            strokeLinecap="round"
-            fill="none"
-          />
-
-          {/* Electric Violet Cable */}
-          <path
-            d="M22 16 C 22 45, 38 60, 36 90 C 35 105, 26 110, 24 116"
-            stroke="#7553FF"
-            strokeWidth="3.5"
-            strokeLinecap="round"
-            fill="none"
-          />
-
-          {/* Gloss Line */}
-          <path
-            d="M22 16 C 22 45, 38 60, 36 90 C 35 105, 26 110, 24 116"
-            stroke="#F6F6F8"
-            strokeWidth="1"
-            strokeLinecap="round"
-            strokeOpacity="0.4"
-            fill="none"
-          />
-
-          {/* Bottom Alligator Clip Probe with Pulsing LED */}
-          <rect
-            x="14"
-            y="106"
-            width="20"
-            height="10"
-            rx="2"
-            fill="#1F1633"
-            stroke="#0B0716"
-            strokeWidth="2"
-          />
-          <circle
-            cx="24"
-            cy="111"
-            r="3"
-            fill="#C2EF4E"
-            className="animate-pulse"
-          />
-        </svg>
-      </div>
-    );
-  }
-
-  return (
-    <div
-      aria-hidden="true"
-      className={cn('pointer-events-none inline-block select-none', className)}
-    >
-      <svg
-        width="190"
-        height="56"
-        viewBox="0 0 190 56"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-auto w-full max-w-[190px] overflow-visible"
-      >
-        {/* Left Mounting Lug */}
-        <rect
-          x="4"
-          y="18"
-          width="16"
-          height="20"
-          rx="3"
-          fill="#2B1D38"
-          stroke="#0B0716"
-          strokeWidth="2.5"
-        />
-        <circle
-          cx="12"
-          cy="28"
-          r="4"
-          fill="#C2EF4E"
-          stroke="#0B0716"
-          strokeWidth="1.5"
-        />
-        <line
-          x1="9"
-          y1="28"
-          x2="15"
-          y2="28"
-          stroke="#0B0716"
-          strokeWidth="1.5"
-        />
-
-        {/* Cable Hard Physical Shadow */}
+        {/* Cable Hard Physical Shadow underneath */}
         <path
-          d="M20 28 C 55 52, 100 48, 145 22 C 158 14, 168 18, 172 24"
+          d="M 23 16 C 10 35, 6 65, 14 95 C 18 110, 26 122, 28 132"
           stroke="#0B0716"
-          strokeWidth="7"
+          strokeWidth="6"
           strokeLinecap="round"
           fill="none"
         />
 
-        {/* Cable Main Body (Electric Violet) */}
+        {/* Electric Violet Flexible Cable Body */}
         <path
-          d="M20 28 C 55 52, 100 48, 145 22 C 158 14, 168 18, 172 24"
+          d="M 23 16 C 10 35, 6 65, 14 95 C 18 110, 26 122, 28 132"
           stroke="#7553FF"
-          strokeWidth="4"
+          strokeWidth="3.5"
           strokeLinecap="round"
           fill="none"
         />
 
-        {/* Highlight Stripe on Cable */}
+        {/* Cable Specular Gloss Line */}
         <path
-          d="M22 27 C 56 50, 100 46, 144 21 C 157 13, 167 17, 170 23"
+          d="M 23 16 C 10 35, 6 65, 14 95 C 18 110, 26 122, 28 132"
           stroke="#F6F6F8"
-          strokeWidth="1.2"
+          strokeWidth="1"
           strokeLinecap="round"
-          strokeOpacity="0.45"
+          strokeOpacity="0.4"
           fill="none"
         />
 
-        {/* Right Probe Terminal */}
-        <g transform="translate(164, 14)">
-          {/* Clamp body */}
+        {/* Cable Retention Collar / Ferrule */}
+        <rect
+          x="22"
+          y="124"
+          width="12"
+          height="6"
+          rx="1"
+          fill="#3E2C59"
+          stroke="#0B0716"
+          strokeWidth="1.5"
+        />
+
+        {/* Bottom Test Point Clamp (Gripping the Card Border) */}
+        <g id="test-point-clamp" transform="translate(14, 128)">
+          {/* Clamp Base Body */}
           <rect
             x="0"
-            y="2"
-            width="22"
-            height="16"
+            y="0"
+            width="28"
+            height="18"
             rx="3"
             fill="#1F1633"
             stroke="#0B0716"
             strokeWidth="2.5"
           />
-          {/* Teeth / Clamp detail */}
+
+          {/* Crocodile Teeth / Notch gripping the 1px line */}
           <path
-            d="M22 6 L25 8 L22 10 L25 12 L22 14"
+            d="M 28 4 L 32 6 L 28 8 L 32 10 L 28 12 L 32 14"
             stroke="#FA7FAA"
             strokeWidth="2"
             fill="none"
           />
-          {/* Pulsing Signal LED */}
+
+          {/* Test Point Screw Terminal */}
           <circle
             cx="8"
-            cy="10"
+            cy="9"
             r="3"
+            fill="#2B1D38"
+            stroke="#0B0716"
+            strokeWidth="1"
+          />
+          <line
+            x1="6.5"
+            y1="9"
+            x2="9.5"
+            y2="9"
+            stroke="#C2EF4E"
+            strokeWidth="1"
+          />
+
+          {/* Blinking Signal LED in Lime */}
+          <circle
+            cx="20"
+            cy="9"
+            r="3.5"
             fill="#C2EF4E"
             className="animate-pulse"
           />
           <circle
-            cx="8"
-            cy="10"
-            r="5"
+            cx="20"
+            cy="9"
+            r="5.5"
             stroke="#C2EF4E"
             strokeWidth="1"
             strokeOpacity="0.5"
@@ -220,14 +165,14 @@ export const TactileWire: React.FC<TactileWireProps> = ({
           />
         </g>
 
-        {/* Micro Technical Tag */}
+        {/* Micro Technical Tag on Clamp */}
         {label && (
-          <g transform="translate(68, 6)">
+          <g id="tech-label" transform="translate(-18, 114)">
             <rect
               x="0"
               y="0"
               width="68"
-              height="14"
+              height="12"
               rx="2"
               fill="#0B0716"
               stroke="#3E2C59"
@@ -235,10 +180,10 @@ export const TactileWire: React.FC<TactileWireProps> = ({
             />
             <text
               x="34"
-              y="10"
+              y="8.5"
               textAnchor="middle"
               fill="#C2EF4E"
-              fontSize="7.5"
+              fontSize="6.5"
               fontWeight="700"
               fontFamily="var(--font-mono, monospace)"
               letterSpacing="0.06em"

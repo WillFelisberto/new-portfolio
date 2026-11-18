@@ -31,14 +31,10 @@ const EmptyState: React.FC<EmptyStateProps> = ({
         className,
       )}
     >
-      <EmptyStateProbeRobot className="mb-2" />
-
-      <div className="flex items-center gap-2">
-        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-lime" />
-        <span className="font-mono text-xs font-semibold uppercase tracking-wider text-coral">
-          {'// PROBE REPORT'}
-        </span>
-      </div>
+      <EmptyStateProbeRobot
+        statusBadge="// NO SIGNALS DETECTED [RETRY PROBE]"
+        className="mb-2"
+      />
 
       <h3 className="font-display text-2xl font-extrabold text-ink">{title}</h3>
       <p className="max-w-[42ch] text-sm leading-relaxed text-muted sm:text-base">
