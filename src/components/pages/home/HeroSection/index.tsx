@@ -103,6 +103,7 @@ const HeroSection = ({
           transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="relative flex origin-center flex-col items-center lg:items-end"
         >
+          {/* Photo Card Container */}
           <div className="relative">
             <span
               aria-hidden
@@ -115,18 +116,11 @@ const HeroSection = ({
               angle={12}
               className="absolute -right-3 -top-3 z-20"
             />
-            {/* Workbench Tape: Bottom Right */}
-            <WorkbenchTape
-              color="lime"
-              label="PIN #04"
-              angle={-8}
-              className="absolute -bottom-3 right-6 z-20"
-            />
 
             {/* Tactile Wire: connecting from the Edge AI badge down along the card edge */}
             <TactileWire
               label="TEST POINT #01"
-              className="absolute -left-6 top-0 z-20 sm:-left-7"
+              className="absolute -left-3 top-0 z-20 sm:-left-6"
             />
 
             {/* Senior Dev // Edge AI Badge */}
@@ -152,12 +146,13 @@ const HeroSection = ({
               className="relative h-[300px] w-[300px] rounded-xl border border-line object-cover shadow-card lg:h-[404px] lg:w-[420px]"
               src={imageUrl}
               alt={imageAlt}
+              priority
             />
+          </div>
 
-            {/* TinyML Benchtop Oscilloscope resting on the bottom-left corner of the presentation card */}
-            <div className="absolute -bottom-10 -left-4 z-30 sm:-bottom-12 sm:-left-8">
-              <TinyMLOscilloscope className="w-[210px] sm:w-[260px] lg:w-[290px]" />
-            </div>
+          {/* TinyML Benchtop Oscilloscope resting on the workbench shelf directly below the photo */}
+          <div className="mt-7 flex w-full max-w-[300px] justify-center sm:max-w-[340px] lg:max-w-[420px] lg:justify-end">
+            <TinyMLOscilloscope className="w-full max-w-[280px] sm:max-w-[310px]" />
           </div>
         </motion.div>
       </div>

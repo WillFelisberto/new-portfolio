@@ -165,9 +165,9 @@ export const TactileWire: React.FC<TactileWireProps> = ({
           />
         </g>
 
-        {/* Micro Technical Tag on Clamp */}
+        {/* Micro Technical Tag on Clamp (Centered above the clamp) */}
         {label && (
-          <g id="tech-label" transform="translate(-18, 114)">
+          <g id="tech-label" transform="translate(-6, 114)">
             <rect
               x="0"
               y="0"

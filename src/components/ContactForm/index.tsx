@@ -66,9 +66,16 @@ const ContactForm = ({
       className="flex items-center justify-center border-t border-line bg-well/60 px-6 py-16 md:py-32"
       id="contact"
     >
-      <div className="relative mx-auto w-full max-w-[420px]">
-        {/* Robot Probe perched on the top-right corner of the contact form */}
-        <div className="absolute -top-24 right-0 z-20 hidden sm:block">
+      <div className="relative mx-auto w-full max-w-[440px]">
+        {/* Unobstructed Section Title */}
+        <SectionTitle
+          subtitle={subtitle}
+          title={title}
+          className="items-center text-center"
+        />
+
+        {/* Robot Probe Dispatch Station in clean normal flow */}
+        <div className="mt-8 flex justify-center">
           <EmptyStateProbeRobot
             size="sm"
             symbol="✉"
@@ -76,47 +83,45 @@ const ContactForm = ({
           />
         </div>
 
-        <WorkbenchTape
-          color="lime"
-          label="// DISPATCH MSG"
-          angle={-2}
-          className="absolute -top-7 right-4 z-10"
-        />
-        <SectionTitle
-          subtitle={subtitle}
-          title={title}
-          className="items-center text-center"
-        />
-        <motion.form
-          className="mt-12 flex w-full flex-col gap-4"
-          onSubmit={handleSubmit(onSubmit)}
-          {...fadeUpAnimation}
-        >
-          <input
-            placeholder={labelName}
-            className="h-14 w-full rounded-lg border border-line bg-surface p-4 text-ink shadow-[inset_0_2px_0_rgba(0,0,0,0.35)] transition-colors placeholder:text-dim hover:border-violet focus:border-lime focus:outline-none focus:ring-2 focus:ring-lime/40"
-            {...register('name')}
+        {/* Tactile Form Card pinned with Workbench Tape */}
+        <div className="relative mt-8">
+          <WorkbenchTape
+            color="lime"
+            label="// DISPATCH MSG"
+            angle={-2}
+            className="absolute -top-3.5 right-6 z-10"
           />
-          <input
-            placeholder="E-mail"
-            type="email"
-            className="h-14 w-full rounded-lg border border-line bg-surface p-4 text-ink shadow-[inset_0_2px_0_rgba(0,0,0,0.35)] transition-colors placeholder:text-dim hover:border-violet focus:border-lime focus:outline-none focus:ring-2 focus:ring-lime/40"
-            {...register('email')}
-          />
-          <textarea
-            placeholder={LabelMensagem}
-            className="h-[138px] w-full resize-none rounded-lg border border-line bg-surface p-4 text-ink shadow-[inset_0_2px_0_rgba(0,0,0,0.35)] transition-colors placeholder:text-dim hover:border-violet focus:border-lime focus:outline-none focus:ring-2 focus:ring-lime/40"
-            {...register('message')}
-            maxLength={500}
-          />
+          <motion.form
+            className="card-tactile flex w-full flex-col gap-4 rounded-xl border border-line bg-surface/50 p-5 shadow-card sm:p-8"
+            onSubmit={handleSubmit(onSubmit)}
+            {...fadeUpAnimation}
+          >
+            <input
+              placeholder={labelName}
+              className="h-14 w-full rounded-lg border border-line bg-surface p-4 text-ink shadow-[inset_0_2px_0_rgba(0,0,0,0.35)] transition-colors placeholder:text-dim hover:border-violet focus:border-lime focus:outline-none focus:ring-2 focus:ring-lime/40"
+              {...register('name')}
+            />
+            <input
+              placeholder="E-mail"
+              type="email"
+              className="h-14 w-full rounded-lg border border-line bg-surface p-4 text-ink shadow-[inset_0_2px_0_rgba(0,0,0,0.35)] transition-colors placeholder:text-dim hover:border-violet focus:border-lime focus:outline-none focus:ring-2 focus:ring-lime/40"
+              {...register('email')}
+            />
+            <textarea
+              placeholder={LabelMensagem}
+              className="h-[138px] w-full resize-none rounded-lg border border-line bg-surface p-4 text-ink shadow-[inset_0_2px_0_rgba(0,0,0,0.35)] transition-colors placeholder:text-dim hover:border-violet focus:border-lime focus:outline-none focus:ring-2 focus:ring-lime/40"
+              {...register('message')}
+              maxLength={500}
+            />
 
-          <div className="mx-auto mt-6 w-max">
-            <Button type="submit" disabled={isSubmitting}>
-              {button}
-              <HiArrowNarrowRight size={18} />
-            </Button>
-          </div>
-        </motion.form>
+            <div className="mx-auto mt-4 w-max">
+              <Button type="submit" disabled={isSubmitting}>
+                {button}
+                <HiArrowNarrowRight size={18} />
+              </Button>
+            </div>
+          </motion.form>
+        </div>
       </div>
     </section>
   );
