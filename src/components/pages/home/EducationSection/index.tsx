@@ -25,11 +25,13 @@ export const EducationSection = ({
         </p>
       </div>
 
-      <div className="flex flex-1 flex-col gap-4">
-        {educations?.map((edu) => (
+      <div className="flex flex-1 flex-col">
+        {educations?.map((edu, index) => (
           <EducationCard
             key={`education-${edu.id || edu.courseName || edu.title}`}
             education={edu}
+            isFirst={index === 0}
+            isLast={index === educations.length - 1}
           />
         ))}
       </div>

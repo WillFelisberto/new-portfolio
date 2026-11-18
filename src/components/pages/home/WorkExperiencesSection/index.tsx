@@ -21,11 +21,14 @@ const WorkExperienceSection = ({ experiences }: WorkExperienceSection) => {
         </p>
       </div>
 
-      <div className="flex flex-col gap-4">
-        {experiences?.map((experience) => (
+      <div className="flex flex-col">
+        {experiences?.map((experience, index) => (
           <ExperienceItem
             key={experience.companyName}
             experience={experience}
+            isFirst={index === 0}
+            isLast={index === experiences.length - 1}
+            index={index}
           />
         ))}
       </div>

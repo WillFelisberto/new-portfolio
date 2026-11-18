@@ -4,6 +4,10 @@ import { fadeUpAnimation } from '@/lib/animations';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import RichTextComponent from '../RichText';
+import {
+  TactileNodeConnector,
+  TactileJumperWire,
+} from '@/components/TactileIllustrations';
 
 export type CardItemProps = {
   logoUrl: string;
@@ -15,6 +19,10 @@ export type CardItemProps = {
   linkUrl?: string;
   education?: boolean;
   additionalContent?: React.ReactNode;
+  isFirst?: boolean;
+  isLast?: boolean;
+  jumperColor?: 'lime' | 'violet' | 'coral';
+  jumperLabel?: string;
 };
 
 const CardItem = ({
@@ -27,40 +35,59 @@ const CardItem = ({
   linkUrl,
   education = false,
   additionalContent,
+  isLast = false,
+  jumperColor,
+  jumperLabel,
 }: CardItemProps) => {
+  const resolvedJumperColor = jumperColor || (education ? 'lime' : 'violet');
+
   return (
     <motion.div
       className={`grid ${education ? 'grid-cols-[60px,1fr]' : 'grid-cols-[40px,1fr]'} gap-4 md:gap-8`}
       {...fadeUpAnimation}
       transition={{ duration: 0.5 }}
     >
-      <div className="flex flex-col items-center gap-4">
-        {education ? (
-          <div className="h-[60px] w-[60px] rounded-full border border-line bg-ink p-0.5 shadow-chip">
-            <Image
-              src={logoUrl}
-              width={60}
-              height={60}
-              className="h-[60px] w-[60px] rounded-full"
-              alt={`${title}`}
-            />
-          </div>
-        ) : (
-          <div className="rounded-full border border-line bg-surface p-0.5 shadow-chip">
-            <Image
-              src={logoUrl}
-              width={40}
-              height={40}
-              className="rounded-full"
-              alt={logoAlt}
-            />
-          </div>
-        )}
+      <div className="relative flex h-full flex-col items-center">
+        {/* Hardware Node with Top & Bottom DuPont Connectors */}
+        <div className="relative my-2.5">
+          {/* Top Ingress Connector */}
+          <TactileNodeConnector position="top" color={resolvedJumperColor} />
 
-        <div className="h-full w-px bg-line" />
+          {education ? (
+            <div className="h-[60px] w-[60px] rounded-full border-2 border-line bg-ink p-0.5 shadow-chip">
+              <Image
+                src={logoUrl}
+                width={60}
+                height={60}
+                className="h-[60px] w-[60px] rounded-full object-cover"
+                alt={`${title}`}
+              />
+            </div>
+          ) : (
+            <div className="rounded-full border-2 border-line bg-surface p-0.5 shadow-chip">
+              <Image
+                src={logoUrl}
+                width={40}
+                height={40}
+                className="rounded-full object-cover"
+                alt={logoAlt}
+              />
+            </div>
+          )}
+
+          {/* Bottom Egress Connector */}
+          <TactileNodeConnector position="bottom" color={resolvedJumperColor} />
+        </div>
+
+        {/* Insulated Jumper Wire connecting to next node or ground */}
+        <TactileJumperWire
+          color={resolvedJumperColor}
+          label={jumperLabel}
+          isLast={isLast}
+        />
       </div>
 
-      <div>
+      <div className={isLast ? '' : 'pb-8 sm:pb-10'}>
         <div className="flex flex-col gap-2 text-sm sm:text-base">
           {linkUrl ? (
             <a
