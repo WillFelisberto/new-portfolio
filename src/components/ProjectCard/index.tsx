@@ -8,12 +8,21 @@ import { fadeUpAnimation, techBadgeAnimation } from '@/lib/animations';
 import { Project, Technology } from '@/app/(payload)/payload-types';
 import { getProjectThumbnail } from '@/lib/project-image';
 import { WorkbenchTape } from '@/components/TactileIllustrations';
+import { trackEvent } from '@/lib/analytics';
 
 type ProjectCardProps = {
   project: Project;
 };
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
+  const handleProjectClick = () => {
+    trackEvent('project_card_click', {
+      slug: project.slug || '',
+      title: project.title || '',
+      source: 'home_highlights',
+    });
+  };
+
   return (
     <motion.div
       className="flex flex-col gap-6 lg:flex-row lg:gap-12"
@@ -32,6 +41,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         />
         <Link
           href={`/projects/${project.slug}`}
+          onClick={handleProjectClick}
           className="card-tactile card-tactile-interactive block h-full overflow-hidden p-1.5"
         >
           <Image
@@ -46,7 +56,11 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
       </div>
 
       <div className="flex-1 lg:py-[18px]">
-        <Link href={`/projects/${project.slug}`} className="normal-case">
+        <Link
+          href={`/projects/${project.slug}`}
+          onClick={handleProjectClick}
+          className="normal-case"
+        >
           <motion.h3
             className="flex items-center gap-3 font-display text-2xl font-bold tracking-tight text-ink"
             {...fadeUpAnimation}
@@ -80,7 +94,11 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           ))}
         </div>
 
-        <Link href={`/projects/${project.slug}`} className="text-lime">
+        <Link
+          href={`/projects/${project.slug}`}
+          onClick={handleProjectClick}
+          className="text-lime"
+        >
           See project
           <HiArrowNarrowRight />
         </Link>

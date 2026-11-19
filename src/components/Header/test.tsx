@@ -2,10 +2,6 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Header, { HeaderProps } from '.';
 
-jest.mock('./google-analytics', () => ({
-  GoogleAnalytics: () => <div data-testid="google-analytics" />,
-}));
-
 jest.mock('./nav-item', () => {
   const MockNavItem = ({ label, href }: { label: string; href: string }) => (
     <a href={href} data-testid={`nav-item-${label}`}>
@@ -32,12 +28,6 @@ describe('Header component', () => {
     expect(logo).toHaveAttribute('src', '/images/logo.svg');
 
     expect(container.firstChild).toMatchSnapshot();
-  });
-
-  it('renders the Google Analytics component', () => {
-    render(<Header />);
-    const googleAnalytics = screen.getByTestId('google-analytics');
-    expect(googleAnalytics).toBeInTheDocument();
   });
 
   it('renders the navigation items by default', () => {

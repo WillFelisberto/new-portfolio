@@ -14,6 +14,7 @@ import {
   EmptyStateProbeRobot,
 } from '@/components/TactileIllustrations';
 import { fadeUpAnimation } from '@/lib/animations';
+import { trackEvent } from '@/lib/analytics';
 
 const contactFormSchema = z.object({
   name: z.string().min(3).max(100),
@@ -54,9 +55,11 @@ const ContactForm = ({
   const onSubmit = async (data: ContactFormData) => {
     try {
       await axios.post('/api/contact', data);
+      trackEvent('contact_form_submit', { status: 'success' });
       toast.success(successMessage);
       reset();
     } catch {
+      trackEvent('contact_form_submit', { status: 'error' });
       toast.error(errorMessage);
     }
   };
