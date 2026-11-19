@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
+import { trackEvent } from '@/lib/analytics';
 
 export type TinyMLOscilloscopeProps = {
   className?: string;
@@ -23,9 +24,11 @@ export const TinyMLOscilloscope: React.FC<TinyMLOscilloscopeProps> = ({
         'group relative inline-block select-none transition-transform duration-200 hover:-translate-y-1',
         className,
       )}
-      onClick={() =>
-        setActiveMode((prev) => (prev === 'sine' ? 'pulse' : 'sine'))
-      }
+      onClick={() => {
+        const nextMode = activeMode === 'sine' ? 'pulse' : 'sine';
+        setActiveMode(nextMode);
+        trackEvent('oscilloscope_toggle', { mode: nextMode });
+      }}
       title="Click to toggle TinyML waveform mode"
       role="region"
       aria-label="TinyML Oscilloscope Simulator"

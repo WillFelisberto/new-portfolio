@@ -15,6 +15,7 @@ import {
   TactileWire,
   TinyMLOscilloscope,
 } from '@/components/TactileIllustrations';
+import { trackEvent } from '@/lib/analytics';
 
 export type HeroSectionProps = {
   name: string;
@@ -34,6 +35,7 @@ const HeroSection = ({
   social,
 }: HeroSectionProps) => {
   const handleContact = () => {
+    trackEvent('cta_get_in_touch_click', { location: 'hero' });
     const contactSection = document.querySelector('#contact');
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: 'smooth' });
@@ -90,6 +92,13 @@ const HeroSection = ({
                   target="_blank"
                   rel="noreferrer"
                   aria-label={item.name || 'Social profile'}
+                  onClick={() =>
+                    trackEvent('social_link_click', {
+                      network: item.name || 'social',
+                      url: item.url!,
+                      location: 'hero',
+                    })
+                  }
                 >
                   <CMSIcon icon={item.icon!} name={item.name} />
                 </a>

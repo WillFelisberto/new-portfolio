@@ -7,6 +7,7 @@ import { ProjectCard } from './projectCard';
 import EmptyState from '@/components/EmptyState';
 import { Project, Technology } from '@/app/(payload)/payload-types';
 import { HiOutlineSearch, HiX } from 'react-icons/hi';
+import { trackEvent } from '@/lib/analytics';
 
 type ProjectsListProps = {
   projects: Project[];
@@ -105,7 +106,10 @@ export const ProjectsList = ({ projects }: ProjectsListProps) => {
               <button
                 key={key}
                 type="button"
-                onClick={() => setSelectedCategory(key)}
+                onClick={() => {
+                  setSelectedCategory(key);
+                  trackEvent('project_filter_change', { category: key });
+                }}
                 className={`label-mono flex items-center gap-2 rounded-md border px-3.5 py-2 text-xs transition-all duration-200 active:translate-y-0.5 ${
                   isActive
                     ? 'border-line bg-lime font-bold text-night shadow-tactile'
@@ -184,6 +188,13 @@ export const ProjectsList = ({ projects }: ProjectsListProps) => {
               >
                 <Link
                   href={`/projects/${project.slug}`}
+                  onClick={() =>
+                    trackEvent('project_card_click', {
+                      slug: project.slug || '',
+                      title: project.title || '',
+                      source: 'projects_list',
+                    })
+                  }
                   className="block h-full transition-transform hover:-translate-y-1"
                 >
                   <ProjectCard project={project} />

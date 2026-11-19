@@ -1,7 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header component renders the logo 1`] = `
-<div
-  data-testid="google-analytics"
-/>
+<header
+  class="absolute top-0 z-10 flex h-24 w-full items-center justify-center"
+  style="top: -100px;"
+>
+  <div
+    class="container flex items-center justify-between"
+  >
+    <a
+      href="/"
+    >
+      <img
+        alt="Logo"
+        data-nimg="1"
+        decoding="async"
+        height="49"
+        src="/images/logo.svg"
+        style="color: transparent;"
+        width="58"
+      />
+    </a>
+    <nav
+      class="flex items-center gap-4 sm:gap-10"
+    >
+      <a
+        data-testid="nav-item-Home"
+        href="/"
+      >
+        Home
+      </a>
+      <a
+        data-testid="nav-item-Projects"
+        href="/projects"
+      >
+        Projects
+      </a>
+    </nav>
+  </div>
+</header>
 `;

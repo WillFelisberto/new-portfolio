@@ -11,6 +11,7 @@ import Link from '@/components/Link';
 import { HiArrowNarrowLeft } from 'react-icons/hi';
 import { Project, Technology } from '@/app/(payload)/payload-types';
 import { getProjectThumbnail } from '@/lib/project-image';
+import { trackEvent } from '@/lib/analytics';
 
 type ProjectDetailsProps = {
   project: Project;
@@ -55,7 +56,19 @@ export const ProjectDetails = ({ project }: ProjectDetailsProps) => {
         {...fadeUpAnimation}
       >
         {project?.githubUrl && (
-          <a href={project.githubUrl} target="_blank" rel="noreferrer">
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noreferrer"
+            onClick={() =>
+              trackEvent('project_external_link_click', {
+                slug: project.slug || '',
+                title: project.title || '',
+                link_type: 'github',
+                url: project.githubUrl!,
+              })
+            }
+          >
             <Button className="min-w-[180px]">
               <TbBrandGithub size={20} />
               Repository
@@ -63,7 +76,19 @@ export const ProjectDetails = ({ project }: ProjectDetailsProps) => {
           </a>
         )}
         {project?.liveProjectUrl && (
-          <a href={project.liveProjectUrl} target="_blank" rel="noreferrer">
+          <a
+            href={project.liveProjectUrl}
+            target="_blank"
+            rel="noreferrer"
+            onClick={() =>
+              trackEvent('project_external_link_click', {
+                slug: project.slug || '',
+                title: project.title || '',
+                link_type: 'live',
+                url: project.liveProjectUrl!,
+              })
+            }
+          >
             <Button variant="secondary" className="min-w-[180px]">
               <FiGlobe size={20} />
               Online Project

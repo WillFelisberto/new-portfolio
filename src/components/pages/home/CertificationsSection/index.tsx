@@ -5,6 +5,7 @@ import SectionTitle from '@/components/SectionTitle';
 import { motion } from 'framer-motion';
 import { HiExternalLink } from 'react-icons/hi';
 import { TbCertificate } from 'react-icons/tb';
+import { trackEvent } from '@/lib/analytics';
 
 type CertificationsSectionProps = {
   certifications: Certification[];
@@ -53,9 +54,9 @@ export const CertificationsSection = ({
                 </div>
 
                 <div>
-                  <h4 className="font-display text-base font-bold text-ink sm:text-lg">
+                  <h3 className="font-display text-base font-bold text-ink sm:text-lg">
                     {cert.title}
-                  </h4>
+                  </h3>
                   <p className="label-mono mt-0.5 text-xs text-dim">
                     {cert.issuer} • Issued {formattedDate}
                   </p>
@@ -74,6 +75,13 @@ export const CertificationsSection = ({
                   target="_blank"
                   rel="noreferrer"
                   aria-label={`Verify ${cert.title}`}
+                  onClick={() =>
+                    trackEvent('certification_click', {
+                      title: cert.title,
+                      issuer: cert.issuer,
+                      url: cert.credentialUrl!,
+                    })
+                  }
                   className="flex shrink-0 items-center gap-1.5 self-start rounded-md border border-line bg-surface px-3 py-1.5 font-mono text-xs font-semibold text-muted transition-all hover:-translate-y-0.5 hover:border-lime hover:text-lime sm:self-center"
                 >
                   <span>Verify</span>

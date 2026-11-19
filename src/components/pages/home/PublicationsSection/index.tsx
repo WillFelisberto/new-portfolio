@@ -7,6 +7,7 @@ import RichTextComponent from '@/components/RichText';
 import { motion } from 'framer-motion';
 import { HiExternalLink } from 'react-icons/hi';
 import { TbBrandGithub, TbFileText } from 'react-icons/tb';
+import { trackEvent } from '@/lib/analytics';
 
 type PublicationsSectionProps = {
   publications: Publication[];
@@ -56,6 +57,13 @@ export const PublicationsSection = ({
                       target="_blank"
                       rel="noreferrer"
                       aria-label="Repository on GitHub"
+                      onClick={() =>
+                        trackEvent('publication_click', {
+                          title: pub.title,
+                          link_type: 'github',
+                          url: pub.githubUrl!,
+                        })
+                      }
                       className="rounded-md border border-line bg-surface p-2 text-muted transition-all hover:-translate-y-0.5 hover:border-lime hover:text-lime"
                     >
                       <TbBrandGithub size={18} />
@@ -67,6 +75,13 @@ export const PublicationsSection = ({
                       target="_blank"
                       rel="noreferrer"
                       aria-label="Read paper on IEEE Xplore"
+                      onClick={() =>
+                        trackEvent('publication_click', {
+                          title: pub.title,
+                          link_type: 'doi',
+                          url: pub.doiUrl!,
+                        })
+                      }
                       className="flex items-center gap-1.5 rounded-md border border-line bg-raised px-3 py-1.5 font-mono text-xs font-semibold text-ink transition-all hover:-translate-y-0.5 hover:border-lime hover:text-lime"
                     >
                       <TbFileText size={16} />
@@ -84,6 +99,13 @@ export const PublicationsSection = ({
                       href={pub.doiUrl}
                       target="_blank"
                       rel="noreferrer"
+                      onClick={() =>
+                        trackEvent('publication_click', {
+                          title: pub.title,
+                          link_type: 'doi',
+                          url: pub.doiUrl!,
+                        })
+                      }
                       className="transition-colors hover:text-lime"
                     >
                       {pub.title}
